@@ -1,0 +1,36 @@
+.upperline-nav{
+    background: linear-gradient(90deg, rgba(0,117,234,1) 0%, rgba(96,175,255,1) 100%);
+    padding: 7px 0 0 0;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.text-primary{
+    color: rgba(0,117,234,1);
+}
+
+.hover\:text-primary:hover{
+    color: rgba(0,117,234,1);
+}
+
+.bg-primary{
+    background: rgba(0,117,234,1);
+}
+
+.hover\:bg-primary:hover{
+    background: rgba(0,117,234,1);
+}
+
+.writing{
+    stroke: 0075EA;
+    fill: none;
+    animation: write 1s ease-out 0s 1 forwards;
+}
+
+@keyframes write{
+    100%{
+         stroke-dashoffset: 0;
+    }
+}

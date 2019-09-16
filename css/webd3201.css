@@ -1,0 +1,45 @@
+.upperline-nav {
+  background: -webkit-gradient(linear, left top, right top, from(#0075ea), to(#60afff));
+  background: linear-gradient(90deg, #0075ea 0%, #60afff 100%);
+  padding: 7px 0 0 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.text-primary {
+  color: #0075ea;
+}
+
+.hover\:text-primary:hover {
+  color: #0075ea;
+}
+
+.bg-primary {
+  background: #0075ea;
+}
+
+.hover\:bg-primary:hover {
+  background: #0075ea;
+}
+
+.writing {
+  stroke: 0075EA;
+  fill: none;
+  -webkit-animation: write 1s ease-out 0s 1 forwards;
+          animation: write 1s ease-out 0s 1 forwards;
+}
+
+@-webkit-keyframes write {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes write {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+/*# sourceMappingURL=webd3201.css.map */

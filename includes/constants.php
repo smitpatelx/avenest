@@ -22,6 +22,9 @@ define('PENDING', 'p');
 define('DISABLED', 'd');
 
 //Cookies life span
-define('COOKIE_LIFESPAN', 2592000);
+define('COOKIE_LIFESPAN', time() + (60*60*24*30));
+
+//md5 hashing
+define("MD5", "md5");
 
 ?>

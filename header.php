@@ -30,18 +30,18 @@ DESCRIPTION     : Header section
     <link rel="stylesheet" href="./css/notiflix.min.css"/>
 
     <!-- Import jquery -->
-    <script type="text/javascript" src="./includes/js/jquery.min.js" async></script>
+    <script type="text/javascript" src="./includes/js/jquery.min.js"></script>
     <script type="text/javascript" src="./includes/js/js/all.min.js" async></script>
     <script type="text/javascript" src="./includes/js/notiflix.min.js"></script>
-    
+    <script type="text/javascript" src="./includes/js/custom.js"></script>
 </head>
 <body>
     <script>
-        Notiflix.Notify.Init({ distance:"100px", info: {background:"#0c82d8",}, }); 
-        // Notiflix.Notify.Success('Sol lucet omnibus');
-        Notiflix.Loading.Init({ svgColor:"#0365f3", }); 
-        Notiflix.Loading.Pulse();
-        Notiflix.Loading.Remove(1000);
+        // Notiflix.Notify.Init({ distance:"100px", info: {background:"#0c82d8",}, }); 
+        // // Notiflix.Notify.Success('Sol lucet omnibus');
+        // Notiflix.Loading.Init({ svgColor:"#0365f3", }); 
+        // Notiflix.Loading.Pulse();
+        // Notiflix.Loading.Remove(500);
     </script>
     <div class="w-full upperline-nav"></div>
     <div class="bg-white flex flex-wrap py-6 px-24">
@@ -54,15 +54,23 @@ DESCRIPTION     : Header section
             <a href="./index.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
                 Home
             </a>
-            <a href="./login.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
-                Login
-            </a>
-            <a href="./register.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
-                Register
-            </a>
-            <a href="./logout.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
-                Logout
-            </a>
+            <?php
+
+            if(isset($_SESSION['email_s'])){
+                echo '<a href="./logout.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
+                        Logout
+                    </a>';
+            } else {
+                echo '<a href="./login.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
+                    Login
+                </a>
+                <a href="./register.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
+                    Register
+                </a>';
+            }
+
+            ?>
+
         </div>
     </div>
     

@@ -21,7 +21,7 @@ function db_prepare($name, $sql)
     return pg_prepare($dbconn, $name, $sql);
 }
 
-function dc_execute($name, $array)
+function db_execute($name, $array)
 {
     $dbconn = db_connect();
     return pg_execute($dbconn, $name, $array);

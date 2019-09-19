@@ -16,7 +16,7 @@ require("./header.php");
 
 <div class="flex flex-wrap flex-row p-24">
     <div class="w-1/2 flex flex-wrap flex-col">
-        <h1 class="font-bold text-4xl text-black mt-14">Reimagine home</h1>
+        <h1 class="font-bold text-4xl text-black mt-14">Reimagine Home</h1>
         <h1 class="font-bold text-4xl text-primary">We’ll help you find a place you’ll love.</h1>
 
         <p class="font-semibold text-2xl text-gray-500 mt-16">We have the most listings and constant updates.
@@ -24,7 +24,7 @@ require("./header.php");
         
         <p class="text-xl text-gray-500 mt-6">To see all available houses, register here.</p>
 
-        <a href="./register.php" class="bg-primary rounded text-white py-3 px-6 font-semibold mt-10 w-1/4 text-center">Register</a>
+        <a href="./register.php" class="border hover:border-blue-600 bg-primary hover:bg-transparent rounded text-white hover:text-primary py-3 px-6 font-semibold mt-10 w-1/4 text-center">Register</a>
     </div>
     <div class="w-1/2">
         <img src="./images/bg-home.svg" alt="Home">

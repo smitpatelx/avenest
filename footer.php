@@ -11,18 +11,22 @@ DESCRIPTION     : Footer section
             <a href="./index.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
                 Home
             </a>
-            <a href="./listings.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
-                Listings
-            </a>
-            <a href="./login.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
-                Login
-            </a>
-            <a href="./register.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
-                Register
-            </a>
-            <a href="./logout.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
-                Logout
-            </a>
+            <?php
+
+            if(isset($_SESSION['email_s'])){
+                echo '<a href="./logout.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
+                        Logout
+                    </a>';
+            } else {
+                echo '<a href="./login.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
+                    Login
+                </a>
+                <a href="./register.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
+                    Register
+                </a>';
+            }
+            ?>
+            
         </div>
         <div class="w-full py-4 px-64 justify-center">
             <p class="text-sm text-gray-500 text-center">This website must not use for personal or commercial purpose without permission. We believe in strict copyright rules. This project is created as per the requirements mentioned in Course WEBD3201</p>
@@ -31,7 +35,7 @@ DESCRIPTION     : Footer section
             <?php display_copyright() ?>
         </div> 
     </div>
-    <div class="w-full upperline-nav"></div>
+    <div class="w-full upperline-nav py-2"></div>
 
 </body>
 </html>

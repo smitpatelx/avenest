@@ -36,6 +36,6 @@ DESCRIPTION     : Footer section
         </div> 
     </div>
     <div class="w-full upperline-nav py-2"></div>
-
+    <?php echo notification_message(); ?>
 </body>
 </html>

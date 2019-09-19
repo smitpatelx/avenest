@@ -19,6 +19,10 @@ if ( isset( $_COOKIE[session_name()] ) ) {
     unset($_SESSION);
     //clear session from disk
     session_destroy();
+
+    $session_messages[] = "Successfully logged out";
+
+    $_SESSION['session_messages'] = $session_messages;
 }
 
 // if ( isset($_COOKIE["LOGIN_COOKIE"])){

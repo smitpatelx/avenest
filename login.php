@@ -13,7 +13,6 @@ $banner = "Login";
 $desc   = "Login page includes fields for email and password.";
 require("./header.php");
 
-
 if(is_get())
 {
     $email_helper = "";
@@ -21,12 +20,10 @@ if(is_get())
     $errors=0;
     $error="";
 
-    print_r($_COOKIE);
-
     if(isset($_COOKIE['LOGIN_COOKIE']))
     {
-        echo implode('email',$_COOKIE['LOGIN_COOKIE']);
-        $cookie_email = (implode('email',$_COOKIE['LOGIN_COOKIE']));
+        $login_cookie = explode("|",$_COOKIE['LOGIN_COOKIE']);
+        $cookie_email = $login_cookie[1];
         $email = $cookie_email;
         $password= "";  
     }
@@ -103,11 +100,11 @@ if(is_get())
                 'last_access' => $_SESSION['last_access_s'],
                 'user_id' => $_SESSION['user_id_s']
             ];
+            $cookie_currentUser = implode("|",$cookie_currentUser);
             setcookie("LOGIN_COOKIE", $cookie_currentUser, COOKIE_LIFESPAN);
             $session_messages[] = "Cookie set for 30 days.";
 
             $_SESSION['session_messages'] = $session_messages;
-
             //Redirect user to their respective page after login
             user_redirection();
         }

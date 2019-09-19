@@ -15,14 +15,11 @@ require("./header.php");
 
 print_r($_COOKIE);
 
-$cookie_currentUser = [ 
-    'user_type' => $_SESSION['user_type_s'],
-    'email' => $_SESSION['email_s'],
-    'last_access' => $_SESSION['last_access_s'],
-    'user_id' => $_SESSION['user_id_s']
-];
 print("<br/><br/>");
+$cookie_currentUser = explode("|",$_COOKIE['LOGIN_COOKIE']);
 print_r($cookie_currentUser);
+print("<br/><br/>");
+print_r($cookie_currentUser[1]);
 ?>
     <div>
         Welcome

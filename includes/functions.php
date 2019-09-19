@@ -47,4 +47,18 @@ function user_redirection() {
     }
 }
 
+function notification_message(){
+    if( isset($_SESSION['session_messages']) ) {
+        $msgs = $_SESSION['session_messages'];
+        $output = "";
+        $output .= "<script>Notiflix.Notify.Init({ distance:'60px', info: {background:'#0c82d8',}, }); ";
+        foreach($msgs as $msg){
+            $output .= "Notiflix.Notify.Success('".$msg."');";
+        }
+        $output .= "</script>";
+        unset($_SESSION['session_messages']);
+        return $output;
+    }
+}
+
 ?>

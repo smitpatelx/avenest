@@ -16,18 +16,18 @@ require("./header.php");
 
     <div class="flex flex-wrap flex-col w-full">
         <div class="w-full px-24 py-4">
-            <form method="get" action="./listing-search-results.php" class="shadow-xl rounded-lg py-4 px-10 bg-primary-400 flex flex-wrap flex-row mt-4 xl:mt-6">
+            <form method="get" action="./listing-search-results.php" class="shadow-xl rounded-lg py-4 pb-6 px-10 bg-gray-200 flex flex-wrap flex-row mt-4 xl:mt-6">
                 <div class="w-full py-2 rounded-lg flex flex-wrap flex-row">
-                    <p class="w-full text-lg text-white pb-2 font-headline">Search any word</p>
-                    <input type="text" name="search" placeholder="Search" class="w-11/12 shadow rounded-l-lg py-3 px-4">
+                    <p class="w-full text-lg text-gray-700 font-semibold pb-2 font-headline">Search any word</p>
+                    <input type="text" name="search" placeholder="Search" class="w-11/12 shadow rounded-l-lg py-3 px-4 focus:outline-none focus:shadow-outline">
                     <div class="w-1/12 shadow rounded-r-lg bg-white text-yellow-600 p-3 text-center">
                         <i class="fa fa-search"></i>
                     </div>
                 </div>
                 <div class="w-full flex flex-wrap flex-row">
                     <div class="w-1/4 pr-2 py-2">
-                        <p class="text-lg text-white pb-2 font-headline">City</p>
-                        <select name="city" class="w-full py-3 px-4 shadow rounded-lg">
+                        <p class="text-lg text-gray-700 font-semibold pb-2 font-headline">City</p>
+                        <select name="city" class="cursor-pointer w-full py-3 px-4 shadow rounded-lg focus:outline-none focus:shadow-outline">
                             <option value="ajax">Ajax</option>
                             <option value="oshawa">Oshawa</option>
                             <option value="pickering">Pickering</option>
@@ -35,16 +35,16 @@ require("./header.php");
                         </select>
                     </div>
                     <div class="w-1/4 pr-2 py-2">
-                        <p class="text-lg text-white pb-2 font-headline">Minimum Price</p>
-                        <select name="min_price" class="w-full py-3 px-4 shadow rounded-lg">
+                        <p class="text-lg text-gray-700 font-semibold pb-2 font-headline">Minimum Price</p>
+                        <select name="min_price" class="cursor-pointer w-full py-3 px-4 shadow rounded-lg focus:outline-none focus:shadow-outline">
                             <option value="50000">50 K</option>
                             <option value="100000">100 K</option>
                             <option value="150000">150 K</option>
                         </select>
                     </div>
                     <div class="w-1/4 pr-2 py-2">
-                        <p class="text-lg text-white pb-2 font-headline">Maximum Price</p>
-                        <select name="max_price" class="w-full py-3 px-4 shadow rounded-lg">
+                        <p class="text-lg text-gray-700 font-semibold pb-2 font-headline">Maximum Price</p>
+                        <select name="max_price" class="cursor-pointer w-full py-3 px-4 shadow rounded-lg focus:outline-none focus:shadow-outline">
                             <option value="50000">50 K</option>
                             <option value="100000">100 K</option>
                             <option value="150000">150 K</option>
@@ -54,8 +54,8 @@ require("./header.php");
                         </select>
                     </div>
                     <div class="w-1/4 pl-2 pb-2 pt-8 flex flex-wrap flex-row justify-end">
-                        <div class="pl-2 pt-4">
-                            <input type="submit" value="Search" class="w-full py-3 px-6 shadow rounded-lg hover:bg-yellow-600 bg-yellow-500 hover:text-white text-black font-semibold cursor-pointer">
+                        <div class="pl-2 pt-2">
+                            <input type="submit" value="Search" class="cursor-pointer w-full py-3 px-6 shadow rounded-lg hover:bg-yellow-600 bg-yellow-500 hover:text-white text-black font-semibold cursor-pointerfocus:outline-none focus:shadow-outline">
                         </div>
                     </div>
                 </div>

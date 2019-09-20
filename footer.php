@@ -38,7 +38,7 @@ DESCRIPTION     : Footer section
             <?php display_copyright() ?>
         </div> 
     </div>
-    <div class="w-full upperline-nav py-2"></div>
+    <div class="w-full upperline-nav pt-2 pb-1"></div>
     
     <!-- Import jquery -->
     <script type="text/javascript" src="./includes/js/jquery.min.js"></script>

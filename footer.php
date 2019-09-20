@@ -18,7 +18,10 @@ DESCRIPTION     : Footer section
                         Logout
                     </a>';
             } else {
-                echo '<a href="./login.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
+                echo '<a href="./listing-search.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
+                    Listings
+                </a>
+                <a href="./login.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
                     Login
                 </a>
                 <a href="./register.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
@@ -36,6 +39,23 @@ DESCRIPTION     : Footer section
         </div> 
     </div>
     <div class="w-full upperline-nav py-2"></div>
+    
+    <!-- Import jquery -->
+    <script type="text/javascript" src="./includes/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./includes/js/notiflix.min.js"></script>
+    <script type="text/javascript" src="./includes/js/js/all.min.js"></script>
+    <script type="text/javascript" src="./includes/js/custom.js"></script>
+
     <?php echo notification_message(); ?>
+    
+    <script type="text/javascript">
+        Notiflix.Loading.Init({ svgColor:"#0365f3", }); 
+        Notiflix.Loading.Pulse();
+
+        $(window).bind("load", function () {
+            Notiflix.Notify.Init({ distance:"50px", info: {background:"#0c82d8",}, }); 
+            Notiflix.Loading.Remove();
+        });
+    </script>
 </body>
 </html>

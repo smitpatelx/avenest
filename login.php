@@ -102,8 +102,8 @@ if(is_get())
             ];
             $cookie_currentUser = implode("|",$cookie_currentUser);
             setcookie("LOGIN_COOKIE", $cookie_currentUser, COOKIE_LIFESPAN);
-            $session_messages[] = "Cookie set for 30 days.";
 
+            $session_messages[] = "Successfully logged in";
             $_SESSION['session_messages'] = $session_messages;
             //Redirect user to their respective page after login
             user_redirection();

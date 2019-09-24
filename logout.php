@@ -20,6 +20,7 @@ if ( isset( $_COOKIE[session_name()] ) ) {
     //clear session from disk
     session_destroy();
 
+    session_start();
     $session_messages[] = "Successfully logged out";
 
     $_SESSION['session_messages'] = $session_messages;

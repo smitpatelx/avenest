@@ -46,7 +46,12 @@ DESCRIPTION     : Footer section
     <script type="text/javascript" src="./includes/js/js/all.min.js"></script>
     <script type="text/javascript" src="./includes/js/custom.js"></script>
 
-    <?php echo notification_message(); ?>
+    <?php 
+        echo notification_message(); 
+        // if(strlen(notification_message()) <= 0){
+        //     unset($_SESSION['session_messages']);
+        // }
+    ?>
     
     <script type="text/javascript">
         Notiflix.Loading.Init({ svgColor:"#0365f3", }); 

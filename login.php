@@ -102,11 +102,13 @@ if(is_get())
             ];
             $cookie_currentUser = implode("|",$cookie_currentUser);
             setcookie("LOGIN_COOKIE", $cookie_currentUser, COOKIE_LIFESPAN);
-            $session_messages[] = "Cookie set for 30 days.";
 
-            $_SESSION['session_messages'] = $session_messages;
+            $session_msg[] = "Successfully logged in";
+            $_SESSION['session_messages'] = $session_msg;
+
             //Redirect user to their respective page after login
             user_redirection();
+            exit();
         }
     } else {
         $error = "Something went wrong";
@@ -119,8 +121,8 @@ if(is_get())
         <div class="w-2/3 h-auto object-cover">
             <img src="./images/room-34V7TVQQFsU-unsplash.jpg" alt="room-34V7TVQQFsU-unsplash.jpg" class="object-fit w-full">
         </div>
-        <form class="h-auto w-1/3 p-4" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <p class="text-left font-bold text-gray-600 my-2 text-2xl mt-24">Login</p>
+        <form class="h-auto w-1/3 p-4 shadow-inner" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <p class="text-left font-bold text-gray-600 my-2 text-2xl mt-24 font-headline">Login</p>
             <p class="text-left font-semibold text-gray-500 my-2">Email and Password needed</p>
 
             <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>

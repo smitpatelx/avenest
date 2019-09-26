@@ -18,8 +18,8 @@ require("./header.php");
         <div class="w-2/3 h-auto object-cover">
             <img src="./images/room-34V7TVQQFsU-unsplash.jpg" alt="Image Side" class="object-fit w-full">
         </div>
-        <form class="h-auto w-1/3 p-4" method="post">
-            <p class="text-left font-bold text-gray-600 my-2 text-2xl mt-24">Register</p>
+        <form class="h-auto w-1/3 p-4 shadow-inner" method="post">
+            <p class="text-left font-bold text-gray-600 my-2 text-2xl mt-24 font-headline">Register</p>
             <p class="text-left font-semibold text-gray-500 my-2">All fields are compulsary</p>
 
             <div class="flex flex-wrap flex-row mt-10 xl:mt-20">

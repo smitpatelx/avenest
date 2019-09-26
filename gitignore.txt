@@ -1,0 +1,2 @@
+git_sync.bat
+.gitignore

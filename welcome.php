@@ -12,17 +12,11 @@ $date   = "SEPT 15, 2019";
 $banner = "Welcome";
 $desc   = "Welcome page use to greet clients.";
 require("./header.php");
-
-print_r($_COOKIE);
-
-print("<br/><br/>");
-$cookie_currentUser = explode("|",$_COOKIE['LOGIN_COOKIE']);
-print_r($cookie_currentUser);
-print("<br/><br/>");
-print_r($cookie_currentUser[1]);
 ?>
-    <div>
-        Welcome
+    <div class="text-center flex flex-wrap flex-col py-4 content-center">
+        <p class="text-xl text-primary shadow-lg rounded w-1/3 bg-gray-200 py-2">
+            Welcome <?php echo $_SESSION['email_s'] ?>
+        </p>
     </div>
 
 <?php

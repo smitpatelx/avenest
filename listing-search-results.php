@@ -12,6 +12,9 @@ $date   = "SEPT 15, 2019";
 $banner = "Listing Search Result";
 $desc   = "Listing Search Result page use to Search Result listing.";
 require("./header.php");
+
+
+print_r($_GET);
 ?>
 
 <div class="flex flex-wrap flex-row w-full pt-4 pb-10 px-6 xl:px-32">

@@ -127,16 +127,16 @@ if(is_get())
 
             <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>
 
-            <input type="text" name="email" value="<?php echo $email ?>" placeholder="Email" class="w-full py-3 px-4 shadow rounded-lg my-2 mt-24">
+            <input type="text" name="email" value="<?php echo $email ?>" placeholder="Email" class="w-full py-3 px-4 shadow rounded-lg my-2 mt-24 focus:outline-none focus:shadow-outline">
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $email_helper ?></p>
-            <input type="password" name="password" value="<?php echo $password ?>" placeholder="Password" class="w-full py-3 px-4 shadow rounded-lg my-2">
+            <input type="password" name="password" value="<?php echo $password ?>" placeholder="Password" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline">
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $password_helper ?></p>
             <div class="flex flex-wrap flex-row">
                 <div class="w-1/2 pr-2 py-2">
-                    <input type="submit" value="Login" class="w-full py-3 px-4 shadow rounded-lg bg-primary hover:bg-transparent text-white hover:text-primary border hover:border-blue-600 font-semibold cursor-pointer">
+                    <input type="submit" value="Login" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg bg-primary hover:bg-transparent text-white hover:text-primary border hover:border-blue-600 font-semibold cursor-pointer">
                 </div>
                 <div class="w-1/2 pl-2 py-2">
-                    <input type="reset" value="Reset" class="w-full py-3 px-4 shadow rounded-lg bg-gray-300 hover:bg-transparent  text-black hover:text-gray-600 border hover:border-blue-600 font-semibold cursor-pointer">
+                    <input type="reset" value="Reset" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg bg-gray-300 hover:bg-transparent  text-black hover:text-gray-600 border hover:border-blue-600 font-semibold cursor-pointer">
                 </div>
             </div>
             <div class="flex flex-wrap flex-col text-center p-2">

@@ -12,6 +12,9 @@ $date   = "SEPT 15, 2019";
 $banner = "Listing Search Result";
 $desc   = "Listing Search Result page use to Search Result listing.";
 require("./header.php");
+
+
+print_r($_GET);
 ?>
 
 <!-- Shows results based on what the user asks for in the listing search page -->

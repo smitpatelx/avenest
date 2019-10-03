@@ -34,8 +34,13 @@ DESCRIPTION     : Footer section
         <div class="w-full py-4 px-64 justify-center">
             <p class="text-sm text-gray-500 text-center">This website must not use for personal or commercial purpose without permission. We believe in strict copyright rules. This project is created as per the requirements mentioned in Course WEBD3201</p>
         </div>  
-        <div class="w-full py-4 justify-center">
+        <div class="w-full flex flex-wrap py-4 justify-between">
             <?php display_copyright() ?>
+            <p>
+                <a href="http://validator.w3.org/check?uri=referer%22%3E">
+                    <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" />
+                </a>
+            </p>
         </div> 
     </div>
     <div class="w-full upperline-nav pt-2 pb-1"></div>

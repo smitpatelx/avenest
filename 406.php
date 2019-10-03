@@ -13,7 +13,7 @@ $banner = "406 Error";
 $desc   = "406 page use for disabled users.";
 require("./header.php");
 ?>
-<style>
+<style type="text/css">
     * {
         font-family: "PT Sans Caption", sans-serif, "arial", "Times New Roman";
         }
@@ -295,7 +295,7 @@ require("./header.php");
     </div>
 <!-- Error Page -->
 
-<script>
+<script type="application/javascript">
     function randomNum()
         {
             "use strict";
@@ -343,3 +343,5 @@ require("./header.php");
                 }
             }, time);
 </script>
+</body>
+</html>

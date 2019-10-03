@@ -13,8 +13,6 @@ $banner = "Listing Search Result";
 $desc   = "Listing Search Result page use to Search Result listing.";
 require("./header.php");
 
-
-print_r($_GET);
 ?>
 
 <!-- Shows results based on what the user asks for in the listing search page -->
@@ -35,7 +33,7 @@ print_r($_GET);
     <!-- Listings Results -->
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">Detached</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
@@ -49,7 +47,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-600 py-1 px-2">Attached</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
@@ -63,7 +61,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
@@ -77,7 +75,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-red-600 py-1 px-2 ml-2">Sold</p>
@@ -92,7 +90,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">Detached</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
@@ -106,7 +104,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-600 py-1 px-2">Attached</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
@@ -120,7 +118,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
@@ -134,7 +132,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-red-600 py-1 px-2 ml-2">Sold</p>
@@ -149,7 +147,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">Detached</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
@@ -163,7 +161,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-600 py-1 px-2">Attached</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
@@ -177,7 +175,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
@@ -191,7 +189,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-red-600 py-1 px-2 ml-2">Sold</p>
@@ -206,7 +204,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">Detached</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
@@ -220,7 +218,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-600 py-1 px-2">Attached</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
@@ -234,7 +232,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
@@ -248,7 +246,7 @@ print_r($_GET);
     </div>
     <div class="w-1/4 p-4">
         <div class="rounded-lg shadow-lg">
-            <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64">
+            <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-red-600 py-1 px-2 ml-2">Sold</p>

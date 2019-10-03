@@ -1,7 +1,7 @@
 <!--
 FILE: 			: <?php echo basename(__FILE__, $_SERVER['PHP_SELF'])."\n"; ?>
 TITLE           : AveNest Listings
-AUTHORS         : Smit Patel
+AUTHORS         : Smit Patel, Mike Cusson, Roshan Persaud
 LAST MODIFIED   : SEPT 15, 2019
 DESCRIPTION     : Home Page
 -->
@@ -14,6 +14,7 @@ $desc   = "Home page is the main index page of this website";
 require("./header.php");
 ?>
 
+<!-- Design for the index page-->
 <div class="flex flex-wrap flex-row p-24">
     <div class="w-1/2 flex flex-wrap flex-col">
         <h1 class="font-bold text-4xl text-black mt-14 font-headline">Reimagine Home</h1>

@@ -1,7 +1,7 @@
 <!--
 FILE: 			: <?php echo basename(__FILE__, $_SERVER['PHP_SELF'])."\n"; ?>
 TITLE           : AveNest Listings
-AUTHORS         : Smit Patel
+AUTHORS         : Smit Patel, Mike Cusson, Roshan Persaud
 LAST MODIFIED   : SEPT 15, 2019
 DESCRIPTION     : Login Page
 -->
@@ -15,6 +15,7 @@ require("./header.php");
 
 if(is_get())
 {
+    // Setting variables
     $email_helper = "";
     $password_helper = "";
     $errors=0;
@@ -43,6 +44,8 @@ if(is_get())
 
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
+
+    // Email validation
     if(!isset($email) || empty($email))
     {
         $email_helper = "Email is required";
@@ -57,6 +60,7 @@ if(is_get())
         $email = "";
     }
 
+    //Password validation
     if(!isset($password) || empty($password))
     {
         $password_helper = "Password is required";
@@ -68,6 +72,7 @@ if(is_get())
         $password="";
     }
 
+    // If everything went smoothly, begin adding to database
     if($errors<=0) {
         $password = hashmd5($password);
         $last_access = date("Y-m-d",time());
@@ -117,6 +122,7 @@ if(is_get())
 
 ?>
 
+    <!-- The login form for the page -->
     <div class="w-full flex flex-wrap justify-center">
         <div class="w-2/3 h-auto object-cover">
             <img src="./images/room-34V7TVQQFsU-unsplash.jpg" alt="room-34V7TVQQFsU-unsplash.jpg" class="object-fit w-full">

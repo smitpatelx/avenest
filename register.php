@@ -1,11 +1,12 @@
 <!--
 FILE: 			: <?php echo basename(__FILE__, $_SERVER['PHP_SELF'])."\n"; ?>
 TITLE           : AveNest Listings
-AUTHORS         : Smit Patel
+AUTHORS         : Smit Patel, Mike Cusson, Roshan Persaud
 LAST MODIFIED   : SEPT 15, 2019
 DESCRIPTION     : Register Page
 -->
 <?php
+// Initialize basic variables
 $title  = "Register";
 $file   = "Register.php";
 $date   = "SEPT 15, 2019";
@@ -14,10 +15,14 @@ $desc   = "Register page includes fields for email, user information and passwor
 require("./header.php");
 ?>
 
+    <!-- These classes directly impact the design of the website in multiple ways-->
     <div class="w-full flex flex-wrap justify-center">
         <div class="w-2/3 h-auto object-cover">
+            <!-- import an image nicely-->
             <img src="./images/room-34V7TVQQFsU-unsplash.jpg" alt="Image Side" class="object-fit w-full">
         </div>
+
+        <!-- This form controls the whole page -->
         <form class="h-auto w-1/3 p-4 shadow-inner" method="post">
             <p class="text-left font-bold text-gray-600 my-2 text-2xl mt-24 font-headline">Register</p>
             <p class="text-left font-semibold text-gray-500 my-2">All fields are compulsary</p>

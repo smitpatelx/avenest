@@ -1,7 +1,7 @@
 <!--
 FILE: 			: <?php echo basename(__FILE__, $_SERVER['PHP_SELF'])."\n"; ?>
 TITLE           : AveNest Listings
-AUTHORS         : Smit Patel
+AUTHORS         : Smit Patel, Mike Cusson, Roshan Persaud
 LAST MODIFIED   : SEPT 15, 2019
 DESCRIPTION     : Listing search Page
 -->
@@ -13,7 +13,8 @@ $banner = "Listing search";
 $desc   = "Listing search page use to search listing.";
 require("./header.php");
 ?>
-
+    <!-- The form will show all listings in an orginized fashion 
+         based on the users preferance  -->
     <div class="flex flex-wrap flex-col w-full">
         <div class="w-full px-24 py-4">
             <form method="get" action="./listing-search-results.php" class="shadow-xl rounded-lg py-4 pb-6 px-10 bg-gray-200 flex flex-wrap flex-row mt-4 xl:mt-6">

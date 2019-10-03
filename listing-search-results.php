@@ -1,7 +1,7 @@
 <!--
 FILE: 			: <?php echo basename(__FILE__, $_SERVER['PHP_SELF'])."\n"; ?>
 TITLE           : AveNest Listings
-AUTHORS         : Smit Patel
+AUTHORS         : Smit Patel, Mike Cusson, Roshan Persaud
 LAST MODIFIED   : SEPT 15, 2019
 DESCRIPTION     : Listing Search Result Page
 -->
@@ -14,6 +14,7 @@ $desc   = "Listing Search Result page use to Search Result listing.";
 require("./header.php");
 ?>
 
+<!-- Shows results based on what the user asks for in the listing search page -->
 <div class="flex flex-wrap flex-row w-full pt-4 pb-10 px-6 xl:px-32">
     <div class="w-full py-6 flex flex-wrap">
         <p class="w-1/2 text-left font-semibold text-gray-600 text-lg">Results for: "4 rooms"</p>

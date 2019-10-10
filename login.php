@@ -134,10 +134,12 @@ if(is_get())
             <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>
 
             <div>
-                <input type="text" name="email" value="<?php echo $email ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 mt-24 focus:outline-none focus:shadow-outline"/>
+                <p class="text-lg font-semibold py-2 text-gray-500 mt-24">Email</p>
+                <input type="text" name="email" value="<?php echo $email ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $email_helper ?></p>
             <div>
+                <p class="text-lg font-semibold py-2 text-gray-500">Password</p>
                 <input type="password" name="password" value="<?php echo $password ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $password_helper ?></p>

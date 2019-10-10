@@ -24,25 +24,30 @@ require("./header.php");
 
         <!-- This form controls the whole page -->
         <form class="h-auto w-1/3 p-4 shadow-inner" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <p class="text-left font-bold text-gray-600 my-2 text-2xl mt-24 font-headline">Register</p>
+            <p class="text-left font-bold text-gray-600 my-2 text-2xl mt-10 font-headline">Register</p>
             <p class="text-left font-semibold text-gray-500 my-2">All fields are compulsary</p>
 
             <div class="flex flex-wrap flex-row mt-10 xl:mt-20">
                 <div class="w-1/2 pr-2 py-2">
+                    <p class="text-lg font-semibold py-2 text-gray-500">First Name</p>
                     <input type="text" name="first_name" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg"/>
                 </div>
                 <div class="w-1/2 pl-2 py-2">
+                    <p class="text-lg font-semibold py-2 text-gray-500">Last Name</p>
                     <input type="text" name="last_name" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg"/>
                 </div>
             </div>
             <div>
-                <input type="text" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg my-2"/>
+                <p class="text-lg font-semibold py-2 text-gray-500">Email</p>
+                <input type="text" name="email" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg my-2"/>
             </div>
             <div class="flex flex-wrap flex-row">
                 <div class="w-1/2 pr-2 py-2">
+                    <p class="text-lg font-semibold py-2 text-gray-500">Password</p>
                     <input type="password" name="password" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg"/>
                 </div>
                 <div class="w-1/2 pl-2 py-2">
+                    <p class="text-lg font-semibold py-2 text-gray-500">Confirm Password</p>
                     <input type="password" name="confirm_password" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg"/>
                 </div>
             </div>

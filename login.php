@@ -124,23 +124,23 @@ if(is_get())
 
     <!-- The login form for the page -->
     <div class="w-full flex flex-wrap justify-center">
-        <div class="w-2/3 h-auto object-cover">
-            <img src="./images/room-34V7TVQQFsU-unsplash.jpg" alt="room-34V7TVQQFsU-unsplash.jpg" class="object-fit w-full"/>>
+        <div class="w-2/3 h-auto object-cover p-32">
+            <img src="./images/login-page-bg.svg" alt="login-page-bg.svg" class="object-fit w-full"/>
         </div>
-        <form class="h-auto w-1/3 p-4 shadow-inner" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <p class="text-left font-bold text-gray-600 my-2 text-2xl mt-24 font-headline">Login</p>
+        <form class="h-auto w-1/3 px-8" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <p class="text-left font-bold text-gray-600 my-2 text-2xl mt-16 font-headline">Login</p>
             <p class="text-left font-semibold text-gray-500 my-2">Email and Password needed</p>
 
             <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>
 
             <div>
                 <p class="text-lg font-semibold py-2 text-gray-500 mt-24">Email</p>
-                <input type="text" name="email" value="<?php echo $email ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline"/>
+                <input type="text" name="email" value="<?php echo $email ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100 border-solid border border-blue-400"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $email_helper ?></p>
             <div>
                 <p class="text-lg font-semibold py-2 text-gray-500">Password</p>
-                <input type="password" name="password" value="<?php echo $password ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline"/>
+                <input type="password" name="password" value="<?php echo $password ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100 border-solid border border-blue-400"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $password_helper ?></p>
             <div class="flex flex-wrap flex-row">
@@ -148,7 +148,7 @@ if(is_get())
                     <input type="submit" value="Login" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg bg-primary hover:bg-transparent text-white hover:text-primary border hover:border-blue-600 font-semibold cursor-pointer"/>
                 </div>
                 <div class="w-1/2 pl-2 py-2">
-                    <input type="reset" value="Reset" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg bg-gray-300 hover:bg-transparent  text-black hover:text-gray-600 border hover:border-blue-600 font-semibold cursor-pointer"/>
+                    <input type="reset" value="Reset" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg bg-primary hover:bg-transparent text-white hover:text-primary border hover:border-blue-600 font-semibold cursor-pointer"/>
                 </div>
             </div>
             <div class="flex flex-wrap flex-col text-center p-2">

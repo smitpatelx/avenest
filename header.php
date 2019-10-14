@@ -28,14 +28,12 @@ DESCRIPTION     : Header section
     <link rel="stylesheet" href="./css/all.min.css"/>
     <link rel="stylesheet" href="./css/tailwind.min.css"/>
     <link rel="stylesheet" href="./css/notiflix.min.css"/>
-    
+
 </head>
 <body>
-    <!-- <div class="justify-center content-center bg-transparent-black">
-        <div class="lds-ripple"><div></div><div></div></div>
-    </div> -->
     <div class="w-full upperline-nav"></div>
-    <div class="bg-white flex flex-wrap py-6 px-24">
+    <div class="bg-gray-200">
+    <div class="flex flex-wrap py-6 px-24">
         <div class="w-1/4">
             <a href="./index.php">
                 <img src="./images/avenest.png" alt="AveNest" style="width:170px;"/>
@@ -50,6 +48,9 @@ DESCRIPTION     : Header section
             if(isset($_SESSION['email_s'])){
                 echo '<a href="./logout.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
                         Logout
+                    </a>
+                    <a href="./change-password.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
+                        Change Password
                     </a>';
             } else {
                 echo '<a href="./listing-search.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 

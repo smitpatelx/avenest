@@ -31,6 +31,7 @@ require("./header.php");
         <img src="./images/bg-home.svg" alt="Home"/>
     </div>
 </div>
+
 <div class="p-24">
     <div class="flex flex-wrap flex-row">
         <div class="p-2 w-1/3">

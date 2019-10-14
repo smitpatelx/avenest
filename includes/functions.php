@@ -8,7 +8,7 @@ DESCRIPTION     : Function
 <?php
 
 function display_copyright(){
-    echo "<p class='text-lg text-black text-center'>@copyright - ".date("Y")." avenest</p>";
+    echo "<p class='text-lg text-gray-500 font-semibold'>@copyright - ".date("Y")." avenest</p>";
 }
 
 function is_get(){

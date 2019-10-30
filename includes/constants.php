@@ -27,4 +27,8 @@ define('COOKIE_LIFESPAN', time() + (60*60*24*30));
 //md5 hashing
 define("MD5", "md5");
 
+//Forms Limits
+define("MAX_PASSWORD", 20);
+define("MIN_PASSWORD", 6);
+
 ?>

@@ -52,6 +52,20 @@ DESCRIPTION     : Header section
                     <a href="./change-password.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
                         Change Password
                     </a>';
+
+                    if ($_SESSION['user_type_s'] == ADMIN){
+                        echo '<a href="./admin.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
+                            Dashboard
+                        </a>';
+                    }else if ($_SESSION['user_type_s'] == AGENT){
+                        echo '<a href="./dashboard.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
+                            Dashboard
+                        </a>';
+                    }else if ($_SESSION['user_type_s'] == CLIENT){
+                        echo '<a href="./welcome.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
+                            Dashboard
+                        </a>';
+                    }
             } else {
                 echo '<a href="./listing-search.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
                     Listings

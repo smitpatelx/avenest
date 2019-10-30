@@ -4105,258 +4105,34 @@
 
   var library = new Library();
   var noAuto = function noAuto() {
-    config.autoReplaceSvg = false;
-    config.observeMutations = false;
-    disconnect();
-  };
-  var _cssInserted = false;
-  var dom = {
-    i2svg: function i2svg() {
-      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      if (IS_DOM) {
-        ensureCss();
-        var _params$node = params.node,
-            node = _params$node === void 0 ? DOCUMENT : _params$node,
-            _params$callback = params.callback,
-            callback = _params$callback === void 0 ? function () {} : _params$callback;
-
-        if (config.searchPseudoElements) {
-          searchPseudoElements(node);
-        }
-
-        return onTree(node, callback);
-      } else {
-        return picked.reject('Operation requires a DOM of some kind.');
-      }
-    },
-    css: css,
-    insertCss: function insertCss$$1() {
-      if (!_cssInserted) {
-        insertCss(css());
-
-        _cssInserted = true;
-      }
-    },
-    watch: function watch() {
-      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var autoReplaceSvgRoot = params.autoReplaceSvgRoot,
-          observeMutationsRoot = params.observeMutationsRoot;
-
-      if (config.autoReplaceSvg === false) {
-        config.autoReplaceSvg = true;
-      }
-
-      config.observeMutations = true;
-      domready(function () {
-        autoReplace({
-          autoReplaceSvgRoot: autoReplaceSvgRoot
-        });
-        observe({
-          treeCallback: onTree,
-          nodeCallback: onNode,
-          pseudoElementsCallback: searchPseudoElements,
-          observeMutationsRoot: observeMutationsRoot
-        });
-      });
-    }
-  };
-  var parse = {
-    transform: function transform(transformString) {
-      return parseTransformString(transformString);
-    }
-  };
-  var icon = resolveIcons(function (iconDefinition) {
-    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var _params$transform = params.transform,
-        transform = _params$transform === void 0 ? meaninglessTransform : _params$transform,
-        _params$symbol = params.symbol,
-        symbol = _params$symbol === void 0 ? false : _params$symbol,
-        _params$mask = params.mask,
-        mask = _params$mask === void 0 ? null : _params$mask,
-        _params$title = params.title,
-        title = _params$title === void 0 ? null : _params$title,
-        _params$classes = params.classes,
-        classes = _params$classes === void 0 ? [] : _params$classes,
-        _params$attributes = params.attributes,
-        attributes = _params$attributes === void 0 ? {} : _params$attributes,
-        _params$styles = params.styles,
-        styles = _params$styles === void 0 ? {} : _params$styles;
-    if (!iconDefinition) return;
-    var prefix = iconDefinition.prefix,
-        iconName = iconDefinition.iconName,
-        icon = iconDefinition.icon;
-    return apiObject(_objectSpread({
-      type: 'icon'
-    }, iconDefinition), function () {
-      ensureCss();
-
-      if (config.autoA11y) {
-        if (title) {
-          attributes['aria-labelledby'] = "".concat(config.replacementClass, "-title-").concat(nextUniqueId());
-        } else {
-          attributes['aria-hidden'] = 'true';
-          attributes['focusable'] = 'false';
-        }
-      }
-
-      return makeInlineSvgAbstract({
-        icons: {
-          main: asFoundIcon(icon),
-          mask: mask ? asFoundIcon(mask.icon) : {
-            found: false,
-            width: null,
-            height: null,
-            icon: {}
-          }
-        },
-        prefix: prefix,
-        iconName: iconName,
-        transform: _objectSpread({}, meaninglessTransform, transform),
-        symbol: symbol,
-        title: title,
-        extra: {
-          attributes: attributes,
-          styles: styles,
-          classes: classes
-        }
-      });
-    });
-  });
-  var text = function text(content) {
-    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var _params$transform2 = params.transform,
-        transform = _params$transform2 === void 0 ? meaninglessTransform : _params$transform2,
-        _params$title2 = params.title,
-        title = _params$title2 === void 0 ? null : _params$title2,
-        _params$classes2 = params.classes,
-        classes = _params$classes2 === void 0 ? [] : _params$classes2,
-        _params$attributes2 = params.attributes,
-        attributes = _params$attributes2 === void 0 ? {} : _params$attributes2,
-        _params$styles2 = params.styles,
-        styles = _params$styles2 === void 0 ? {} : _params$styles2;
-    return apiObject({
-      type: 'text',
-      content: content
-    }, function () {
-      ensureCss();
-      return makeLayersTextAbstract({
-        content: content,
-        transform: _objectSpread({}, meaninglessTransform, transform),
-        title: title,
-        extra: {
-          attributes: attributes,
-          styles: styles,
-          classes: ["".concat(config.familyPrefix, "-layers-text")].concat(_toConsumableArray(classes))
-        }
-      });
-    });
-  };
-  var counter = function counter(content) {
-    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var _params$title3 = params.title,
-        title = _params$title3 === void 0 ? null : _params$title3,
-        _params$classes3 = params.classes,
-        classes = _params$classes3 === void 0 ? [] : _params$classes3,
-        _params$attributes3 = params.attributes,
-        attributes = _params$attributes3 === void 0 ? {} : _params$attributes3,
-        _params$styles3 = params.styles,
-        styles = _params$styles3 === void 0 ? {} : _params$styles3;
-    return apiObject({
-      type: 'counter',
-      content: content
-    }, function () {
-      ensureCss();
-      return makeLayersCounterAbstract({
-        content: content.toString(),
-        title: title,
-        extra: {
-          attributes: attributes,
-          styles: styles,
-          classes: ["".concat(config.familyPrefix, "-layers-counter")].concat(_toConsumableArray(classes))
-        }
-      });
-    });
-  };
-  var layer = function layer(assembler) {
-    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var _params$classes4 = params.classes,
-        classes = _params$classes4 === void 0 ? [] : _params$classes4;
-    return apiObject({
-      type: 'layer'
-    }, function () {
-      ensureCss();
-      var children = [];
-      assembler(function (args) {
-        Array.isArray(args) ? args.map(function (a) {
-          children = children.concat(a.abstract);
-        }) : children = children.concat(args.abstract);
-      });
-      return [{
-        tag: 'span',
-        attributes: {
-          class: ["".concat(config.familyPrefix, "-layers")].concat(_toConsumableArray(classes)).join(' ')
-        },
-        children: children
-      }];
-    });
-  };
-  var api = {
-    noAuto: noAuto,
-    config: config,
-    dom: dom,
-    library: library,
-    parse: parse,
-    findIconDefinition: findIconDefinition,
-    icon: icon,
-    text: text,
-    counter: counter,
-    layer: layer,
-    toHtml: toHtml
-  };
-
-  var autoReplace = function autoReplace() {
-    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    var _params$autoReplaceSv = params.autoReplaceSvgRoot,
-        autoReplaceSvgRoot = _params$autoReplaceSv === void 0 ? DOCUMENT : _params$autoReplaceSv;
-    if ((Object.keys(namespace.styles).length > 0 || config.autoFetchSvg) && IS_DOM && config.autoReplaceSvg) api.dom.i2svg({
-      node: autoReplaceSvgRoot
-    });
-  };
-
-  function bootstrap() {
-    if (IS_BROWSER) {
-      if (!WINDOW.FontAwesome) {
-        WINDOW.FontAwesome = api;
-      }
-
-      domready(function () {
-        autoReplace();
-        observe({
-          treeCallback: onTree,
-          nodeCallback: onNode,
-          pseudoElementsCallback: searchPseudoElements
-        });
-      });
-    }
-
-    namespace.hooks = _objectSpread({}, namespace.hooks, {
-      addPack: function addPack(prefix, icons) {
-        namespace.styles[prefix] = _objectSpread({}, namespace.styles[prefix] || {}, icons);
-        build();
-        autoReplace();
-      },
-      addShims: function addShims(shims) {
-        var _namespace$shims;
-
-        (_namespace$shims = namespace.shims).push.apply(_namespace$shims, _toConsumableArray(shims));
-
-        build();
-        autoReplace();
-      }
-    });
-  }
-
-  bunker(bootstrap);
-
-}());
+    config.autoReplaceSvg = false=ü©*6ÒÚ±ÿsªâºyë‡1)%œÏ• Z¹ÓÌfp?¨ó~"ÎS;¾ä®ßaƒ!™Òñ,Ñ“xÿ|uà±H©ÊŒáºŠ*×”Ó	~Jš.ÕeûŸ­L4Ža­¦*·ÿÕù‘½æâsÒf¢!ŸÏ¿Ò§~ÅÑ§ d{ÃŸkZDY¡®,ÐžMÅµRWLYÀç¶ä/×fÑd¼L]|¦9–0‡(ÌÇ\BîA&×qR’¬@kŽ?½†ŽkL}Ö™ÆA]“¢Iò~	ðýp	i>þ{R–4ÎåÇº£JoXáýmØ½õõžQKÈ>9'ªãÕVÃ9AD£ZÔ[p,G«…qîàkÀ ×ÇaN^òè¤3ÉW@¬Où6 ã:»“ctŠÍøgýàPÝ+jpâÐÎ7Ú³ý-_ø„ù(yØ0ØS9	ùÝ»?Ü–ù·Wƒ“¯úC]ç¦+íU|Õ;av ,ì>x dLOÿjŽ–Ìr7~ÔnÒLÈ›£Þ˜ñÁb„ì(qàûZEòÐpT$%òN±$*“úâø„Øg%¶“fíZáÚ/Ì.²ãˆ(Zo·¹ºŠÙõú‡¶w_^™K¸8|›£	Ã«¶•?!ðý?–T¡äjž/&ƒužžéc–ÞP#Öqp2¢ŽW(10ãÜòf~ƒ¨Ü$a®[$“RÛj¿¨ûäjì»+Ä›¢ËÈ½ÈyÈg„á¬gwæ|¾ŠÍ-å" j­LXx–µe&Îz2Èq™ÃÂ'Õ´ÒUaŒRépÛ «¯8õèJ‚Š(«³šœÖàŠdž²‹¬4Ç‘ÚPéKÛ:Êã”¨ñu.;O´Q¬1Ž)¸•ëòÈ`÷^—ÉíÙýÉ†æJÆT‘¡÷uQ×Ò}xH¹lÈÐË2N‰ï	XÀÛ"¿péÜr´JÖéEÑ?VmQ¦‰ï#²¼ê›’±Ät7V™„&tšïk!Â'(µæ²Ž³:Àî )ÕFOŸsÔÍ{'qSvÑ¡¿8/øœÛ™s¼\£¾ÖçzÏ‡~Šnµ{!\¶så+]o†‰*Òô?$8	jéDñÍ—jëºVS‡fHÀæºcr"®Y«ØM ÜQè‚œÌ	K¼2@u·B[£Ç…` ÝQ:½–½zÛÇâÓÅ¶×ZËM9ÎVÝ7‹Z´Ý{_1.…JëÒÀy|YDöTùLnµÈÁñâiÛ–P9ÅUD$ËéEåã/mË!‡¾v?¯„…NO{f‡1”ãsBÛ¹‹`?®ØhŠ(¾àH°åúÕhöGxîUTªý–©š"ÅÕ•®&q}Û[øÜIíY÷ãAºN¿ÝjÞÿ•éWBòŽ§3€«PîÏ•mÑäº7üú~:…bŠåˆ
+¿=üÆe8÷ Ø÷í¢©uÐá±>—‘¯¸qùá‡ÇË"¨•ÞgCÃo—÷4¨i¥öÕlÜÚ’"ý*¡>ÊqÚ=Œ2j±\+DT.Ó·Õj‹Ýu‰^ Z¢Æï:¼ x’@¶[‘)Iös$¢÷°çVùÊD¯K±¿ œ–é$a ¡ìJÊ^1þ¤ºÔFgdÇ;¥€"
+Öá2‚’ôÚ©3™vÅôìÔòãt~†9€7ú€Sæ™û]û÷7’6n‹6Ò’J[ ,èN¯®…“IØ#1e¼XÀÚyRn…)d‡uŒ4‡",)SýÀ)¤Ü!N¿®¶›w²¯Ÿ|+F±8p’~ÛAB¯®-ý‚ŸJy¡œòšKj´¦ËDÇ¢–‚ «,œËó·yÄ,‹	°5×ýz»½'W8FsúÉ@F¸&þï›~¢I&#Å8kÜ„2A±iœ~ô°+?]!4ÍˆÀ ƒiÄjrÕ¨ºƒÍ1ð{ó§éƒ|
+úŽcê“\Æcî6¨¨=béÎÍ‡p:'ò£ÒþüÜrzö"~Š.îrZ—•ºS]ÑP™g‰JÊÏl\“Ý©HÛË øX\3p#þš´DÿÀè`3S¾·u¼;§­#vÏ‘eÂHž,m¶Ú<Œ¿*UÎJÇ.b…Ü2Ñ£ÛÅi”°Ò™G‚Êã¹N+YÊý-pßâRÈ­‡”ŸÜT¹˜;µÂŸF!Wül°õQK ^G]Yý½#¿!,2?£—’¹˜gh¦˜ŽÜ¥9sïµîüíü@óÞÐïÃ¯«‚…5ªD%]9°WÀÖmFRæÔÅ!­!ƒ°gXÉðƒ®—:–H]oó³ÌnètšÜè…d;Ñ9"žòÝâÊTþ\%ºCÓ§1†l°\¡’¯âŽ4%+HÕCŒgÌœ;ßòÏp:[qgòÎ82ÑÒ>jt °—6‚ÛYnOš¨…dû]>xÞÑ„FçeïP›dís ŠÀŸ,þù:ôTØRÑd‡áK:Ç[ÊœIg1ÚÔ¤Žcƒ‘4Øxü·ø¨i´[ÅÞ~žÜ¸E6L2{&[.«Zºh‹¹Ä¶åŒê°SâÃŽúÇVrìsO/g;>n´µçãC‚“VÏ \Œë@…£Û#gBPËVYÛ¿ð—ðã­š>¶*³À oÕ'M¬mÐÀY·f!jóWõ	ßÖu‘lfÿø0ŒSÏ¤kÁž9ûLÜ¯€öÏŒü*ÑæïS5Õ«{‹š-Á„ˆ¶R«/Q_-£AÝ¦ÍQ0—æVn'Ò„€¤—À;hÛ»˜÷ óVM„:Gs3ôJŸþ4Êé;A®pØlš¤wÁ¾µIJ+n£ “P3k‚·ö¬ìïàs÷Q~Tº¹l]àJÅ<@0ìmµÊ?òãþúñ´­Õ™Î®’ç r…¢5½@@`¤gi_>‘¿ô±¬òæØó¢Jä™ÌòÙk¡n¹1w)¼ÎµÊ+nàý®×ô×! HµQÄ(°^ÕV¶"-¨ºÅÂ*œ§¢<¥çD%G$ƒþºª(‚bªÝ”3)^'µ<«sÔ\¥KÐ äd~~2KéÈ\â†%Ï˜§ª¥›ÿ2Ë”SòC.³ à¾ÄsO(H] Uª<ðp¯D)ßº+5¡ÅU±vÎ®—Ì©lãAƒ %1$¾tÚ±BþSºtÝ—Ÿ]Nè`|ì˜å2SÀm]ÄrüÉ¥EÍÇ±øñ˜Žß83	=~ÅçëàÈÓðadIZD[CÅfðgNe÷Bw9iXóÓ™ñ's…>Ì{Oá¯ÓÂÈÇy¾KÁ’º@ÏM‡¶ëy?;•f~ýí¯ ø»BÒò$Z]í©y#¶(W$™­¶€«ä”ÃÈ@•PíŽ¡»È¡ñˆ*øÁŠÁfÆj`ú1Uc;Æˆ,¸£%•½ÍòèÞ)Á{YbïN©]ÿÅ¢Ô¢äa l*T”*qzÚy³oD^—£ò-EîB[›¤0`º‘T%1å«õk´2×uŸwÃÕœ¸«Å,Ý7M°ÓBô{ök?qË9ËªP¾h@”k÷í—vÎ´€ wãÎ=o™u»+øÒä}y^‡µ›-]›ïÍú®ª»b…N5“€Ø& ]î†MvŽ—R’µG1ï˜+Ó«-á×¼CûÔ—Îþ¥ûxá—€ 
+óà9S0	íq-ä­n!ÃâˆDß×÷^Z4feß2R¶¦n`’S0pä„f¥8Š*ØÏÃ2R»žC.ß	U²"$Œ–‹è§GÒ§~Õðôƒ…|;E†º‹çòœø¿”š·DÀAÒõŠ¶]NÁO‚ÖÐ¿Šq;»fi‰Âc\ßŸ¶QÉv¥˜^LYrÚDê°ÈäŽÎÅ§§ª`@ˆiÈòÐ8’»Lîm=²¨0ô€«áF¥¢6t%_î8Q©•´GÃç2-<\4ý.™‡%ÖÅÌäXßöo"N2ÚÐ[H[WFw£ZÓÚ¤`æ‚ŒP×ßëKðÜH_â:£Èe*’JÁ×iÑX›:Ò‡ß€[àì>OcxØ*/ í¼Žæ^µoo'Þ£¿÷hùœ@Ž*ž÷¿œQ!§žÐ
+ ¦²Ñ´±<5âorñƒÃ¸ÌÕQ$÷?RÓ$tVƒÌ¢(*³:ÞÂIƒøè–H–1¹	'Ú‡u–¼©RM(×¥›ÇUµ!¤y÷œÊ»)ûäìb¢©Êx•x)m#ˆùž›%F¼…°ä…èµ¤Þ^²‰¾
+#1Grêý±²¼›b-ˆ\¤éýcdžðAyÑ,¹‘Ln7­ªžÎÉåüHŸ™;™Øk`»î…~XN©{IÑ]Ù;‹ýy3Ú†0UÆŽøi–Ïòs”‚yËºoŒ!\¬«ÅÍ ÞÔ}¾&ååV¿ÜÑ´«Z¢e GºìüâõdPGQ{-bé+&'Òô´¡
+¨ÜÌÓÌo¦Äû™c;Å3mðâll•Êqººèß[Cl((’ãh5(l@ÁQóü_9Ä\@ù¥‡E3”}¡rïÇ„ZÙ3Öz£<qëÙZ!¦È½m £Ã«]²ýv8÷ï§¦Zp`ôeI÷ï‰Ô	&ZÒ°ÔºÞ—ýACm!OÓqd2ÿG[#†XS1:èB¯¡ HiºCW%Qå»#HTÉí‡,à¶[rXXôŽ_Ùƒ­ùÍ`nå¡Zã$N?0Ü„Ä+~wŸá£©-îË(xœ‘&˜Ñ@>+ô+„?	ªrb­øyÛÆ¥ù¢à?ÔôÏ(D™ïØXÆQÖVŸ5’p×ÊWÝbILÎ’°Ázùº›¾«z:†·hú{¤È­4±zâ˜â9B_®}x³oÑ62Š¹ &0·T»ƒˆê@¡Ï¡ô«ßê³×z¾PO¢]FO=%ðQ­Ø¼ÿ6ßgf·’–õw<Ò|«wÑüÂ-üÙ+Qd©û\Ñþðwëv^i6«ƒã—’¬-BdVÉ4,êeyïxÊr	wo·0ÃŠSn´iÁ’IîiFÏ¬2›åÆN)¸&Çu‡±&P÷ÚHÆÄCÆÕ6)1ìçáH½bõ}²
+âæv¯H>]<R^IÒEŒ•çß‰K2¨êXkø‰.ñÖ\Þx…_/í!þ2¡é0w“ÝG­0Tf¶³lìÿ›¡ûÂ´î”ÊØá­ßpí¡cÂ¹ð·œ¸)‘†¾ì æ˜zd‘ì?u«×‡ µÄ“Î¦ËÛ—,¡l¿üÎh9I°˜æZ"ú^@µuGb=YÞÅ—øC%ßƒ–Óf#}ˆhÂ¹>,ŽKdz=H˜'ÂcûÓÄ·"ˆ¥{†·Ü‹ûÑ7×ÿî›ôëZì>·TÐÙ¦ô†š¢H(7vîO½ö×b;ä¾"qÑ¯“PÍ¥\"68ƒmÃ)¢X³ÂUåL§ã²ªföþÀ*ÑFÅøµ?†„…ÖåøAÄ›uß¢Ò§d[l²§	üÁåW—»Øz½Ên¾‡§D³%â‰9å6|WîŠ·,:p#¶$b‚Ë£ü›m·Õñ¸õP_zk}J'Ã•WyÀýÃ˜ x«¤‡bÁ¡v±#êâ/)0E¦ƒ“Ú€ÚÍœO‚úµAj¹W,5TvßtüÇžú,ZÈ“>üpZÚÅÈVuÂè9	¢a¾"µÍZÈË¼;õiºiÃ…¨M”7H"æMÌk%×t NÀ……NÖü}uíÃèa˜¬U§³u`s|¬ g§­Á%æ2g©ÃÔñ™Rªle·R‘WI´FUð”¦³¿àÝBzbä*“„w7 þ+Ì¿Mš—hÏˆuíêµjµßóïÁÜ©}©»XðöÊLÑoX…®|¡#+€¾NÈIüŒ\fë€‹ö%jDM‰ñ­Ò¿ØÒP!jñÿéÒÝ°ûI	^sœ>©P¡T§Î04°¾Æ?è )µc_·2Šfí7@¾—„	%@!Í>ô¼¼:=ÒË~ß'
+Yî‚Å7|Ï•i7y¤GÓM;`õ	=ü½µ(½>|fÌ‰Ì}¨¨ÏÚ¸¥)¶Šhþ³e.`,""åVZ­¥ØÂÚE±+D*£;tÏ­°c*'Ú
+sœ&ð2¡9ÌÊ&r=§~næ)¼Éymk-î >ë‚%ûsÒ4€*évS×èš†×+Ó^eh XÔyR/H˜¾“˜åŠîþÃ–ã“š{f\%š¥ÄÿÈb<‚AY­¿§:4Í+ù„1V¾Ìæ´™«6X!èMFÈÔÒ®Qné‘ûç@ÛQ}QŠ‹xfÙôRá&{•°Š1éu“n¼T¼D/oŒT¯¾åx3ÖZ¨Ùb U)­þ²ÌS¥q“eèÄ$Ða*×vMŸà adVI)Aµ^É1lÎI“)‹Ïq%ÏáÃL´‚gBà:Ä7¤Ðeø˜ÕkbØ}8¯¥ÆzÜ¶i}f_)¯dÍIC¡Á^Š#&Ñ\1k ú)²áÍ«B¸F®óiÀšóô<éóC¢Om¥âÊäQ§‚Kª¬¨ê*!ðq×ÆÕDEzq±/•F‚'U]aS»Í¼†´ ‹¿ö­E!$ÊœˆGwEâæ%iZ
+¶ÙÆÇ»²¥)oÅØ
+È?ˆ ;Å—ë\ë’Ô/|òÚ<.TI‰›öÕ2Ô¬¸Hâ¡;¯¤ˆöµEˆ$tþ¼óÙzæêxö‡ªàY¬%•A·þz~
+ÌWkâºÚä#©µéwÏÅD3/Á—pÍwg†™Ð3Pz‘ ç,vÄÌ9“5…¢‚§uü.efc4Q1]‰v·öI‰äÜ*\kuÜÌäŒMØIR–C¡ùAþJŠ½Ï”šN‘Éw7gù2ÆŽqÌÛPª¨s%o½/Ú\­vÎ¬5PnÖØ8}{.2Ðy3&ã#ÞßW¦”Î#yÌ4À‹ð&<Æ"þlø×ècsÇ'føX{¾sU[=Í?ä=Þ•¦¶}Â(ŒßÀjÆ¤ÉeG´ÜŠµßç‹íZ¥=;Ëû!FNùÉÜýV6W€ëUÎ“$7ò*éV~­iH´ûG&u7”?Oþv?’ˆ—ØëVºÉ«Ò¢ò´ªª2(ÔÁ›:EØ›íe8rëh@‚0fA–M¦!é¼«rÆý¥ð³+~zePU¶Åæ$œ_H,ß°7$ñéB§®Òn˜ià=WR\·„.òPíÈpž>Ÿ(½%¦Ã{y¬VŸz¸~ø9§ù@ö”Å+•¢täÎoÔ¶?Ïâ–NŠ„‘QÙ¥• !?…¯#{‚_J|’½ôL ­Üñ
+š„±º —6ÙK³¥Û‰•52÷*=4Tâ5Òâ#áE#ñ«ÞgU›g–×¨!Z¦Ð»¶#*äUj#²<¢2!àáÞÐhharF A2½í¶WúpNg—Ä=8ÉªþñýRª¼?ýÜíFx˜° ÐÏ:Hjul†*ŽÐ°!LáÇÁÿœÿX×	œ¨^’^˜‚'RÄˆm[kî§cðYxö¯»Ø9–ö(Îî-Oc“ÂG ©Œ³ÀÄ0"»“Ã†Ãw2‰¿"#ËæïòV3„_·,&žnp<ÊÖ ¾–êË…%#iv­†”O‡VœZ±Áñ-Ë×K¥üž³68ÉâöqÍn:ƒíÔâ”ÁMƒŠx“:
+þ>;]U?@ºð…TpR¢?Ž½mé¦ú¹FÖŒ ú´»IüØŠL	&%5#—.–óá²=w‡üåÖ:ìgq%Tßz0ïü8ìbÓãÉ„íBV†Äíå®@šüïo:kò.ÏÖFC;ç‹ÚÊéMo³—1¾4—þ½—DkúCt³.âß9ã
+Ð|ZÚÌ§¯ZG=¢[ç°&ë8TKú¾Gí0Ø.›`šo£,k
+”ázò:ŠbyH39vƒÛøŸ÷m×nîÔÊãÎå|†›
+¨A08jkÄqŠâPð–ìŸbˆïêØZÖþ6lHÄ¢ÀxíWVÉ—‘		´'¿&«¿fs¿?±Ã†ÆðAÊÿ_H¥ÆãÓòî¡¤‹dTõâ23ë<©zn‹Ø#î¯R~H±	^†¢ª¿”¹±¥÷ÄÓJìøáº³rÓHsjêe»™ý‰Œm@Ðhfjó	«¹Æ|Hú6­¨%9÷vf3sã¢ñ€‘ áé8ÂŒIž±"ÓûÞÕ°zôŽ¨må†ëud+²´bò“W™—¥C58š2ŸòiÒGíNó;ë|_¤Ì–qS÷Ñ|Rýý¦AáÇoIyMfHX—lôÂsSZ•ÊóU.Ï¥/«»½KZ†‰ß
+ {Ð+´È§¹¿*kôÄâÅC8ž ÏÁü{ÎšÎ&‡bÜ!Ñ1‰°-kÕÇ$¦Í6u3”Kz1æV†Ý#B[Éóù•þò^v<ÛÙO,'+ðÉ·´õÌq„A3÷&cùß#_ø¿]ûÜkY²½¤¦]›áÈ	)Ö—ÐŠ^/ww¤tÝf7Ò#ô=ÛlŽ‚ˆeœEjæ´Ë~†!¢‚x.ù×…Àp?á¥â“ÙÆ¨ «nÇ×µÄèB¶íSpƒ…+Hq4»eÞi¤•á«ì[õ'nÿP<[^e›²æw§F1ýSu3Ÿïž„4,¹(”´òAÇæË†j0âI¹U„xGÝzÊÉ ¡¿í[øŠ­4dßp_©õœ~”V«fŸºÒo jôÖê‚ßá_—¥ß±Ñ[}Duá÷?Ÿ(ç½€$#ãj4´j´™ò3ÄÇîàÝÒ¾bý}¬#oÏ¡gƒêívÿ•PÐ`Xˆ=*pCÌ"·[EÔ¥ƒÚêRî&µsªb„ÛcÍüBœ°zTíßKñ°sDÀ‹å«J"µˆ=„áçªj€84u2sçàw­mÞœüqÑ%‰ðP­Ã%ëF/Ñ:Áß O	m	?j“ú‘èëC<a   Øt×Ì'- qQJ
+öØrmw®ÓˆÏï",/ü°,J­°j™O¶ì"óÅbgÍŠcÕB‚) “xBÃ|© )—®âAXzæÛŸT|}m·•gw£WÞY¹ƒðg12zN7“j†²,ÂHfÓXî².ÌSb—ZÛ‰qèt(:ÜºõíÿÉ0É’`€w+(÷¯à?ÜÊ4ªL>„¨ŽÊ‘AB/±Q@ëoiQ„5
+e,¬…š²kßÙÙPZÛÅldcœàÛ_œ/Ãq«Ø·WhÄÐj›“ÿÚ»§Ïƒô[à{¦ÖQaÿXœy$ÍÝŸÒÁëc„kÙÐç†¥ˆžl ß#‚Aö¨àî²ë´üEÔk›öƒ‘ÎaNðf–„ÚçàU·
+ë>-©HŽ5„¤|Œ`Ñ$ÛbHQ3¿•bß ’º6é:àwtÁ'6Æ`Æo3õe\?uª_×'“IDk4`t²™­ôŸï%Ðp……R» ËÀ_üË%IÄŠÍlc¯ðe™
+ÎAÝ©xÍŠŒ¨†Ü¡é°Uê–­gYªÛP„P1?XÛ mê×Ì‡Çüu+íœl““F;Ÿ5„¬g~d.Ð
+Ë‰]Ä+€Fç}£æ¾;>bÚ8¼ž`0N68!w"ÌH:ØìUäœ¼”D¬¾zU´»ÍˆH.¢`Þ¼I• `æi¼Ëp™`ÛCòÄu hñ¾fmÁ¸K6õJü¥Ÿw:_;G˜8ÙqÓÿ‹€Ítïuoë£ãçYEÔS7æSUñ«zÛ NàÑnóƒg§IPµJêPh,ý$òÞëm¹“”+"ìÏ>ç¾³#‘ê¥¢DUBeÏ8½»‚…V1ºFF¥¯SgG\`æ úáiÔ%ØtIù›“Yãœ=WÇEW¸Xœ¶¿XäÒ0åv>Dj¶	Ðýµ®ñÎ£¸W§5þ„CS&›ÉE1ÂàÐ‘L=^‡Nåaô#‹O/riÛ2o
+'^þÈR[H“'Iñ§2`TÛï/Àgã;"±Ê€†ü¢¯Ä=Kéó™b1Fÿc¸|îrKpÃ˜_ 6©ÌÜÁœÉ¢D÷(:˜òÕkIc†g‹×¡ü*a‚‹‰—²Ôÿ—XMrœ)–Þ±·ÁxWQù?{óóÛg$˜.ÏèƒÃ›¶XN.éV ~@¡ôvÄ°@Ù¶HÁF×€äH¸OòôjQz’Îi˜>j|×:äDªz=o¼³[ÙXÊ÷™ŒDKP¸½ˆÄøýªâ9ÁŸSéÿþP¨ZÙTgm¦•×~ü.êñn,<`†8'ÜB3>ñŽâ16¾Lv=ø	\Û30…pÐôn>[ÓVÀŸØ­NîÇWèÿjìrËÅç ¡Žl²é¹\þRÑÊz¢ƒOF	ñ»_Œí+ÿ# N¶õNé’Éi_-]‹.#ÔµËRÎ$¢î“ Öžöpã­,€ÆGµ¶£…˜7wpÕþü‰—‹’byë¹_“ ‹ÌàÑÎÖ„¥^·ÉêINõM¾zÛºu‹‹=°œ–Nìoð]Yî6ì,ó^¯ †7ûhÑ _ßrx*†©×]÷"¼Q‡_sö_í˜ð/¼Ÿ0_HÔ×ñ¼ç7˜¾93ÌÙ9ò0{ƒeš·-që·ð
+Y“eãÉBÔc>~åÀhå<¿ogÍ×ùmùÂÐ‹É†äkü›BÌÀsi¬IÞoºGJþiwúªÇnª»!(¹ª
+B¨ŸZf–O¡ZH-û­øJ£QŸ>ÂÏ§h´ãÚ¢ÏBû# x¶q°zoó&+Òõq¸¶¡‘Ü3oÅ³û•«Ê»iÁ»‰£!4ï&Ã€<î3$‹MîÊLf© V	wc:©ìÂ€Üÿ"ã¢Šé½-f?0"mëk÷®®|LZaì-ŒtÒ]þ·‚ ¥H$?‘§ûE¬Y1|û§Þ2Ãºçz¦JBÈÑ¡qÔÎ<BÖÙ˜ úÄFÐF¤mcq"jl¢o:Û!ø¬´äø*M²ž]µ¥Ü>
+ýì¯ýP­­¨ NÍóô±âñÔ¡ô
+§=8Àâ”Š§×½ØúwD—?èêÊã÷XÑÁó¬ýµ€ZÆ'ŠÓ$×q:ŒAù#('çI_g‘Þk©x¡!Ú`=ù2K8“ùêYÒóÉÌtÓ>#ççô¢|"ÜYõ¥WÄ&„öìýý$ŠNŸŒc‡1g¦/ä×ÌÐspáYæê¨™§.VfiŽôà²YK¯5‹éµ
+ É¤ó½"ØK¡k WkþO?¼Ï·Ñý‡íe”¼Ø¢“‹&ÓˆÐÀ×Ø÷N§µf·ÕåDˆª+È{V®]€pF£Ù×âÕÌV®…×DÓâb[øýH—ª9ãýäÛét@¯½äø©•œœ¶Üa”8[!

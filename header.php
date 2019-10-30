@@ -8,7 +8,7 @@ require('./includes/db.php');
 <!--
 FILE: 			: <?php echo basename(__FILE__, $_SERVER['PHP_SELF'])."\n"; ?>
 TITLE           : AveNest Listings
-AUTHORS         : Smit Patel, Mike Cusson, Roshan Persaud
+AUTHORS         : Smit Patel
 LAST MODIFIED   : SEPT 15, 2019
 DESCRIPTION     : Header section
 -->
@@ -21,22 +21,24 @@ DESCRIPTION     : Header section
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>AveNest | <?php echo($title); ?></title>
     
-    <link rel="icon" type="image/png" href="./images/logo2.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/logo2.png">
     <!-- Import google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800|Playfair+Display:400,500,600,700,800" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800|Playfair+Display:400,500,600,700,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/webd3201.css"/>
     <link rel="stylesheet" href="./css/all.min.css"/>
     <link rel="stylesheet" href="./css/tailwind.min.css"/>
     <link rel="stylesheet" href="./css/notiflix.min.css"/>
-
+    
 </head>
 <body>
+    <!-- <div class="justify-center content-center bg-transparent-black">
+        <div class="lds-ripple"><div></div><div></div></div>
+    </div> -->
     <div class="w-full upperline-nav"></div>
-    <div class="bg-gray-200">
-    <div class="flex flex-wrap py-6 px-24">
+    <div class="bg-white flex flex-wrap py-6 px-24">
         <div class="w-1/4">
             <a href="./index.php">
-                <img src="./images/avenest.png" alt="AveNest" style="width:170px;"/>
+                <img src="./images/avenest.png" alt="AveNest" style="width:170px;">
             </a>
         </div>
         <div class="w-3/4 justify-end flex flex-wrap flex-row font-semibold text-lg uppercase">
@@ -48,9 +50,6 @@ DESCRIPTION     : Header section
             if(isset($_SESSION['email_s'])){
                 echo '<a href="./logout.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
                         Logout
-                    </a>
-                    <a href="./change-password.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
-                        Change Password
                     </a>';
             } else {
                 echo '<a href="./listing-search.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 

@@ -21,6 +21,20 @@ define('CLIENT', 'c');
 define('PENDING', 'p');
 define('DISABLED', 'd');
 
+//Contact Methods
+define('EMAIL', 'e');
+define('PHONE', 'p');
+define('POSTED_MAIL', 'm');
+
+//Phone Number Area Codes Range
+define('MAXIMUM_PREFIX', 999);
+define('MINIMUM_PREFIX', 200);
+
+//Listing Status
+define('OPEN', 'o');
+define('CLOSED', 'c');
+define('SOLD', 's');
+
 //Cookies life span
 define('COOKIE_LIFESPAN', time() + (60*60*24*30));
 

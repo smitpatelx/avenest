@@ -52,24 +52,6 @@ DESCRIPTION     : Header section
                 <div class="relative">
                     <div id="target" class="absolute hidden flex-wrap bg-white p-2 rounded shadow-lg" style="width:13rem; margin-left:-10rem;">
                         <?php
-
-<<<<<<< HEAD
-            if(isset($_SESSION['email_s'])){
-                echo '<a href="./logout.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
-                        Logout
-                    </a>';
-            } else {
-                echo '<a href="./listing-search.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
-                    Listings
-                </a>
-                <a href="./login.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
-                    Login
-                </a>
-                <a href="./register.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500"> 
-                    Register
-                </a>';
-            }
-=======
                         if(isset($_SESSION['email_s'])){
                             echo '<a href="./logout.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">
                                     Logout
@@ -77,7 +59,6 @@ DESCRIPTION     : Header section
                                 <a href="./change-password.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">
                                     Change Password
                                 </a>';
->>>>>>> 8c2fefc75f8452d66d795556a95cf668228fbaee
 
                                 if ($_SESSION['user_type_s'] == ADMIN){
                                     echo '<a href="./admin.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">

@@ -45,10 +45,6 @@ define("MD5", "md5");
 define("MAX_PASSWORD", 20);
 define("MIN_PASSWORD", 6);
 
-define("EMAIL", "e");
-define("PHONE", "p");
-define("POSTED_MAIL", "m");
-
 define("LISTING_STATUS_OPEN", "o");
 define("LISTING_STATUS_CLOSE", "c");
 define("LISTING_STATUS_SOLD", "s");

@@ -33,7 +33,7 @@ define("MIN_PASSWORD", 6);
 
 define("EMAIL", "e");
 define("PHONE", "p");
-define("POSTED_MAIL", "m");
+define("LETTER_MAIL", "l");
 
 define("LISTING_STATUS_OPEN", "o");
 define("LISTING_STATUS_CLOSE", "c");

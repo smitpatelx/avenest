@@ -2,13 +2,13 @@
 FILE: 			: <?php echo basename(__FILE__, $_SERVER['PHP_SELF'])."\n"; ?>
 TITLE           : AveNest Listings
 AUTHORS         : Smit Patel, Mike Cusson, Roshan Persaud
-LAST MODIFIED   : SEPT 15, 2019
+LAST MODIFIED   : OCT 30, 2019
 DESCRIPTION     : Change Password Page
 -->
 <?php
 $title  = "Change Password";
 $file   = "change-password.php";
-$date   = "SEPT 15, 2019";
+$date   = "OCT 30, 2019";
 $banner = "Change Password";
 $desc   = "Change Password page use to greet Change Password.";
 require("./header.php");
@@ -141,12 +141,12 @@ if(is_get())
                 <input type="password" name="con_password" value="<?php echo $con_password ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100 border-solid border border-blue-400"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $con_password_helper ?></p>
-            <div class="flex flex-wrap flex-row">
-                <div class="w-1/2 pr-2 py-2">
-                    <input type="submit" value="Change Password" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg bg-primary hover:bg-transparent text-white hover:text-primary border hover:border-blue-600 font-semibold cursor-pointer"/>
+            <div class="flex flex-wrap flex-row justify-center">
+                <div class="pr-2 py-2">
+                    <input type="submit" value="Change Password" class="focus:outline-none focus:shadow-outline w-full py-3 px-6 shadow rounded-lg bg-primary hover:bg-blue-500 text-white font-semibold cursor-pointer"/>
                 </div>
-                <div class="w-1/2 pl-2 py-2">
-                    <input type="reset" value="Reset" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg bg-primary hover:bg-transparent text-white hover:text-primary border hover:border-blue-600 font-semibold cursor-pointer"/>
+                <div class="pl-2 py-2">
+                    <input type="reset" value="Reset" class="focus:outline-none focus:shadow-outline w-full py-3 px-6 shadow rounded-lg bg-gray-500 hover:bg-gray-600 text-white font-semibold cursor-pointer"/>
                 </div>
             </div>
         </form>

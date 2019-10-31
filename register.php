@@ -13,6 +13,22 @@ $date   = "SEPT 15, 2019";
 $banner = "Register";
 $desc   = "Register page includes fields for email, user information and password.";
 require("./header.php");
+
+if(isset($_SESSION['user_type_s'])){
+    if ($_SESSION['user_type_s'] == ADMIN){
+        header("LOCATION: ./admin.php");
+        ob_flush();  //Flushing output buffer after redirection
+    }else if ($_SESSION['user_type_s'] == AGENT){
+        header("LOCATION: ./dashboard.php");
+        ob_flush();  //Flushing output buffer after redirection
+    }else if ($_SESSION['user_type_s'] == DISABLED){
+        header("LOCATION: ./406.php");
+        ob_flush();  //Flushing output buffer after redirection
+    }else if ($_SESSION['user_type_s'] == CLIENT){
+        header("LOCATION: ./welcome.php");
+        ob_flush();  //Flushing output buffer after redirection
+    }
+}
 ?>
 
     <!-- These classes directly impact the design of the website in multiple ways-->

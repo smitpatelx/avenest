@@ -13,6 +13,11 @@ $banner = "Change Password";
 $desc   = "Change Password page use to greet Change Password.";
 require("./header.php");
 
+if(!isset($_SESSION['user_type_s'])){
+    header("LOCATION: ./login.php");
+    ob_flush();  //Flushing output buffer after redirection
+}
+
 if(is_get())
 {
     // Setting variables

@@ -38,5 +38,5 @@ if ( isset( $_COOKIE[session_name()] ) ) {
 // echo "\n\n\n";
 // print_r($_COOKIE);
 
-header("Location: ./index.php"); //Redirecting user to home page
+header("Location: ./login.php"); //Redirecting user to home page
 ob_flush();  //Flushing output buffer

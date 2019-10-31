@@ -74,4 +74,25 @@ define('MIN_AREA_CODE', '200' );
 
 define('MAX_DIAL_SEQUENCE', '9999' );
 define('MIN_DIAL_SEQUENCE', '0000' );
+
+//Constant for listings
+define('MAX_FILE', '2097152' );
+
+define('MAX_HEADING', '60' );
+define('MIN_HEADING', '6' );
+
+define('MAX_PRICE', '10' );
+define('MIN_PRICE', '4' );
+
+define('MAX_DESC', '1000' );
+define('MIN_DESC', '60' );
+
+define('MAX_ADDRESS', '40' );
+define('MIN_ADDRESS', '6' );
+
+define('MAX_AREA', '10' );
+define('MIN_AREA', '4' );
+
+define('MAX_CONTACT', '15' );
+define('MIN_CONTACT', '10' );
 ?>

@@ -37,8 +37,8 @@ function build_simple_dropdown($table, $column, $preselect){
         // output data of each row
 
         $output .= "<div class='w-1/3 pr-2 py-2'> 
-        <p class='text-lg font-normal py-2 text-gray-600 capitalize'>".$table."</p>
-        <select name='".$table."' class='focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow rounded-lg bg-white border-solid border border-blue-400 focus:bg-gray-100'>";
+        <p class='text-lg font-normal py-2 text-black capitalize'>".$table."</p>
+        <select name='".$table."' class='focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100'>";
 
         while($row = pg_fetch_assoc($result)) {
             $output .= "<option value='".$row[$column]."'";
@@ -77,7 +77,7 @@ function build_radio($value, $sticky) {
                     }
 
                 $output .= "/>";   
-                $output .= "<p class='text-md font-semibold py-2 ml-2 text-gray-700'>".$row['method_name']."</p>";    
+                $output .= "<p class='text-md font-semibold py-2 ml-2 text-gray-700 select-none'>".$row['method_name']."</p>";    
                 $output .= "</label>";     
             }     
                 $output .= "</div>";      

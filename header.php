@@ -45,8 +45,15 @@ DESCRIPTION     : Header section
             <a href="./index.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
                 Home
             </a>
-            <?php
+            <div id="trigger" class="flex flex-wrap flex-col">
+                <div class="w-full cursor-pointer px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#006fc5"><path d="M17.2,27.52c-2.48118,-0.03509 -4.78904,1.2685 -6.03987,3.41161c-1.25083,2.1431 -1.25083,4.79369 0,6.93679c1.25083,2.1431 3.55869,3.4467 6.03987,3.41161h137.6c2.48118,0.03509 4.78904,-1.2685 6.03987,-3.41161c1.25083,-2.1431 1.25083,-4.79369 0,-6.93679c-1.25083,-2.1431 -3.55869,-3.4467 -6.03987,-3.41161zM17.2,79.12c-2.48118,-0.03509 -4.78904,1.2685 -6.03987,3.41161c-1.25083,2.1431 -1.25083,4.79369 0,6.93679c1.25083,2.1431 3.55869,3.4467 6.03987,3.41161h137.6c2.48118,0.03509 4.78904,-1.2685 6.03987,-3.41161c1.25083,-2.1431 1.25083,-4.79369 0,-6.93679c-1.25083,-2.1431 -3.55869,-3.4467 -6.03987,-3.41161zM17.2,130.72c-2.48118,-0.03509 -4.78904,1.2685 -6.03987,3.41161c-1.25083,2.1431 -1.25083,4.79369 0,6.93679c1.25083,2.1431 3.55869,3.4467 6.03987,3.41161h137.6c2.48118,0.03509 4.78904,-1.2685 6.03987,-3.41161c1.25083,-2.1431 1.25083,-4.79369 0,-6.93679c-1.25083,-2.1431 -3.55869,-3.4467 -6.03987,-3.41161z"></path></g></g></svg>
+                </div>
+                <div class="relative">
+                    <div id="target" class="absolute hidden flex-wrap bg-white p-2 rounded shadow-lg" style="width:13rem; margin-left:-10rem;">
+                        <?php
 
+<<<<<<< HEAD
             if(isset($_SESSION['email_s'])){
                 echo '<a href="./logout.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
                         Logout
@@ -62,9 +69,45 @@ DESCRIPTION     : Header section
                     Register
                 </a>';
             }
+=======
+                        if(isset($_SESSION['email_s'])){
+                            echo '<a href="./logout.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">
+                                    Logout
+                                </a>
+                                <a href="./change-password.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">
+                                    Change Password
+                                </a>';
+>>>>>>> 8c2fefc75f8452d66d795556a95cf668228fbaee
 
-            ?>
+                                if ($_SESSION['user_type_s'] == ADMIN){
+                                    echo '<a href="./admin.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">
+                                        Dashboard
+                                    </a>';
+                                }else if ($_SESSION['user_type_s'] == AGENT){
+                                    echo '<a href="./dashboard.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">
+                                        Dashboard
+                                    </a>';
+                                }else if ($_SESSION['user_type_s'] == CLIENT){
+                                    echo '<a href="./welcome.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">
+                                        Dashboard
+                                    </a>';
+                                }
+                        } else {
+                            echo '<a href="./listing-search.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500"> 
+                                Listings
+                            </a>
+                            <a href="./login.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500"> 
+                                Login
+                            </a>
+                            <a href="./register.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500"> 
+                                Register
+                            </a>';
+                        }
 
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     

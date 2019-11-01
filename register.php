@@ -264,6 +264,7 @@ if(is_get())
             $currentPerson = pg_fetch_assoc($get_person_exe);
 
             unset($currentPerson['user_id']);
+            unset($currentPerson['password']);
 
             //Set session variable
             $_SESSION['user_s'] = array_merge($currentUser, $currentPerson);
@@ -295,11 +296,9 @@ if(is_get())
 }
 ?>
 
-    <!-- These classes directly impact the design of the website in multiple ways-->
     <div class="w-full flex flex-wrap justify-center">
-        <!-- This form controls the whole page -->
         <form class="h-auto w-1/2 px-8 my-4" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <p class="text-left font-bold text-gray-600 my-2 text-2xl mt-10 font-headline">Register to Unlock More</p>
+            <p class="text-left font-bold text-gray-700 my-2 text-4xl mt-10 font-headline">Register to Unlock More</p>
             <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>
 
             <div class="flex flex-wrap flex-row mt-10">
@@ -375,12 +374,12 @@ if(is_get())
                     <p class="text-lg font-normal py-2 text-gray-600">User Type</p>
                     <div class="flex flex-wrap">
                         <label class="flex items-center mr-4">
-                            <input checked type="radio" name="user_type" value="c" class="focus:outline-none bg-white"/>
-                            <p class="text-md font-semibold py-2 ml-2 text-gray-700 select-none">Clients</p>
+                            <input checked='checked' type="radio" name="user_type" value="c" class="focus:outline-none bg-white"/>
+                            <span class="text-md font-semibold py-2 ml-2 text-gray-700 select-none">Clients</span>
                         </label>
                         <label class="flex items-center mr-4">
                             <input type="radio" name="user_type" value="a" class="focus:outline-none py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100"/>
-                            <p class="text-md font-semibold py-2 ml-2 text-gray-700 select-none">Agent</p>
+                            <span class="text-md font-semibold py-2 ml-2 text-gray-700 select-none">Agent</span>
                         </label>
                     </div>
                 </div>

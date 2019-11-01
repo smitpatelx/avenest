@@ -99,7 +99,7 @@ if(is_get())
             $id_exe = db_execute('get_users', array($currentUser['user_id']));
 
             $currentUser = pg_fetch_assoc($id_exe);
-            
+            unset($currentUser['password']);
             $_SESSION['user_type_s'] = $currentUser['user_type'];
             $_SESSION['user_s'] = $currentUser;
 
@@ -126,18 +126,18 @@ if(is_get())
             <img src="./images/login-page-bg.svg" alt="login-page-bg.svg" class="object-fit w-full"/>
         </div>
         <form class="h-auto w-1/3 px-8" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <p class="text-left font-bold text-gray-600 my-2 text-2xl mt-16 font-headline">Login</p>
+            <p class="text-left font-bold text-gray-700 my-2 text-4xl mt-16 font-headline">Login</p>
             <p class="text-left font-semibold text-gray-500 my-2">Email and Password needed</p>
 
             <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>
 
             <div>
-                <p class="text-lg font-semibold py-2 text-gray-500 mt-24">Email</p>
+                <p class="text-lg font-normal py-2 text-black mt-24">Email</p>
                 <input type="text" name="email" value="<?php echo $email ?>" class="w-full py-3 px-4 shadow-lg rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $email_helper ?></p>
             <div>
-                <p class="text-lg font-semibold py-2 text-gray-500">Password</p>
+                <p class="text-lg font-normal py-2 text-black">Password</p>
                 <input type="password" name="password" value="<?php echo $password ?>" class="w-full py-3 px-4 shadow-lg rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $password_helper ?></p>

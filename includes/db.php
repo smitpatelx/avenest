@@ -44,7 +44,7 @@ function build_simple_dropdown($table, $column, $preselect){
             $output .= "<option value='".$row[$column]."'";
 
                 if ( $row[$column] == $preselect ){
-                    $output .= " selected";
+                    $output .= " selected='selected' ";
                 }
 
             $output .= ">".$row[$column]."</option>";            
@@ -73,11 +73,11 @@ function build_radio($value, $sticky) {
                 $output .= "<input class='focus:outline-none bg-white' name='contact_method' type='radio' value='".$row['method']."'";
                 
                     if ( $row['value'] == $sticky ){
-                        $output .= " checked";
+                        $output .= " checked='checked' ";
                     }
 
                 $output .= "/>";   
-                $output .= "<p class='text-md font-semibold py-2 ml-2 text-gray-700 select-none'>".$row['method_name']."</p>";    
+                $output .= "<span class='text-md font-semibold py-2 ml-2 text-gray-700 select-none'>".$row['method_name']."</span>";    
                 $output .= "</label>";     
             }     
                 $output .= "</div>";      
@@ -93,7 +93,7 @@ function build_radio($value, $sticky) {
                 $output .= "<input name='listing_status' type='radio' value='".$row['value']."' ";
 
                     if ( $row['value'] == $sticky ){
-                        $output .= " checked";
+                        $output .= " checked='checked' ";
                     }
                 $output .= "/>";   
                 $output .= "<span>".ucwords($row['property'])."</span>";    
@@ -111,7 +111,7 @@ function build_radio($value, $sticky) {
                 $output .= "<input name='pet_friendly' type='radio' value='".$row['value']."'  ";
 
                     if ( $row['value'] == $sticky ){
-                        $output .= " checked";
+                        $output .= " checked='checked' ";
                     }
                 $output .= "/>";   
                 $output .= "<span>".ucwords($row['property'])."</span>";    

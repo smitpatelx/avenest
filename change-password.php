@@ -123,22 +123,22 @@ if(is_get())
 ?>
 
     <div class="w-full flex flex-wrap justify-center">
-        <form class="w-1/3 bg-white p-6 my-10 shadow-lg rounded-lg" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <p class="text-left font-bold text-gray-600 my-2 text-2xl font-headline">Change Password</p>
+        <form class="w-1/3 p-6 my-10" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <p class="text-left font-bold text-gray-700 my-2 text-4xl font-headline">Change Password</p>
             <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>
             <div>
-                <p class="text-lg font-semibold py-2 text-gray-500">Old Password</p>
-                <input type="password" name="old_password" value="<?php echo $old_password ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100 border-solid border border-blue-400"/>
+                <p class="text-lg font-normal py-2 text-black">Old Password</p>
+                <input type="password" name="old_password" value="<?php echo $old_password ?>" class="w-full py-3 px-4 shadow-lg rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $old_password_helper ?></p>
             <div>
-                <p class="text-lg font-semibold py-2 text-gray-500">New Password</p>
-                <input type="password" name="new_password" value="<?php echo $new_password ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100 border-solid border border-blue-400"/>
+                <p class="text-lg font-normal py-2 text-black">New Password</p>
+                <input type="password" name="new_password" value="<?php echo $new_password ?>" class="w-full py-3 px-4 shadow-lg rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $new_password_helper ?></p>
             <div>
-                <p class="text-lg font-semibold py-2 text-gray-500">Confirm Password</p>
-                <input type="password" name="con_password" value="<?php echo $con_password ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100 border-solid border border-blue-400"/>
+                <p class="text-lg font-normal py-2 text-black">Confirm Password</p>
+                <input type="password" name="con_password" value="<?php echo $con_password ?>" class="w-full py-3 px-4 shadow-lg rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $con_password_helper ?></p>
             <div class="flex flex-wrap flex-row justify-center">

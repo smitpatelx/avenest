@@ -24,14 +24,15 @@ if(is_get())
     if(isset($_COOKIE['LOGIN_COOKIE']))
     {
         $login_cookie = explode("|",$_COOKIE['LOGIN_COOKIE']);
-        $cookie_email = $login_cookie[1];
+        $cookie_email = $login_cookie[3];
         $email = $cookie_email;
         $password= "";  
     }
     else{
         $email = "";
         $password = "";
-    } 
+    }
+
 } else if(is_post())
 {
     $email_helper = "";
@@ -51,8 +52,8 @@ if(is_get())
         $email_helper = "Email is required";
         $errors+=1;
         $email = "";
-    } else if(strlen($email) >= 50 || strlen($email) <= 6 ){
-        $email_helper = "You entered \"".$email."\" "."Email must be between 6 and 50";
+    } else if(strlen($email) >= MAX_EMAIL_LENGTH || strlen($email) <= MIN_EMAIL_LENGTH ){
+        $email_helper = "You entered \"".$email."\" "."Email must be between ".MIN_EMAIL_LENGTH." and ".MAX_EMAIL_LENGTH;
         $errors+=1;
         $email = "";
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -66,8 +67,8 @@ if(is_get())
         $password_helper = "Password is required";
         $errors+=1;
         $password="";
-    } else if(strlen($password) >= 20 || strlen($password) <= 6){
-        $password_helper = "Password must be between 6 and 20";
+    } else if(strlen($password) >= MAX_PASSWORD_LENGTH || strlen($password) <= MIN_PASSWORD_LENGTH){
+        $password_helper = "Password must be between ".MIN_PASSWORD_LENGTH." and ".MAX_PASSWORD_LENGTH;
         $errors+=1;
         $password="";
     }
@@ -92,20 +93,17 @@ if(is_get())
             $prepare2 =  db_prepare('update_last_access', $query2);
             $exe2 = db_execute('update_last_access', array($email, $password));
 
-            $currentUser = pg_fetch_array($exe1);
-            echo $currentUser;
-            $_SESSION['user_type_s'] = $currentUser['user_type'];
-            $_SESSION['email_s'] = $currentUser['email_address'];
-            $_SESSION['last_access_s'] = $currentUser['last_access'];
-            $_SESSION['user_id_s'] = $currentUser['user_id'];
+            $currentUser = pg_fetch_assoc($exe1);
+            $id_sql = "SELECT * FROM users, persons WHERE users.user_id = \$1 AND persons.user_id = \$1 ";
+            $id_prepare = db_prepare('get_users', $id_sql);
+            $id_exe = db_execute('get_users', array($currentUser['user_id']));
 
-            $cookie_currentUser = [ 
-                'user_type' => $_SESSION['user_type_s'],
-                'email' => $_SESSION['email_s'],
-                'last_access' => $_SESSION['last_access_s'],
-                'user_id' => $_SESSION['user_id_s']
-            ];
-            $cookie_currentUser = implode("|",$cookie_currentUser);
+            $currentUser = pg_fetch_assoc($id_exe);
+            
+            $_SESSION['user_type_s'] = $currentUser['user_type'];
+            $_SESSION['user_s'] = $currentUser;
+
+            $cookie_currentUser = implode("|",$currentUser);
             setcookie("LOGIN_COOKIE", $cookie_currentUser, COOKIE_LIFESPAN);
 
             $session_msg[] = "Successfully logged in";
@@ -135,12 +133,12 @@ if(is_get())
 
             <div>
                 <p class="text-lg font-semibold py-2 text-gray-500 mt-24">Email</p>
-                <input type="text" name="email" value="<?php echo $email ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100 border-solid border border-blue-400"/>
+                <input type="text" name="email" value="<?php echo $email ?>" class="w-full py-3 px-4 shadow-lg rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $email_helper ?></p>
             <div>
                 <p class="text-lg font-semibold py-2 text-gray-500">Password</p>
-                <input type="password" name="password" value="<?php echo $password ?>" class="w-full py-3 px-4 shadow rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100 border-solid border border-blue-400"/>
+                <input type="password" name="password" value="<?php echo $password ?>" class="w-full py-3 px-4 shadow-lg rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $password_helper ?></p>
             <div class="flex flex-wrap flex-row mt-4 justify-center">

@@ -61,4 +61,37 @@ function notification_message(){
     }
 }
 
+function is_valid_postal_code($value)
+{
+    //to remove all whitespace in between
+    $trimvalue = preg_replace('/\s+/', '', $value);
+
+    //to determine valid canada postal code. validation information from https://en.wikipedia.org/wiki/Postal_codes_in_Canada
+    if(preg_match("/^([a-ceghj-npr-tv-z]){1}[0-9]{1}[a-ceghj-npr-tv-z]{1}[0-9]{1}[a-ceghj-npr-tv-z]{1}[0-9]{1}$/i", $trimvalue))
+    { 
+        //postal code is valid
+        return true;
+    }
+    else {
+        //postal code is in-valid
+        return false;
+    }
+}
+
+function valid_phone_number($phonenumber) {
+
+    $phonenumber = preg_replace("/[^\d]/","",$phonenumber);
+
+    $areacode = substr($phonenumber, 0, 3);
+    $exchange = substr($phonenumber, 3, 3);
+    $dial_sequence = substr($phonenumber, 6, 4);
+    
+    if ( ($areacode < MAX_AREA_CODE && $areacode > MIN_AREA_CODE) 
+    && ($exchange < MAX_AREA_CODE && $exchange > MIN_AREA_CODE)
+    && ($dial_sequence < MAX_DIAL_SEQUENCE && $dial_sequence > MIN_DIAL_SEQUENCE)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 ?>

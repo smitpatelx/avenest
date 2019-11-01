@@ -51,7 +51,7 @@ DESCRIPTION     : Header section
                     <div id="target" class="absolute hidden flex-wrap bg-white p-2 rounded shadow-lg" style="width:13rem; margin-left:-10rem;">
                         <?php
 
-                        if(isset($_SESSION['email_s'])){
+                        if(isset($_SESSION['user_type_s'])){
                             echo '<a href="./logout.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">
                                     Logout
                                 </a>

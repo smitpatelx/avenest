@@ -58,13 +58,13 @@ DESCRIPTION     : Footer section
     ?>
     
     <script type="text/javascript">
-        Notiflix.Loading.Init({ svgColor:"#0365f3", }); 
-        Notiflix.Loading.Pulse();
+        // Notiflix.Loading.Init({ svgColor:"#0365f3", }); 
+        // Notiflix.Loading.Pulse();
 
-        $(window).bind("load", function () {
-            Notiflix.Notify.Init({ distance:"50px", info: {background:"#0c82d8",}, }); 
-            Notiflix.Loading.Remove();
-        });
+        // $(window).bind("load", function () {
+        //     Notiflix.Notify.Init({ distance:"50px", info: {background:"#0c82d8",}, }); 
+        //     Notiflix.Loading.Remove();
+        // });
     </script>
 </body>
 </html>

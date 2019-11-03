@@ -16,18 +16,18 @@ require("./header.php");
     <!-- The form will show all listings in an orginized fashion 
          based on the users preferance  -->
     <div class="flex flex-wrap flex-col w-full">
-        <div class="w-full px-24 py-4">
-            <form method="get" action="./listing-search-results.php" class="shadow-xl rounded-lg py-4 pb-6 px-10 bg-gray-200 flex flex-wrap flex-row mt-4 xl:mt-6">
+        <div class="w-full px-4 md:px-24 py-4">
+            <form method="get" action="./listing-search-results.php" class="rounded-lg py-4 pb-6 px-10 bg-gray-400 flex flex-wrap flex-row mt-4 xl:mt-6">
                 <div class="w-full py-2 rounded-lg flex flex-wrap flex-row">
-                    <p class="w-full text-lg text-gray-700 font-semibold pb-2 font-headline">Search any word</p>
-                    <input type="text" name="search" class="w-11/12 shadow rounded-l-lg py-3 px-4 focus:outline-none focus:shadow-outline"/>
+                    <p class="w-full text-lg text-gray-700 font-semibold pb-2">Search any word</p>
+                    <input autofocus type="text" name="search" class="w-11/12 shadow rounded-l-lg py-3 px-4 focus:outline-none focus:shadow-outline"/>
                     <div class="w-1/12 shadow rounded-r-lg bg-white text-yellow-600 p-3 text-center">
                         <i class="fa fa-search"></i>
                     </div>
                 </div>
                 <div class="w-full flex flex-wrap flex-row">
                     <div class="w-1/4 pr-2 py-2">
-                        <p class="text-lg text-gray-700 font-semibold pb-2 font-headline">City</p>
+                        <p class="text-lg text-gray-700 font-semibold pb-2">City</p>
                         <select name="city" class="cursor-pointer w-full py-3 px-4 shadow rounded-lg focus:outline-none focus:shadow-outline">
                             <option value="ajax">Ajax</option>
                             <option value="oshawa">Oshawa</option>
@@ -36,7 +36,7 @@ require("./header.php");
                         </select>
                     </div>
                     <div class="w-1/4 pr-2 py-2">
-                        <p class="text-lg text-gray-700 font-semibold pb-2 font-headline">Minimum Price</p>
+                        <p class="text-lg text-gray-700 font-semibold pb-2">Minimum Price</p>
                         <select name="min_price" class="cursor-pointer w-full py-3 px-4 shadow rounded-lg focus:outline-none focus:shadow-outline">
                             <option value="50000">50 K</option>
                             <option value="100000">100 K</option>
@@ -44,7 +44,7 @@ require("./header.php");
                         </select>
                     </div>
                     <div class="w-1/4 pr-2 py-2">
-                        <p class="text-lg text-gray-700 font-semibold pb-2 font-headline">Maximum Price</p>
+                        <p class="text-lg text-gray-700 font-semibold pb-2">Maximum Price</p>
                         <select name="max_price" class="cursor-pointer w-full py-3 px-4 shadow rounded-lg focus:outline-none focus:shadow-outline">
                             <option value="50000">50 K</option>
                             <option value="100000">100 K</option>
@@ -56,7 +56,7 @@ require("./header.php");
                     </div>
                     <div class="w-1/4 pl-2 pb-2 pt-8 flex flex-wrap flex-row justify-end">
                         <div class="pl-2 pt-2">
-                            <input type="submit" value="Search" class="cursor-pointer w-full py-3 px-6 shadow rounded-lg hover:bg-yellow-600 bg-yellow-500 hover:text-white text-black font-semibold cursor-pointerfocus:outline-none focus:shadow-outline"/>
+                            <input type="submit" value="Search" class="cursor-pointer w-full py-3 px-6 shadow rounded-lg hover:bg-primary bg-primary-300 text-white font-semibold cursor-pointerfocus:outline-none focus:shadow-outline"/>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@ require("./header.php");
         </div>
     </div>
     <div class="flex flex-wrap flex-row w-full py-10 px-6 xl:px-32">
-        <div class="w-1/4 px-4">
+        <div class="w-1/2 lg:w-1/4 p-4">
             <div class="rounded-lg shadow-lg">
                 <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
                 <div class="py-4 px-4 flex flex-wrap">
@@ -78,7 +78,7 @@ require("./header.php");
                 </div>
             </div>
         </div>
-        <div class="w-1/4 px-4">
+        <div class="w-1/2 lg:w-1/4 p-4">
             <div class="rounded-lg shadow-lg">
                 <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
                 <div class="py-4 px-4 flex flex-wrap">
@@ -92,7 +92,7 @@ require("./header.php");
                 </div>
             </div>
         </div>
-        <div class="w-1/4 px-4">
+        <div class="w-1/2 lg:w-1/4 p-4">
             <div class="rounded-lg shadow-lg">
                 <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
                 <div class="py-4 px-4 flex flex-wrap">
@@ -106,7 +106,7 @@ require("./header.php");
                 </div>
             </div>
         </div>
-        <div class="w-1/4 px-4">
+        <div class="w-1/2 lg:w-1/4 p-4">
             <div class="rounded-lg shadow-lg">
                 <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
                 <div class="py-4 px-4 flex flex-wrap">

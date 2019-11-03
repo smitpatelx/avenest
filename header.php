@@ -33,22 +33,25 @@ DESCRIPTION     : Header section
 <body>
     <div class="w-full upperline-nav"></div>
     <div class="bg-gray-200">
-    <div class="flex flex-wrap py-6 px-24">
-        <div class="w-1/4">
+    <div class="flex flex-wrap py-6 px-4 md:px-24 justify-between">
+        <div class="w-auto md:w-1/2">
             <a href="./index.php">
-                <img src="./images/avenest.png" alt="AveNest" style="width:170px;"/>
+                <img src="./images/avenest.png" alt="AveNest" style="height:30px; width:170px;"/>
             </a>
         </div>
-        <div class="w-3/4 justify-end flex flex-wrap flex-row font-semibold text-lg uppercase">
-            <a href="./index.php" class="px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
+        <div class="w-auto md:w-1/2 justify-end flex flex-wrap flex-row font-semibold text-lg uppercase">
+            <a href="./index.php" class="px-3 py-1 mr-1 lg:mr-3 text-blue-600 hover:text-gray-500">
                 Home
             </a>
+            <a href="./listing-search.php" class="px-3 py-1 mr-1 lg:mr-3 text-blue-600 hover:text-gray-500"> 
+                Listings
+            </a>
             <div id="trigger" class="flex flex-wrap flex-col">
-                <div class="w-full cursor-pointer px-3 py-1 mr-3 text-blue-600 hover:text-gray-500">
+                <div class="w-full cursor-pointer px-3 py-1 mr-1 lg:mr-3 text-blue-600 hover:text-gray-500">
                     <img src="./images/menu.svg" alt="MENU" />
                 </div>
                 <div class="relative">
-                    <div id="target" class="absolute hidden flex-wrap bg-white p-2 rounded shadow-lg" style="width:13rem; margin-left:-10rem;">
+                    <div tabindex="0" id="target" class="absolute hidden flex-wrap bg-white p-2 rounded-lg shadow-lg" style="width:13rem; margin-left:-10rem;">
                         <?php
 
                         if(isset($_SESSION['user_type_s'])){
@@ -63,9 +66,15 @@ DESCRIPTION     : Header section
                                     echo '<a href="./admin.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">
                                         Dashboard
                                     </a>';
+                                    echo '<a href="./listing-create.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">
+                                        Listing Create
+                                    </a>';
                                 }else if ($_SESSION['user_type_s'] == AGENT){
                                     echo '<a href="./dashboard.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">
                                         Dashboard
+                                    </a>';
+                                    echo '<a href="./listing-create.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">
+                                        Listing Create
                                     </a>';
                                 }else if ($_SESSION['user_type_s'] == CLIENT){
                                     echo '<a href="./welcome.php" class="w-full px-3 py-1 mr-3 text-base font-semibold normal-case text-blue-600 hover:text-gray-500">

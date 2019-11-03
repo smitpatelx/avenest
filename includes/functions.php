@@ -51,7 +51,7 @@ function notification_message(){
     if( isset($_SESSION['session_messages']) ) {
         $msgs = $_SESSION['session_messages'];
         $output = "";
-        $output .= "<script>Notiflix.Notify.Init({ distance:'60px', info: {background:'#0c82d8',}, }); ";
+        $output .= "<script>Notiflix.Notify.Init({ cssAnimationStyle: 'from-left',position: 'left-top', distance:'70px', info: {background:'#0c82d8',}, }); ";
         foreach($msgs as $msg){
             $output .= "Notiflix.Notify.Success('".$msg."');";
         }
@@ -76,6 +76,13 @@ function is_valid_postal_code($value)
         //postal code is in-valid
         return false;
     }
+}
+
+function senetize_sentence($value){
+    //remove underscore and add space instead
+    $v = preg_replace("/[\_]/"," ", $value);
+    $v2 = trim(ucwords($v));
+    return $v2;
 }
 
 function valid_phone_number($phonenumber) {

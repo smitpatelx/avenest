@@ -17,11 +17,12 @@ CREATE TABLE listings(
 	images_path VARCHAR(200) NOT NULL,
 	city INTEGER NOT NULL,
 	property_options INTEGER NOT NULL,
+	province INTEGER NOT NULL, 
 	bedrooms INTEGER NOT NULL,
 	bathrooms INTEGER NOT NULL,
 	address VARCHAR(40) NOT NULL,	
 	area INTEGER NOT NULL,
-	contact VARCHAR(15) NOT NULL,
-	pets_friendly SMALLINT NOT NULL,
+	phone VARCHAR(15) NOT NULL,
+	pets_friendly INTEGER NOT NULL,
 	created_on DATE NOT NULL
 );

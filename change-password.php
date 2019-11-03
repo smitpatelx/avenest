@@ -123,12 +123,12 @@ if(is_get())
 ?>
 
     <div class="w-full flex flex-wrap justify-center">
-        <form class="w-1/3 p-6 my-10" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <form class="h-auto w-full lg:w-2/3 xl:w-1/2 p-6 my-10" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <p class="text-left font-bold text-gray-700 my-2 text-4xl font-headline">Change Password</p>
             <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>
             <div>
                 <p class="text-lg font-normal py-2 text-black">Old Password</p>
-                <input type="password" name="old_password" value="<?php echo $old_password ?>" class="w-full py-3 px-4 shadow-lg rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100"/>
+                <input autofocus type="password" name="old_password" value="<?php echo $old_password ?>" class="w-full py-3 px-4 shadow-lg rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $old_password_helper ?></p>
             <div>

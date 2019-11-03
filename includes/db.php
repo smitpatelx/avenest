@@ -47,7 +47,7 @@ function build_simple_dropdown($table, $column, $preselect){
                     $output .= " selected='selected' ";
                 }
 
-            $output .= ">".$row[$column]."</option>";            
+            $output .= ">".ucwords($row[$column])."</option>";            
         }
         $output .= "</select>";
         $output .= "</div>";
@@ -72,7 +72,7 @@ function build_radio($value, $sticky) {
                 $output .= "<label class='flex items-center mr-4'>";
                 $output .= "<input class='focus:outline-none bg-white' name='contact_method' type='radio' value='".$row['method']."'";
                 
-                    if ( $row['value'] == $sticky ){
+                    if ( $row['method'] == $sticky ){
                         $output .= " checked='checked' ";
                     }
 

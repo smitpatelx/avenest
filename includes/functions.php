@@ -94,4 +94,27 @@ function valid_phone_number($phonenumber) {
         return false;
     }
 }
+
+function display_phone_number($phonenumber)
+{
+    // Allow only Digits, remove all other characters.
+    $phonenumber = preg_replace("/[^\d]/","",$phonenumber);
+    
+    // get phonenumber length.
+    $length = strlen($phonenumber);
+    
+    // if phonenumber = 10
+    if($length == 10) {
+        $phonenumber = preg_replace("/^1?(\d{3})(\d{3})(\d{4})$/", "($1)$2-$3", $phonenumber);
+    }
+    else if($length > 10) {
+        $extra = "";
+        $extra = $length - 10;
+        $nonextra = substr($phonenumber, 0, 10);
+        $phonenumber = preg_replace("/^1?(\d{3})(\d{3})(\d{4})$/", "($1)$2-$3", $nonextra)." ext.".substr($phonenumber, -$extra);
+    }
+
+    return $phonenumber;
+}
+
 ?>

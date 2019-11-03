@@ -45,12 +45,12 @@ if(is_get())
     $address_1 = "";
     $address_2 = "";
     $postal_code = "";
-    $city = "";
-    $provinces = "";
+    $city = "oshawa";
+    $provinces = "ON";
     $primary_phone_number = "";
     $secondry_phone_number = "";
     $fax_number = "";
-    $contact_method = "";
+    $contact_method = "e";
     $password = "";
     $confirm_password = "";
     $user_type = "";
@@ -302,7 +302,7 @@ if(is_get())
             <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>
 
             <div class="flex flex-wrap flex-row mt-10">
-                <?php build_simple_dropdown('salutations', 'salutation', 'Mr.'); ?>
+                <?php build_simple_dropdown('salutations', 'salutation', $salutations); ?>
                 <div class="w-1/3 pr-2 py-2">
                     <p class="text-lg font-normal py-2 text-black">First Name</p>
                     <input type="text" name="first_name" value="<?php echo $first_name; ?>" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100"/>
@@ -329,8 +329,8 @@ if(is_get())
                 <input type="text" name="address_2" value="<?php echo $address_2; ?>" class="border border-solid border-blue-600 focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg my-2 bg-white focus:bg-gray-100"/>
             </div>
             <div class="flex flex-wrap">
-                <?php build_simple_dropdown('city', 'property', 'oshawa'); ?>
-                <?php build_simple_dropdown('provinces', 'province', 'ON'); ?>
+                <?php build_simple_dropdown('city', 'property', $city); ?>
+                <?php build_simple_dropdown('provinces', 'province', $provinces); ?>
                 <div class="w-1/3 py-2">
                     <p class="text-lg font-normal py-2 text-black">Postal Code</p>
                     <input type="text" name="postal_code" value="<?php echo $postal_code; ?>" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100"/>
@@ -356,7 +356,7 @@ if(is_get())
                 </div>
                 <div class="w-full py-2">
                     <p class="text-lg font-normal py-2 text-gray-600">Preffered Contact Method</p>
-                    <?php build_radio("preferred_contact_method", 1) ?>
+                    <?php build_radio("preferred_contact_method", $contact_method) ?>
                 </div>
             </div>
             <div class="border-t border-gray-500 my-4"></div>
@@ -374,11 +374,11 @@ if(is_get())
                     <p class="text-lg font-normal py-2 text-gray-600">User Type</p>
                     <div class="flex flex-wrap">
                         <label class="flex items-center mr-4">
-                            <input checked='checked' type="radio" name="user_type" value="c" class="focus:outline-none bg-white"/>
+                            <input <?php echo ($user_type=="c" ? "checked='checked'" : ""); ?> type="radio" name="user_type" value="c" class="focus:outline-none bg-white"/>
                             <span class="text-md font-semibold py-2 ml-2 text-gray-700 select-none">Clients</span>
                         </label>
                         <label class="flex items-center mr-4">
-                            <input type="radio" name="user_type" value="a" class="focus:outline-none py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100"/>
+                            <input <?php echo ($user_type=="a" ? "checked='checked'" : ""); ?> type="radio" name="user_type" value="a" class="focus:outline-none py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100"/>
                             <span class="text-md font-semibold py-2 ml-2 text-gray-700 select-none">Agent</span>
                         </label>
                     </div>

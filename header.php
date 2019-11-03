@@ -1,9 +1,9 @@
 <?php
 ob_start();
 session_start();
-require('./includes/constants.php');
-require('./includes/functions.php');
-require('./includes/db.php');
+require_once('./includes/constants.php');
+require_once('./includes/functions.php');
+require_once('./includes/db.php');
 ?>
 <!--
 FILE: 			: <?php echo basename(__FILE__, $_SERVER['PHP_SELF'])."\n"; ?>

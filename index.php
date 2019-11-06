@@ -15,8 +15,8 @@ require("./header.php");
 ?>
 
 <!-- Design for the index page-->
-<div class="flex flex-wrap flex-row p-24">
-    <div class="w-1/2 flex flex-wrap flex-col">
+<div class="flex flex-wrap flex-row p-4 md:p-10 lg:p-24">
+    <div class="w-full md:w-1/2 flex flex-wrap flex-col">
         <h1 class="font-bold text-4xl text-black mt-14 font-headline">Reimagine Home</h1>
         <h1 class="font-bold text-4xl text-primary font-headline">We’ll help you find a place you’ll love.</h1>
 
@@ -25,16 +25,16 @@ require("./header.php");
         
         <p class="text-xl text-gray-500 mt-6">To see all available houses, register here.</p>
 
-        <a href="./register.php" class="border hover:border-blue-600 bg-primary hover:bg-transparent rounded text-white hover:text-primary py-3 px-6 font-semibold mt-10 w-1/4 text-center">Register</a>
+        <a href="./register.php" class="w-full md:w-48 border hover:border-blue-600 bg-primary hover:bg-transparent rounded text-white hover:text-primary py-3 px-6 font-semibold mt-10 text-center">Register</a>
     </div>
-    <div class="w-1/2">
+    <div class="w-full md:w-1/2 mt-6 md:mt-0">
         <img src="./images/bg-home.svg" alt="Home"/>
     </div>
 </div>
 
-<div class="p-24">
+<div class="p-4 md:p-24">
     <div class="flex flex-wrap flex-row">
-        <div class="p-2 w-1/3">
+        <div class="p-2 w-full lg:w-1/3">
             <div class="bg-white shadow-xl flex flex-wrap flex-col">
                 <img src="./images/home-1.png" alt="Home-1" class="w-full"/>
                 <p class="font-bold text-4xl text-center font-headline">Buy a Home</p>
@@ -42,7 +42,7 @@ require("./header.php");
                 <a href="./login.php" class="bg-white rounded border border-blue-600 hover:bg-primary hover:text-white text-primary py-2 px-3 font-semibold mb-10 mx-10 text-center">Start Buying</a>
             </div>
         </div>
-        <div class="p-2 w-1/3">
+        <div class="p-2 w-full lg:w-1/3">
             <div class="bg-white shadow-xl flex flex-wrap flex-col">
                 <img src="./images/home-2.png" alt="Home-2" class="w-full"/>
                 <p class="font-bold text-4xl text-center font-headline">Sell a Home</p>
@@ -50,7 +50,7 @@ require("./header.php");
                 <a href="./login.php" class="bg-white rounded border border-blue-600 hover:bg-primary hover:text-white text-primary py-2 px-3 font-semibold mb-10 mx-10 text-center">Start Selling</a>
             </div>
         </div>
-        <div class="p-2 w-1/3">
+        <div class="p-2 w-full lg:w-1/3">
             <div class="bg-white shadow-xl flex flex-wrap flex-col">
                 <img src="./images/home-3.png" alt="Home-3" class="w-full"/>
                 <p class="font-bold text-4xl text-center font-headline">Rent a Home</p>

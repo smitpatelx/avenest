@@ -45,12 +45,12 @@ if(is_get())
     $address_1 = "";
     $address_2 = "";
     $postal_code = "";
-    $city = "oshawa";
-    $provinces = "ON";
+    $city = 8;
+    $provinces = 512;
     $primary_phone_number = "";
     $secondry_phone_number = "";
     $fax_number = "";
-    $contact_method = "1";
+    $contact_method = 1;
     $password = "";
     $confirm_password = "";
     $user_type = "c";
@@ -248,7 +248,6 @@ if(is_get())
             $id_exe = db_execute('get_user_id', array($email));
 
             $currentUser = pg_fetch_assoc($id_exe);
-            print_r("<br/>Fetch user:".pg_fetch_assoc($id_exe));
 
             $persons_query = "INSERT INTO persons (user_id, first_name, last_name, street_address_1, street_address_2, city, province, postal_code, primary_phone_number, secondry_phone_number, fax_number, salutation, preferred_contact_method)  
                         VALUES (\$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$9, \$10, \$11, \$12, \$13);";

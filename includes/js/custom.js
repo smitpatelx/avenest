@@ -23,4 +23,15 @@ $(document).ready(()=>{
             htarget.addClass('hidden').removeClass('flex');
         }
     });
+
+    var path = window.location.pathname.split("/").pop();
+    // Account for home page with empty path
+    if (path == '') {
+        path = 'index.php';
+    }
+
+    var target = $('#target > a[href="./' + path + '"]');
+    // Add active class to target link
+    target.removeClass('text-gray-500').addClass('text-blue-600');
+
 });

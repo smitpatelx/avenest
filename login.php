@@ -87,6 +87,7 @@ if(is_get())
 
         if(pg_num_rows($exe1) <= 0){
             $error = "User with this email and password doesn't exist";
+            $password = "";
         } else {
             $query2 = "UPDATE users SET last_access = '".$last_access."'
                                                   WHERE users.email_address = \$1 AND users.password = \$2";
@@ -115,7 +116,9 @@ if(is_get())
         }
     } else {
         $error = "Something went wrong";
+        $password = "";
     }
+    $password = "";
 }
 
 ?>

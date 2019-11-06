@@ -1,4 +1,4 @@
-﻿-- FILE: 						listings.sql
+-- FILE: 						listings.sql
 -- TITLE:						AveNest Listings
 -- AUTHORS:						Smit Patel
 -- LAST MODIFIED:		        OCT 30, 2019
@@ -14,9 +14,9 @@ CREATE TABLE listings(
 	description VARCHAR(1000) NOT NULL,
 	postal_code VARCHAR(6) NOT NULL,
 	images SMALLINT NOT NULL,
-	images_path VARCHAR(200) NOT NULL,
+	images_path TEXT NOT NULL,
 	city INTEGER NOT NULL,
-	property_options INTEGER NOT NULL,
+	property_options TEXT NOT NULL,
 	province INTEGER NOT NULL, 
 	bedrooms INTEGER NOT NULL,
 	bathrooms INTEGER NOT NULL,
@@ -24,5 +24,6 @@ CREATE TABLE listings(
 	area INTEGER NOT NULL,
 	phone VARCHAR(15) NOT NULL,
 	pets_friendly INTEGER NOT NULL,
-	created_on DATE NOT NULL
+	created_on DATE NOT NULL,
+	updated_on DATE NOT NULL
 );

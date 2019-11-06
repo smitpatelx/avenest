@@ -32,7 +32,7 @@ if(isset($_SESSION['user_type_s'])){
 }
 ?>
     <div class="text-center flex flex-wrap flex-col py-4 content-center">
-        <p class="text-xl text-primary shadow-lg rounded w-1/3 bg-gray-200 py-2">
+        <p class="text-xl text-primary shadow-lg rounded w-1/3 bg-white py-2">
             Welcome  <?php echo ($_SESSION['user_s'])['first_name']." ".($_SESSION['user_s'])['last_name'] ?>
         </p>
     </div>

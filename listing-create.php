@@ -32,7 +32,6 @@ senetize_sentence("sasd_asdasd");
 if(is_get())
 {
     
-
     $errors=0;
     $error="";
 
@@ -42,12 +41,12 @@ if(is_get())
     $price = "";
     $address = "";  
     $images = "1";
-    $property_option = "AC";
-    $provinces = "ON";
-    $bedrooms = "4";
-    $bathrooms = "3";
+    $property_option = [2,4];
+    $provinces = 512;
+    $bedrooms = 4;
+    $bathrooms = 3;
     $postal_code = "";
-    $city = "oshawa";
+    $city = 8;
     $area = "";
     $phone = "";
     $pets_friendly = "1";
@@ -75,7 +74,128 @@ if(is_get())
     $pets_friendly = trimP('pets_friendly');
     $listing_status = trimP('listing_status');
 
-    
+    if(!isset($headline) || empty($headline))
+    {
+        $error .= "<br/>Headline is required";
+        $errors+=1;
+        $headline = "";
+    } else if(strlen($headline) >= MAX_HEADLINE_LENGTH || strlen($headline) <= MIN_HEADLINE_LENGTH ){
+        $error .= "<br/>You entered \"".$headline."\" "."Headline must be between ".MIN_HEADLINE_LENGTH." and ".MAX_HEADLINE_LENGTH."";
+        $errors+=1;
+        $headline = "";
+    }
+
+    if(!isset($description) || empty($description))
+    {
+        $error .= "<br/>Description is required";
+        $errors+=1;
+        $description = "";
+    } else if(strlen($description) >= MAX_DESCRIPTION_LENGTH || strlen($description) <= MIN_DESCRIPTION_LENGTH ){
+        $error .= "<br/>You entered \"".$description."\" "."Description must be between ".MIN_DESCRIPTION_LENGTH." and ".MAX_DESCRIPTION_LENGTH."";
+        $errors+=1;
+        $description = "";
+    }
+
+    if(!isset($address) || empty($address))
+    {
+        $error .= "<br/>Address is required";
+        $errors+=1;
+        $address = "";
+    } else if(strlen($address) >= MAX_ADDRESS_LENGTH || strlen($address) <= MIN_ADDRESS_LENGTH ){
+        $error .= "<br/>You entered \"".$address."\" "."Address must be between ".MIN_ADDRESS_LENGTH." and ".MAX_ADDRESS_LENGTH."";
+        $errors+=1;
+        $address = "";
+    }
+
+    if(!isset($postal_code) || empty($postal_code))
+    {
+        $error .= "<br/>Postal Code is required";
+        $errors+=1;
+        $postal_code = "";
+    } else if(strlen($postal_code) != POSTAL_CODE_LENGTH ){
+        $error .= "<br/>You entered \"".$postal_code."\" "."Postal Code must contains ".POSTAL_CODE_LENGTH." characters.";
+        $errors+=1;
+        $postal_code = "";
+    } else if (!is_valid_postal_code($postal_code)) {
+        $error .= "<br/>You entered \"".$postal_code."\" "."This canadian postal code is invalid."; 
+        $errors+=1;
+        $postal_code = "";
+    }
+
+    if(!isset($price) || empty($price))
+    {
+        $error .= "<br/>Price is required";
+        $errors+=1;
+        $price = "";
+    } else if(!is_numeric($price)){
+        $error .= "<br/>You entered \"".$price."\" "."Price must be numeric";
+        $errors+=1;
+        $price = "";
+    } else if($price >= MAX_PRICE || $price <= MIN_PRICE ){
+        $error .= "<br/>You entered \"".$price."\" "."Price must be between ".MIN_ADDRESS_LENGTH." and ".MAX_ADDRESS_LENGTH."";
+        $errors+=1;
+        $price = "";
+    }
+
+    if(!isset($area) || empty($area))
+    {
+        $error .= "<br/>Area is required";
+        $errors+=1;
+        $area = "";
+    } else if(!is_numeric($area)){
+        $error .= "<br/>You entered \"".$area."\" "."Area must be numeric";
+        $errors+=1;
+        $area = "";
+    }
+
+    if(!isset($phone) || empty($phone))
+    {
+        $error .= "<br/>Phone is required";
+        $errors+=1;
+        $phone = "";
+    } else if(!is_numeric($phone)){
+        $error .= "<br/>You entered \"".$phone."\" "."Phone must be numeric";
+        $errors+=1;
+        $phone = "";
+    } else if(strlen($phone) > MAX_PHONE_LENGTH || strlen($phone) < MIN_PHONE_LENGTH ){
+        $error .= "<br/>You entered \"".$phone."\" "."Phone must be between ".MIN_PHONE_LENGTH." and ".MAX_PHONE_LENGTH."";
+        $errors+=1;
+        $phone = "";
+    } else if (!valid_phone_number($phone)) {
+        $error .= "<br/>You entered \"".$phone."\" "."Invalid Phone Number."; 
+        $errors+=1;
+        $phone = "";
+    }
+
+    if($errors<=0) {
+        $current_date = date("Y-m-d",time());
+        $user_id = ($_SESSION['user_s'])['user_id'];
+
+        $images_path = ['./images/listing/default.svg'];
+        $images_path = implode('_|', $images_path);
+        
+        $property_option = implode('_|', $property_option);
+
+        $listings_query = "INSERT INTO listings( user_id, status, price, headline, description, postal_code, images, images_path, city, property_options, province, bedrooms, bathrooms, address, area, phone, pets_friendly, created_on, updated_on)   
+                    VALUES (\$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$9, \$10, \$11, \$12, \$13, \$14 , \$15, \$16, \$17, \$18, \$19);";
+
+        $listings_prepare =  db_prepare('insert_new_listing', $listings_query);
+        $listings_exe = db_execute('insert_new_listing', array($user_id, $listing_status, $price, $headline, $description, $postal_code, $images, $images_path, $city, $property_option, $provinces, $bedrooms, $bathrooms, $address, $area, $phone, $pets_friendly, $current_date, $current_date));
+
+        if($listings_exe) {
+            $session_msg[] = "Listing Created Successfully";
+            $_SESSION['session_messages'] = $session_msg;
+
+            //Redirect user to their respective page after login
+            user_redirection();
+            exit();
+        } else {
+            $error .= "<br/>Database error.";
+        }
+        
+    } else {
+        $error .= "<br/>Something went wrong";
+    }
 }
 
 ?>
@@ -99,7 +219,7 @@ if(is_get())
             </div>
             <div class="flex flex-wrap">
                 <?php build_simple_dropdown('images', 'value', $images); ?>
-                <?php build_simple_dropdown('city', 'property', $city); ?>
+                <?php build_simple_dropdown('city', 'property', $city);?>
                 <?php build_simple_dropdown('property_option', 'property', $property_option, true); ?>
                 <?php build_simple_dropdown('provinces', 'province', $provinces); ?>
                 <?php build_simple_dropdown('bedrooms', 'value', $bedrooms); ?>

@@ -77,7 +77,7 @@ if(is_get())
         $last_access = date("Y-m-d",time());
 
         //Getting values from session
-        $user_id = $_SESSION['user_id_s'];
+        $user_id = ($_SESSION['user_s'])['user_id'];
 
         $query1 = "SELECT * 
         FROM users

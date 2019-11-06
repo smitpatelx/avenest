@@ -31,9 +31,45 @@ if(isset($_SESSION['user_type_s'])){
 ?>
 
 <div class="text-center flex flex-wrap flex-col py-4 content-center">
-    <p class="text-xl text-primary shadow-lg rounded w-1/3 bg-gray-200 py-2">
-        Dashboard, Welcome <?php echo ($_SESSION['user_s'])['first_name']." ".($_SESSION['user_s'])['last_name'] ?>
+    <p class="text-xl text-primary shadow-lg rounded w-1/3 bg-white py-2">
+        Dashboard, Welcome <?php echo ($_SESSION['user_s'])['first_name']." ".($_SESSION['user_s'])['last_name']; ?>
     </p>
+</div>
+
+<div class="w-full mx-auto container flex flex-wrap justify-center content-center">
+    <?php
+        
+        $user_id = ($_SESSION['user_s'])['user_id'];
+
+        $conn = db_connect();
+        $sql = "SELECT * FROM listings WHERE listings.user_id = '$user_id';";
+        $result = pg_query($conn, $sql);
+
+        $output = "";
+        while($row = pg_fetch_assoc($result))
+        {
+            $output .= '<div class="w-1/2 lg:w-1/4 p-4">
+            <div class="rounded-lg shadow-lg bg-white relative">
+                <img src="'.$row['images_path'].'" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
+                <div class="py-4 px-4 flex flex-wrap">
+                    <p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">'.displayStatus($row['status']).'</p>
+                    <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i>'.$row['address'].'</p><br/>
+                    <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i>'.displayProperty('city', $row['city']).'</p><br/>
+                    <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $'.$row['price'].'</p>
+                </div>
+                <div class="w-full px-6 pb-4 flex justify-center">
+                    <a href="./listing-display.php?listing_id='.$row['listing_id'].'" class="cursor-pointer font-bold text-center text-gray-600 hover:text-gray-800">Read More</a>
+                    <a class="ml-6 cursor-pointer font-bold text-center text-gray-500 hover:text-gray-800">Edit</a>
+                </div>
+                
+            </div>
+        </div>';
+        }
+
+        echo $output;
+    ?>
+
+        
 </div>
 
 <?php

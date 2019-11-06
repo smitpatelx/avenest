@@ -40,6 +40,15 @@ define("LISTING_STATUS_CLOSE", "c");
 define("LISTING_STATUS_SOLD", "s");
     
 //Constant for forms
+define('MAX_HEADLINE_LENGTH', '100' );
+define('MIN_HEADLINE_LENGTH', '2' );
+
+define('MAX_DESCRIPTION_LENGTH', '1000' );
+define('MIN_DESCRIPTION_LENGTH', '6' );
+
+define('MAX_PRICE', '10000000' );
+define('MIN_PRICE', '10000' );
+
 define('MAX_USERNAME_LENGTH', '20' );
 define('MIN_USERNAME_LENGTH', '6' );
 

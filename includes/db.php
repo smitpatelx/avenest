@@ -42,9 +42,15 @@ function build_simple_dropdown($table, $column, $preselect, $multi = false){
         while($row = pg_fetch_assoc($result)) {
             $output .= "<option value='".$row['value']."'";
 
-                if ( $row[$column] == $preselect ){
+            if($multi){
+                if (in_array($row['value'], $preselect)){
                     $output .= " selected='selected' ";
                 }
+            } else {
+                if ($row['value'] == $preselect ){
+                    $output .= " selected='selected' ";
+                }
+            }
 
             $output .= ">".ucwords($row[$column])."</option>";            
         }
@@ -123,4 +129,26 @@ function build_radio($value, $sticky) {
     }
 
     echo $output;
+}
+
+function displayStatus($val){
+    if($val==LISTING_STATUS_OPEN){
+        return "Open";
+    } else if($val==LISTING_STATUS_CLOSE){
+        return "Closed";
+    } else if($val==LISTING_STATUS_SOLD){
+        return "Sold";
+    }
+}
+
+function displayProperty($table, $val){
+    $conn = db_connect();
+    $sql = "SELECT * FROM $table;";
+    $query = pg_query($conn, $sql);
+
+    while($row = pg_fetch_assoc($query)){
+        if($row['value']=$val){
+            return ucwords($row['property']);
+        }
+    }
 }

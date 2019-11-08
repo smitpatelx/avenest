@@ -117,7 +117,7 @@ function build_radio($value, $sticky) {
             while($row = pg_fetch_assoc($result)) {
                 $output .= "<label class='flex items-center mr-4'>";
                 $output .= "<input name='pets_friendly' type='radio' value='".$row['value']."'  ";
-                    if ( $row['value'] == $sticky ){
+                    if ( (string)$row['value'] == (string)$sticky ){
                         $output .= " checked='checked' ";
                     }
                 $output .= "/>";   
@@ -133,11 +133,13 @@ function build_radio($value, $sticky) {
 
 function displayStatus($val){
     if($val==LISTING_STATUS_OPEN){
-        return "Open";
+        return '<p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-500 py-1 px-2">Open</p>';
     } else if($val==LISTING_STATUS_CLOSE){
-        return "Closed";
+        return '<p class="w-auto text-white text-xs shadow font-semibold rounded bg-red-500 py-1 px-2">Closed</p>';
     } else if($val==LISTING_STATUS_SOLD){
-        return "Sold";
+        return '<p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">Sold</p>';
+    } else if($val==LISTING_STATUS_HIDDEN){
+        return '<p class="w-auto text-white text-xs shadow font-semibold rounded bg-gray-500 py-1 px-2">Hidden</p>';
     }
 }
 

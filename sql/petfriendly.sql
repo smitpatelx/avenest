@@ -6,9 +6,9 @@
 DROP TABLE IF EXISTS pets_friendly;
 
 CREATE TABLE pets_friendly(
-value VARCHAR(1) PRIMARY KEY,
+value SMALLINT PRIMARY KEY,
 property VARCHAR(3) NOT NULL
 );
 
-INSERT INTO pets_friendly (value, property) VALUES ('0', 'yes');
-INSERT INTO pets_friendly (value, property) VALUES ('1', 'no');
+INSERT INTO pets_friendly (value, property) VALUES (0, 'yes');
+INSERT INTO pets_friendly (value, property) VALUES (1, 'no');

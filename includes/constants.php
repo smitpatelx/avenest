@@ -38,6 +38,7 @@ define("LETTER_MAIL", "l");
 define("LISTING_STATUS_OPEN", "o");
 define("LISTING_STATUS_CLOSE", "c");
 define("LISTING_STATUS_SOLD", "s");
+define("LISTING_STATUS_HIDDEN", "h");
     
 //Constant for forms
 define('MAX_HEADLINE_LENGTH', '100' );

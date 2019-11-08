@@ -28,7 +28,7 @@ if(isset($_SESSION['user_type_s'])){
     header("LOCATION: ./login.php");
     ob_flush();  //Flushing output buffer after redirection
 }
-senetize_sentence("sasd_asdasd");
+
 if(is_get())
 {
     
@@ -49,7 +49,7 @@ if(is_get())
     $city = 8;
     $area = "";
     $phone = "";
-    $pets_friendly = "1";
+    $pets_friendly = 1;
     $listing_status = "o";
 
 } else if(is_post())
@@ -72,6 +72,7 @@ if(is_get())
     $area = trimP('area');
     $phone = trimP('phone');
     $pets_friendly = trimP('pets_friendly');
+    print_r(" Pets: ".$pets_friendly);
     $listing_status = trimP('listing_status');
 
     if(!isset($headline) || empty($headline))

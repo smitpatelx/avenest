@@ -24,7 +24,7 @@ if(is_get())
     if(isset($_COOKIE['LOGIN_COOKIE']))
     {
         $login_cookie = explode("|",$_COOKIE['LOGIN_COOKIE']);
-        $cookie_email = $login_cookie[3];
+        $cookie_email = $login_cookie[2];
         $email = $cookie_email;
         $password= "";  
     }
@@ -135,7 +135,7 @@ if(is_get())
             <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>
 
             <div>
-                <p class="text-lg font-normal py-2 text-black mt-24">Email</p>
+                <p class="text-lg font-normal py-2 text-black lg:mt-24">Email</p>
                 <input autofocus type="text" name="email" value="<?php echo $email ?>" class="w-full py-3 px-4 shadow-lg rounded-lg my-2 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100"/>
             </div>
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $email_helper ?></p>

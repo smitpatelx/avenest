@@ -48,26 +48,27 @@ if(is_get())
 <div class="flex flex-wrap container mx-auto justify-center">
     <?php if($errors > 0) { ?>
         <div class="w-2/3 bg-white rounded-lg shadow-lg py-3 px-4">
-            <p class="text-center font-headline text-4xl">Error - Listing Id</p>
+            <p class="text-center font-bold text-gray-700 my-2 text-4xl font-headline">Error - Listing Id</p>
             <p class="text-center text-center pt-4 text-red-500 text-base"><?php echo $error ?></p>
         </div>
     <?php } else { 
         echo '<div class="w-2/3 py-3 px-4">
-            <p class="text-center font-headline text-4xl">You are viewing listing #'.$listing_id.'</p>
+            <p class="text-center font-bold text-gray-700 my-2 text-4xl font-headline">Updating Listing id: <span class="font-sans text-gray-500">'.$listing_id.'</span></p>
             <p class="text-center pt-4 text-red-500 text-base">'.$error.'</p>
         </div>';
         if(!empty($data)){
+            $main_img = explode('_|', $data['images_path'])[0];
             echo '<div class="w-2/3 p-4">
                 <div class="rounded-lg shadow-lg bg-white relative">
-                    <img src="'.$data['images_path'].'" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
+                    <img src="'.$main_img.'" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
                     <div class="py-4 px-4 flex flex-wrap">
-                        <p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">'.displayStatus($data['status']).'</p>
+                        '.displayStatus($data['status']).'
                         <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i>'.$data['address'].'</p><br/>
                         <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i>'.displayProperty('city', $data['city']).'</p><br/>
                         <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $'.$data['price'].'</p>
                     </div>
                     <div class="w-full px-6 pb-4 flex justify-center">
-                        <a class="cursor-pointer font-bold text-center text-gray-500 hover:text-gray-800">Edit</a>
+                        <a href="./listing-update.php?listing_id='.$data['listing_id'].'" class="bg-gray-200 rounded-lg shadow py-2 px-4 cursor-pointer font-bold text-center text-gray-500 hover:text-gray-800">Edit</a>
                     </div>
                     
                 </div>

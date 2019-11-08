@@ -35,3 +35,7 @@ $(document).ready(()=>{
     target.removeClass('text-gray-500').addClass('text-blue-600');
 
 });
+
+window.onbeforeunload = function () {
+    window.scrollTo(0,0);
+};

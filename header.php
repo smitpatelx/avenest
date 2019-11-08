@@ -62,9 +62,7 @@ DESCRIPTION     : Header section
                 <div class="relative">
                     <div tabindex="0" id="target" class="z-50 absolute hidden flex-wrap bg-white p-2 rounded-lg shadow-lg" style="width:13rem; margin-left:-11rem;">
                         <?php
-                        echo '<a href="./listing-search.php" class="flex md:hidden w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600"> 
-                                    Listings
-                                </a>';
+
                         echo '<a href="./listing-search.php" class="flex md:hidden w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600"> 
                                 Listings
                             </a>';

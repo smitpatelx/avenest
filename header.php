@@ -63,9 +63,29 @@ DESCRIPTION     : Header section
                     <div tabindex="0" id="target" class="absolute hidden flex-wrap bg-white p-2 rounded-lg shadow-lg" style="width:13rem; margin-left:-11rem;">
                         <?php
                         echo '<a href="./listing-search.php" class="flex md:hidden w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600"> 
+                                    Listings
+                                </a>';
+                        echo '<a href="./listing-search.php" class="flex md:hidden w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600"> 
                                 Listings
                             </a>';
                         if(isset($_SESSION['user_type_s'])){
+                            if ($_SESSION['user_type_s'] == ADMIN){
+                                echo '<a href="#" class="flex w-full bg-blue-500 rounded px-3 py-1 text-base font-semibold normal-case text-white"> 
+                                        Admin
+                                    </a>';
+                            }else if ($_SESSION['user_type_s'] == AGENT){
+                                echo '<a href="#" class="flex w-full bg-yellow-500 rounded px-3 py-1 text-base font-semibold normal-case text-black"> 
+                                        Agent
+                                    </a>';
+                            }else if ($_SESSION['user_type_s'] == DISABLED){
+                                echo '<a href="#" class="flex w-full bg-red-500 rounded px-3 py-1 text-base font-semibold normal-case text-white"> 
+                                        Disabled
+                                    </a>';
+                            }else if ($_SESSION['user_type_s'] == CLIENT){
+                                echo '<a href="#" class="flex w-full bg-green-500 rounded px-3 py-1 text-base font-semibold normal-case text-white"> 
+                                        Client
+                                    </a>';
+                            }
                             echo '<a href="./logout.php" class="w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600">
                                     Logout
                                 </a>

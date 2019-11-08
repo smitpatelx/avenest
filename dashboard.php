@@ -30,8 +30,8 @@ if(isset($_SESSION['user_type_s'])){
 }
 ?>
 
-<div class="text-center flex flex-wrap flex-col py-4 content-center">
-    <p class="text-xl text-primary shadow-lg rounded w-1/3 bg-white py-2">
+<div class="text-center flex flex-wrap flex-col py-4 content-center container mx-auto justify-center">
+    <p class="text-xl text-primary shadow-lg rounded w-auto lg:w-1/3 bg-white py-2 px-3">
         Dashboard, Welcome <?php echo ($_SESSION['user_s'])['first_name']." ".($_SESSION['user_s'])['last_name']; ?>
     </p>
 </div>
@@ -49,7 +49,7 @@ if(isset($_SESSION['user_type_s'])){
         while($row = pg_fetch_assoc($result))
         {
             $main_img = explode('_|', $row['images_path'])[0];
-            $output .= '<div class="w-1/2 lg:w-1/4 p-4">
+            $output .= '<div class="w-full md:w-1/2 lg:w-1/4 p-4">
             <div class="rounded-lg shadow-lg bg-white relative">
                 <img src="'.$main_img.'" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
                 <div class="py-4 px-4 flex flex-wrap">

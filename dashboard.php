@@ -23,11 +23,15 @@ if(isset($_SESSION['user_type_s'])){
     }else if ($_SESSION['user_type_s'] == CLIENT){
         header("LOCATION: ./welcome.php");
         ob_flush();  //Flushing output buffer after redirection
+    }else if ($_SESSION['user_type_s'] == INCOMPLETE){
+        header("LOCATION: ./406.php");
+        ob_flush();  //Flushing output buffer after redirection
     }
 } else {
     header("LOCATION: ./login.php");
     ob_flush();  //Flushing output buffer after redirection
 }
+
 ?>
 
 <div class="text-center flex flex-wrap flex-col py-4 content-center container mx-auto justify-center">

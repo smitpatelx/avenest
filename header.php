@@ -83,12 +83,20 @@ DESCRIPTION     : Header section
                                 echo '<a href="#" class="cursor-default mb-4 flex w-full bg-green-500 rounded px-3 py-1 text-base font-semibold normal-case text-white"> 
                                         Client
                                     </a>';
+                            }else if ($_SESSION['user_type_s'] == INCOMPLETE){
+                                echo '<a href="#" class="cursor-default mb-4 flex w-full bg-red-500 rounded px-3 py-1 text-base font-semibold normal-case text-white"> 
+                                        Incomplete
+                                    </a>';
                             }
+
                             echo '<a href="./logout.php" class="w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600">
                                     Logout
                                 </a>
                                 <a href="./change-password.php" class="w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600">
                                     Change Password
+                                </a>
+                                <a href="./update.php" class="w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600">
+                                    Update Info
                                 </a>';
 
                                 if ($_SESSION['user_type_s'] == ADMIN){

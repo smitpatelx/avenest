@@ -15,19 +15,7 @@ $desc   = "Register page includes fields for email, user information and passwor
 require("./header.php");
  
 if(isset($_SESSION['user_type_s'])){
-    if ($_SESSION['user_type_s'] == ADMIN){
-        header("LOCATION: ./admin.php");
-        ob_flush();  //Flushing output buffer after redirection
-    }else if ($_SESSION['user_type_s'] == AGENT){
-        header("LOCATION: ./dashboard.php");
-        ob_flush();  //Flushing output buffer after redirection
-    }else if ($_SESSION['user_type_s'] == DISABLED){
-        header("LOCATION: ./406.php");
-        ob_flush();  //Flushing output buffer after redirection
-    }else if ($_SESSION['user_type_s'] == CLIENT){
-        header("LOCATION: ./welcome.php");
-        ob_flush();  //Flushing output buffer after redirection
-    }
+    user_redirection();
 }
 
 if(is_get())
@@ -50,7 +38,7 @@ if(is_get())
     $primary_phone_number = "";
     $secondry_phone_number = "";
     $fax_number = "";
-    $contact_method = 1;
+    $contact_method = "e";
     $password = "";
     $confirm_password = "";
     $user_type = "c";

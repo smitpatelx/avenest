@@ -20,6 +20,7 @@ define('AGENT', 'a');
 define('CLIENT', 'c');
 define('PENDING', 'p');
 define('DISABLED', 'd');
+define('INCOMPLETE', 'i');
 
 //Cookies life span
 define('COOKIE_LIFESPAN', time() + (60*60*24*30));

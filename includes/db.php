@@ -77,7 +77,7 @@ function build_radio($value, $sticky) {
                 $output .= "<label class='flex items-center mr-4'>";
                 $output .= "<input class='focus:outline-none bg-white' name='contact_method' type='radio' value='".$row['value']."'";
                 
-                    if ( $row['value'] == $sticky ){
+                    if ( $row['method'] == (string)$sticky ){
                         $output .= " checked='checked' ";
                     }
 

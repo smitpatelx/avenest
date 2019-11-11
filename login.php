@@ -13,6 +13,10 @@ $banner = "Login";
 $desc   = "Login page includes fields for email and password.";
 require("./header.php");
 
+if(isset($_SESSION['user_type_s'])){
+    user_redirection();
+}
+
 if(is_get())
 {
     // Setting variables

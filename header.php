@@ -68,19 +68,19 @@ DESCRIPTION     : Header section
                             </a>';
                         if(isset($_SESSION['user_type_s'])){
                             if ($_SESSION['user_type_s'] == ADMIN){
-                                echo '<a href="#" class="flex w-full bg-blue-500 rounded px-3 py-1 text-base font-semibold normal-case text-white"> 
+                                echo '<a href="#" class="cursor-default mb-4 flex w-full bg-blue-500 rounded px-3 py-1 text-base font-semibold normal-case text-white"> 
                                         Admin
                                     </a>';
                             }else if ($_SESSION['user_type_s'] == AGENT){
-                                echo '<a href="#" class="flex w-full bg-yellow-500 rounded px-3 py-1 text-base font-semibold normal-case text-black"> 
+                                echo '<a href="#" class="cursor-default mb-4 flex w-full bg-yellow-500 rounded px-3 py-1 text-base font-semibold normal-case text-black"> 
                                         Agent
                                     </a>';
                             }else if ($_SESSION['user_type_s'] == DISABLED){
-                                echo '<a href="#" class="flex w-full bg-red-500 rounded px-3 py-1 text-base font-semibold normal-case text-white"> 
+                                echo '<a href="#" class="cursor-default mb-4 flex w-full bg-red-500 rounded px-3 py-1 text-base font-semibold normal-case text-white"> 
                                         Disabled
                                     </a>';
                             }else if ($_SESSION['user_type_s'] == CLIENT){
-                                echo '<a href="#" class="flex w-full bg-green-500 rounded px-3 py-1 text-base font-semibold normal-case text-white"> 
+                                echo '<a href="#" class="cursor-default mb-4 flex w-full bg-green-500 rounded px-3 py-1 text-base font-semibold normal-case text-white"> 
                                         Client
                                     </a>';
                             }

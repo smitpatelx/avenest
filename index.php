@@ -35,27 +35,27 @@ require("./header.php");
 <div class="p-4 md:p-24">
     <div class="flex flex-wrap flex-row">
         <div class="p-2 w-full lg:w-1/3">
-            <div class="bg-white shadow-xl flex flex-wrap flex-col">
+            <div class="rounded bg-white shadow-xl flex flex-wrap justify-center pt-2 px-2">
                 <img src="./images/home-1.png" alt="Home-1" class="w-full"/>
                 <p class="font-bold text-4xl text-center font-headline">Buy a Home</p>
                 <p class="text-lg text-center p-4 text-gray-600">Find your place with an immersive photo experience and the most listings, including things you won’t find anywhere else.</p>
-                <a href="./login.php" class="bg-white rounded border border-blue-600 hover:bg-primary hover:text-white text-primary py-2 px-3 font-semibold mb-10 mx-10 text-center">Start Buying</a>
+                <a href="./login.php" class="bg-white rounded border border-blue-600 hover:bg-primary hover:text-white text-primary py-2 px-3 font-semibold mb-10 mx-4 text-center">Start Buying</a>
             </div>
         </div>
         <div class="p-2 w-full lg:w-1/3">
-            <div class="bg-white shadow-xl flex flex-wrap flex-col">
+            <div class="rounded bg-white shadow-xl flex flex-wrap  justify-center pt-2 px-2">
                 <img src="./images/home-2.png" alt="Home-2" class="w-full"/>
                 <p class="font-bold text-4xl text-center font-headline">Sell a Home</p>
-                <p class="text-lg text-center p-4 text-gray-600">Whether you sell with new Avenest Offers or take another approach, we’ll help you navigate the path to a successful sale.</p>
-                <a href="./login.php" class="bg-white rounded border border-blue-600 hover:bg-primary hover:text-white text-primary py-2 px-3 font-semibold mb-10 mx-10 text-center">Start Selling</a>
+                <p class="text-lg text-center p-4 text-gray-600">Whether you sell with new Avenest Offers or take another approach, we’ll help you navigate the path to a successful sale. Cheers!</p>
+                <a href="./login.php" class="bg-white rounded border border-blue-600 hover:bg-primary hover:text-white text-primary py-2 px-3 font-semibold mb-10 mx-4 text-center">Start Selling</a>
             </div>
         </div>
         <div class="p-2 w-full lg:w-1/3">
-            <div class="bg-white shadow-xl flex flex-wrap flex-col">
+            <div class="rounded bg-white shadow-xl flex flex-wrap  justify-center pt-2 px-2">
                 <img src="./images/home-3.png" alt="Home-3" class="w-full"/>
                 <p class="font-bold text-4xl text-center font-headline">Rent a Home</p>
                 <p class="text-lg text-center p-4 text-gray-600">We’re creating a seamless online experience – from shopping on the largest rental network, to applying, to paying rent.</p>
-                <a href="./login.php" class="bg-white rounded border border-blue-600 hover:bg-primary hover:text-white text-primary py-2 px-3 font-semibold mb-10 mx-10 text-center">Start Renting</a>
+                <a href="./login.php" class="bg-white rounded border border-blue-600 hover:bg-primary hover:text-white text-primary py-2 px-3 font-semibold mb-10 mx-4 text-center">Start Renting</a>
             </div>
         </div>
     </div>

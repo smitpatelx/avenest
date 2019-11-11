@@ -31,8 +31,8 @@ if(isset($_SESSION['user_type_s'])){
 ?>
 
 <div class="text-center flex flex-wrap flex-col py-4 content-center  container mx-auto justify-center">
-    <p class="text-xl text-primary shadow-lg rounded w-auto lg:w-1/3 bg-white py-2 px-3">
-        Admin, Welcome  <?php echo ($_SESSION['user_s'])['first_name']." ".($_SESSION['user_s'])['last_name'] ?>
+    <p class="text-xl text-primary shadow-lg rounded w-auto lg:w-1/3 bg-white py-2 px-3 font-headline font-semibold">
+        Admin | Welcome  <?php echo ($_SESSION['user_s'])['first_name']." ".($_SESSION['user_s'])['last_name'] ?>
     </p>
 </div>
 
@@ -59,7 +59,7 @@ if(isset($_SESSION['user_type_s'])){
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $'.$row['price'].'</p>
             </div>
             <div class="w-full px-6 pb-4 flex justify-center">
-                <a href="./listing-display.php?listing_id='.$row['listing_id'].'" class="bg-gray-200 rounded-lg shadow py-2 px-4 cursor-pointer font-bold text-center text-gray-600 hover:text-gray-800">Read More</a>
+                <a href="./listing-display.php?listing_id='.$row['listing_id'].'" class="bg-primary hover:bg-blue-500 text-white rounded-lg shadow py-2 px-4 cursor-pointer font-bold text-center">Read More</a>
                 <a href="./listing-update.php?listing_id='.$row['listing_id'].'" class="bg-gray-200 rounded-lg shadow py-2 px-4 ml-2 cursor-pointer font-bold text-center text-gray-500 hover:text-gray-800">Edit</a>
             </div>
             

@@ -75,7 +75,7 @@ function build_radio($value, $sticky) {
             $output .= "<div class='flex flex-wrap'>";      
             while($row = pg_fetch_assoc($result)) {
                 $output .= "<label class='flex items-center mr-4'>";
-                $output .= "<input class='focus:outline-none bg-white' name='contact_method' type='radio' value='".$row['value']."'";
+                $output .= "<input class='focus:outline-none bg-white' name='contact_method' type='radio' value='".$row['method']."'";
                 
                     if ( $row['method'] == (string)$sticky ){
                         $output .= " checked='checked' ";

@@ -143,7 +143,7 @@ if(is_get())
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $con_password_helper ?></p>
             <div class="flex flex-wrap flex-row justify-center">
                 <div class="pr-2 py-2">
-                    <input type="submit" value="Change Password" class="focus:outline-none focus:shadow-outline w-full py-3 px-6 shadow rounded-lg bg-primary hover:bg-blue-500 text-white font-semibold cursor-pointer"/>
+                    <input type="submit" value="Change Password" class="focus:outline-none focus:shadow-outline w-full py-3 px-6 shadow rounded-lg bg-primary-500 hover:bg-blue-500 text-white font-semibold cursor-pointer"/>
                 </div>
                 <div class="pl-2 py-2">
                     <input type="reset" value="Reset" class="focus:outline-none focus:shadow-outline w-full py-3 px-6 shadow rounded-lg bg-gray-500 hover:bg-gray-600 text-white font-semibold cursor-pointer"/>

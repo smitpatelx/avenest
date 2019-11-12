@@ -45,6 +45,8 @@ if(is_get())
 } else if(is_post())
 {
     $salutations = trimP('salutations');
+    $email = $_SESSION['user_s']['email_address'];
+    $user_type = $_SESSION['user_s']['user_type'];
     $first_name = trimP('first_name');
     $last_name = trimP('last_name');
     $address_1 = trimP('address_1');
@@ -55,7 +57,7 @@ if(is_get())
     $primary_phone_number = trimP('primary_phone_number');
     $secondry_phone_number = trimP('secondry_phone_number');
     $fax_number = trimP('fax_number');
-    $contact_method = trimP('contact_method');
+    $contact_method = $_POST['contact_method'];
 
     $errors=0;
     $error="";
@@ -167,8 +169,17 @@ if(is_get())
         }
     }
 
+    if(isset($contact_method) && !empty($contact_method))
+    {
+        if(is_numeric($contact_method)){
+            $error .= "<br/>You entered \"".$contact_method."\" "."Contact Method must be alphabet.";
+            $errors+=1;
+            $contact_method = "";
+        }
+    }
+
     // If everything went smoothly, begin adding to database
-    if($errors<=0) {
+    if($errors===0) {
         
         $persons_query = "UPDATE persons SET ( first_name, last_name, street_address_1, street_address_2, city, province, postal_code, primary_phone_number, secondry_phone_number, fax_number, salutation, preferred_contact_method)   
                     = ( \$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$9, \$10, \$11, \$12) WHERE user_id = \$13 RETURNING *;";
@@ -184,6 +195,7 @@ if(is_get())
         //Check if current data in sessions match new data
         foreach ($currentPerson as $key => $value) {
             if($currentPerson[$key] != $_SESSION['user_s'][$key]){
+                echo "<br/>".$key." => ".$value;
                 //If not, update session variable
                 $_SESSION['user_s'][$key] = $currentPerson[$key];
             }

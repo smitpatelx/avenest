@@ -63,7 +63,7 @@ require("./header.php");
         <div class="rounded-lg shadow-lg">
             <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
-                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
+                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i> Ajax</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $10,00,000</p>
@@ -77,7 +77,7 @@ require("./header.php");
         <div class="rounded-lg shadow-lg">
             <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
-                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
+                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-red-600 py-1 px-2 ml-2">Sold</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i> Ajax</p><br/>
@@ -120,7 +120,7 @@ require("./header.php");
         <div class="rounded-lg shadow-lg">
             <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
-                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
+                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i> Ajax</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $10,00,000</p>
@@ -134,7 +134,7 @@ require("./header.php");
         <div class="rounded-lg shadow-lg">
             <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
-                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
+                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-red-600 py-1 px-2 ml-2">Sold</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i> Ajax</p><br/>
@@ -177,7 +177,7 @@ require("./header.php");
         <div class="rounded-lg shadow-lg">
             <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
-                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
+                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i> Ajax</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $10,00,000</p>
@@ -191,7 +191,7 @@ require("./header.php");
         <div class="rounded-lg shadow-lg">
             <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
-                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
+                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-red-600 py-1 px-2 ml-2">Sold</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i> Ajax</p><br/>
@@ -234,7 +234,7 @@ require("./header.php");
         <div class="rounded-lg shadow-lg">
             <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
-                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
+                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i> Ajax</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $10,00,000</p>
@@ -248,7 +248,7 @@ require("./header.php");
         <div class="rounded-lg shadow-lg">
             <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
-                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary py-1 px-2">Condo</p>
+                <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-red-600 py-1 px-2 ml-2">Sold</p>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i> Ajax</p><br/>

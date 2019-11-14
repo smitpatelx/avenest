@@ -150,13 +150,13 @@ if(is_get())
             <p class="pl-2 text-red-500 text-sm font-semibold"><?php echo $password_helper ?></p>
             <div class="flex flex-wrap flex-row mt-4 justify-center">
                 <div class="pr-2 py-2">
-                    <input type="submit" value="Login" class="focus:outline-none focus:shadow-outline w-full py-3 px-6 shadow rounded-lg hover:bg-primary bg-primary-300 text-white font-semibold cursor-pointer"/>
+                    <input type="submit" value="Login" class="focus:outline-none focus:shadow-outline w-full py-2 px-3 shadow-lg rounded hover:bg-primary-500 bg-primary-300 text-white font-semibold cursor-pointer"/>
                 </div>
                 <div class="pl-2 py-2">
-                    <input type="reset" value="Reset" class="focus:outline-none focus:shadow-outline w-full py-3 px-6 shadow rounded-lg bg-gray-500 hover:bg-gray-600 text-white font-semibold cursor-pointer"/>
+                    <input type="reset" value="Reset" class="focus:outline-none focus:shadow-outline w-full py-2 px-3 shadow-lg rounded bg-gray-500 hover:bg-gray-600 text-white font-semibold cursor-pointer"/>
                 </div>
             </div>
-            <div class="flex flex-wrap flex-col text-center p-2">
+            <div class="flex flex-wrap flex-col text-center text-sm">
                 <a href="./register.php" class="w-full font-semibold text-blue-600 hover:text-blue-700 underline">Do not have an account? Register Here</a>
             </div>
         </form>

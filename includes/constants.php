@@ -85,4 +85,9 @@ define('MIN_AREA_CODE', '200' );
 
 define('MAX_DIAL_SEQUENCE', '9999' );
 define('MIN_DIAL_SEQUENCE', '0000' );
+
+//Search Constants
+define('MAX_SEARCH_RESULTS', '200' );
+define('LISTINGS_PER_PAGE', '10' );
+
 ?>

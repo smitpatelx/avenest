@@ -1,0 +1,27 @@
+psql -d group04_db -U group04_admin -f lab7_bond_movies.sql
+
+User: group04_admin
+Pass: group04pswd
+Database: group04_db
+
+326B05
+
+\dt
+
+
+
+#!/bin/sh
+psql -U the_user the_database <<OMG
+BEGIN;
+
+\i file1.sql
+
+\i file2.sql
+
+COMMIT;
+OMG
+
+#eof
+
+$listings_query = "UPDATE listings SET ( status = \$1, price = \$2, headline = \$3, description = \$4, postal_code = \$5, images = \$6, images_path = \$7, city = \$8, property_options = \$9, province = \$10, bedrooms = \$11, bathrooms = \$12, address = \$13, area = \$14, phone = \$15, pets_friendly = \$16, updated_on = \$17)   
+                    WHERE listing_id = \$18 AND user_id = \$19;";

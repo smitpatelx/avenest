@@ -75,7 +75,6 @@ if(is_get())
     $area = trimP('area');
     $phone = trimP('phone');
     $pets_friendly = trimP('pets_friendly');
-    print_r(" Pets: ".$pets_friendly);
     $listing_status = trimP('listing_status');
 
     if(!isset($headline) || empty($headline))
@@ -257,10 +256,10 @@ if(is_get())
             </div>
             <div class="flex flex-wrap flex-row justify-center">
                 <div class="pr-3 py-2">
-                    <input type="submit" value="Add To Listing" class="focus:outline-none focus:shadow-outline w-full py-3 px-6 shadow-lg rounded-lg hover:bg-primary bg-primary-300 text-white font-semibold cursor-pointer"/>
+                    <input type="submit" value="Add To Listing" class="focus:outline-none focus:shadow-outline w-full text-sm py-2 px-3 shadow-lg rounded hover:bg-primary-500 bg-primary-300 text-white font-semibold cursor-pointer"/>
                 </div>
                 <div class="pr-3 py-2">
-                    <input type="reset" value="Clear" class="focus:outline-none focus:shadow-outline w-full py-3 px-6 shadow-lg rounded-lg bg-gray-500 hover:bg-gray-600 text-white font-semibold cursor-pointer"/>
+                    <input type="reset" value="Clear" class="focus:outline-none focus:shadow-outline w-full text-sm py-2 px-3 shadow-lg rounded bg-gray-500 hover:bg-gray-600 text-white font-semibold cursor-pointer"/>
                 </div>
             </div>
         </form>

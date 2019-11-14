@@ -43,28 +43,15 @@ DESCRIPTION     : Footer section
         </div> 
     </div>
     <div class="w-full upperline-nav pt-2 pb-1"></div>
-    
-    <!-- Import jquery -->
-    <script type="text/javascript" src="./includes/js/jquery.min.js"></script>
-    <script type="text/javascript" src="./includes/js/notiflix.min.js"></script>
-    <script type="text/javascript" src="./includes/js/js/all.min.js"></script>
-    <script type="text/javascript" src="./includes/js/custom.js"></script>
-
     <?php 
         echo notification_message(); 
-        // if(strlen(notification_message()) <= 0){
-        //     unset($_SESSION['session_messages']);
-        // }
     ?>
+    </div>
+    <!-- Import jquery -->
+    <script type="text/javascript" src="./includes/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./includes/js/custom.js"></script>
+    <noscript><strong>We're sorry but avenest doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript>
     
-    <script type="text/javascript">
-        // Notiflix.Loading.Init({ svgColor:"#0365f3", }); 
-        // Notiflix.Loading.Pulse();
-
-        // $(window).bind("load", function () {
-        //     Notiflix.Notify.Init({ distance:"50px", info: {background:"#0c82d8",}, }); 
-        //     Notiflix.Loading.Remove();
-        // });
-    </script>
+    <script src="./dist/js/app.js"></script>
 </body>
 </html>

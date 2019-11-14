@@ -62,13 +62,17 @@ if(is_get())
                 <div class="rounded-lg shadow-lg bg-white relative">
                     <img src="'.$main_img.'" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
                     <div class="py-4 px-4 flex flex-wrap">
-                        '.displayStatus($data['status']).'
+                        <div class="w-full flex flex-wrap justify-between">'.displayStatus($data['status']).'
+                            <a href="" class="text-red-600 hover:text-red-400"><i class="fas fa-heart fa-lg"></i></a>
+                        </div>
                         <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i>'.$data['address'].'</p><br/>
                         <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i>'.displayProperty('city', $data['city']).'</p><br/>
                         <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $'.$data['price'].'</p>
                     </div>
                     <div class="w-full px-6 pb-4 flex justify-center">
-                        <a href="./listing-update.php?listing_id='.$data['listing_id'].'" class="bg-gray-200 rounded-lg shadow py-2 px-4 cursor-pointer font-bold text-center text-gray-500 hover:text-gray-800">Edit</a>
+                        <a href="./listing-update.php?listing_id='.$data['listing_id'].'" class="bg-gray-300 shadow py-2 px-3 rounded cursor-pointer font-bold text-center text-gray-700 hover:text-gray-500">
+                            Edit <i class="far fa-edit ml-1"></i>
+                        </a>
                     </div>
                     
                 </div>

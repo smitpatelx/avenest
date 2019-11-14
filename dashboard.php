@@ -35,7 +35,7 @@ if(isset($_SESSION['user_type_s'])){
 ?>
 
 <div class="text-center flex flex-wrap flex-col py-4 content-center container mx-auto justify-center">
-    <p class="text-xl text-primary shadow-lg rounded w-auto lg:w-1/3 bg-white py-2 px-3 font-headline font-semibold">
+    <p class="text-xl text-primary-500 shadow-lg rounded w-auto lg:w-1/3 bg-white py-2 px-3 font-headline font-semibold">
         Dashboard | Welcome <?php echo ($_SESSION['user_s'])['first_name']." ".($_SESSION['user_s'])['last_name']; ?>
     </p>
 </div>
@@ -57,14 +57,18 @@ if(isset($_SESSION['user_type_s'])){
             <div class="rounded-lg shadow-lg bg-white relative">
                 <img src="'.$main_img.'" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
                 <div class="py-4 px-4 flex flex-wrap">
-                    '.displayStatus($row['status']).'
+                    <div class="w-full flex flex-wrap justify-between">'.displayStatus($row['status']).'
+                        <Like :user="'.$user_id.'" :post="'.$row['listing_id'].'"/>
+                    </div>
                     <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i>'.$row['address'].'</p><br/>
                     <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i>'.displayProperty('city', $row['city']).'</p><br/>
                     <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $'.$row['price'].'</p>
                 </div>
-                <div class="w-full px-6 pb-4 flex justify-center">
-                    <a href="./listing-display.php?listing_id='.$row['listing_id'].'" class="bg-primary hover:bg-blue-500 text-white rounded-lg shadow py-2 px-4 cursor-pointer font-bold text-center">Read More</a>
-                    <a href="./listing-update.php?listing_id='.$row['listing_id'].'" class="bg-gray-200 rounded-lg shadow py-2 px-4 ml-2 cursor-pointer font-bold text-center text-gray-500 hover:text-gray-800">Edit</a>
+                <div class="w-full px-6 pb-4 flex flex-wrap justify-center items-center text-sm">
+                    <a href="./listing-display.php?listing_id='.$row['listing_id'].'" class="bg-primary-500 hover:bg-blue-500 text-white shadow py-2 px-3 rounded cursor-pointer font-bold text-center">Read More <i class="fab fa-readme ml-1"></i></a>
+                    <a href="./listing-update.php?listing_id='.$row['listing_id'].'" class="bg-gray-300 shadow py-2 px-3 rounded ml-2 cursor-pointer font-bold text-center text-gray-700 hover:text-gray-500">
+                        Edit <i class="far fa-edit ml-1"></i>
+                    </a>
                 </div>
                 
             </div>

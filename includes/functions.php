@@ -53,12 +53,14 @@ function user_redirection() {
 function notification_message(){
     if( isset($_SESSION['session_messages']) ) {
         $msgs = $_SESSION['session_messages'];
+        $color = $_SESSION['session_messages_c'] ? $_SESSION['session_messages_c'] : 'bg-green-600 text-white';
+        $icon = $_SESSION['session_messages_i'] ? $_SESSION['session_messages_i'] : 'fas fa-check';
         $output = "";
-        $output .= "<script>Notiflix.Notify.Init({ cssAnimationStyle: 'from-left',position: 'left-top', distance:'70px', info: {background:'#0c82d8',}, }); ";
+        $output .= "<div>";
         foreach($msgs as $msg){
-            $output .= "Notiflix.Notify.Success('".$msg."');";
+            $output .= "<Notification icon='".$icon."' color='".$color."' msg='".$msg."' :timeout='3000'/>";
         }
-        $output .= "</script>";
+        $output .= "</div>";
         unset($_SESSION['session_messages']);
         return $output;
     }

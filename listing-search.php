@@ -56,7 +56,7 @@ require("./header.php");
                     </div>
                     <div class="w-1/4 pl-2 pb-2 pt-8 flex flex-wrap flex-row justify-end">
                         <div class="pl-2 pt-2">
-                            <input type="submit" value="Search" class="cursor-pointer w-full py-3 px-6 shadow rounded-lg hover:bg-primary bg-primary-300 text-white font-semibold cursor-pointerfocus:outline-none focus:shadow-outline"/>
+                            <input type="submit" value="Search" class="cursor-pointer w-full py-3 px-6 shadow rounded-lg hover:bg-primary-500 bg-primary-300 text-white font-semibold cursor-pointerfocus:outline-none focus:shadow-outline"/>
                         </div>
                     </div>
                 </div>

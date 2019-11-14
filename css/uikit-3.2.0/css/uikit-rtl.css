@@ -7266,7 +7266,7 @@ ul.uk-nav-sub {
 .uk-text-emphasis {
   color: #333 !important;
 }
-.uk-text-primary {
+.uk-text-primary-500 {
   color: #1e87f0 !important;
 }
 .uk-text-secondary {
@@ -12236,7 +12236,7 @@ iframe.uk-cover {
 .uk-card-secondary.uk-card-body .uk-text-primary,
 .uk-card-secondary > :not([class*='uk-card-media']) .uk-text-primary,
 .uk-overlay-primary .uk-text-primary,
-.uk-offcanvas-bar .uk-text-primary {
+.uk-offcanvas-bar .uk-text-primary-500 {
   color: #fff !important;
 }
 .uk-light .uk-text-secondary,

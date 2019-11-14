@@ -23,14 +23,12 @@ DESCRIPTION     : Header section
     
     <link rel="icon" type="image/png" href="./images/logo2.png"/>
     <!-- Import google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800|Playfair+Display:400,500,600,700,800" rel="stylesheet"/>
-    <link rel="stylesheet" href="./css/webd3201.css"/>
-    <link rel="stylesheet" href="./css/all.min.css"/>
-    <link rel="stylesheet" href="./css/tailwind.min.css"/>
-    <link rel="stylesheet" href="./css/notiflix.min.css"/>
+    <link rel="stylesheet" href="./dist/css/app.css"/>
 
 </head>
 <body>
+    <div id="app">
+    <!-- <HelloWorld></HelloWorld> -->
     <div class="w-full upperline-nav"></div>
     <div class="bg-gray-200">
     <div class="flex flex-wrap py-6 px-4 md:px-24 justify-between">

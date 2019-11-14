@@ -13,7 +13,7 @@ body {
   font-family: 'Playfair Display', serif !important;
 }
 
-.text-primary {
+.text-primary-500 {
   color: #0075ea;
 }
 
@@ -21,7 +21,7 @@ body {
   color: #0075ea;
 }
 
-.bg-primary {
+.bg-primary-500 {
   background: #0075ea;
 }
 

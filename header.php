@@ -24,11 +24,16 @@ DESCRIPTION     : Header section
     <link rel="icon" type="image/png" href="./images/logo2.png"/>
     <!-- Import google fonts -->
     <link rel="stylesheet" href="./dist/css/app.css"/>
-
+    <style>
+        .upperline-nav{
+            background: linear-gradient(90deg, rgba(0,117,234,1) 0%, rgba(96,175,255,1) 100%);
+            padding: 7px 0 0 0;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-    <!-- <HelloWorld></HelloWorld> -->
+
     <div class="w-full upperline-nav"></div>
     <div class="bg-gray-200">
     <div class="flex flex-wrap py-6 px-4 md:px-24 justify-between">

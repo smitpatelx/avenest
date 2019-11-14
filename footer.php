@@ -42,11 +42,11 @@ DESCRIPTION     : Footer section
             </p>
         </div> 
     </div>
-    <div class="w-full upperline-nav pt-2 pb-1"></div>
     <?php 
         echo notification_message(); 
     ?>
     </div>
+    <div class="w-full upperline-nav py-4"></div>
     <!-- Import jquery -->
     <script type="text/javascript" src="./includes/js/jquery.min.js"></script>
     <script type="text/javascript" src="./includes/js/custom.js"></script>

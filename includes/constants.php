@@ -90,4 +90,5 @@ define('MIN_DIAL_SEQUENCE', '0000' );
 define('MAX_SEARCH_RESULTS', '200' );
 define('LISTINGS_PER_PAGE', '10' );
 
+define('IMAGE_PATH', '/images/listing/');
 ?>

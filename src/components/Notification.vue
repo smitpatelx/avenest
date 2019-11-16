@@ -37,6 +37,10 @@ export default {
             type: String,
             required: false,
             default: 'bg-primary-500 text-white'
+        },
+        change:{
+            required: false,
+            default: 'false'
         }
     },
     methods: {
@@ -44,13 +48,25 @@ export default {
             if(this.show){
                 this.show = false;
             }
+        },
+        refresh(){
+            console.log("refresh");
+            this.show = true;
+            setTimeout(()=>{
+                this.show = false;
+            },this.timeout);
         }
     },
-    mounted(){
+    created() {
         this.show = true;
         setTimeout(()=>{
             this.show = false;
         },this.timeout);
+    },
+    watch:{
+        change(){
+            this.refresh();
+        }
     }
 }
 </script>

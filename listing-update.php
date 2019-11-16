@@ -70,6 +70,7 @@ if(is_get())
             $price = $data['price'] ? $data['price'] : "";
             $address = $data['address'] ? $data['address'] : "";  
             $images = $data['images'] ? $data['images'] : "";
+            $images_path = $data['images_path'] ? $data['images_path'] : "";
             $property_option = $data['property_options'] ? explode('_|', $data['property_options']) : [2,4];
             $provinces = $data['province'] ? $data['province'] : "";
             $bedrooms = $data['bedrooms'] ? $data['bedrooms'] : "";
@@ -205,17 +206,14 @@ if(is_get())
     if($errors<=0) {
         $current_date = date("Y-m-d",time());
         $user_id = ($_SESSION['user_s'])['user_id'];
-
-        $images_path = ['./images/listing/default.svg'];
-        $images_path = implode('_|', $images_path);
         
         $property_option = implode('_|', $property_option);
 
-        $listings_query = "UPDATE listings SET ( status, price, headline, description, postal_code, images, images_path, city, property_options, province, bedrooms, bathrooms, address, area, phone, pets_friendly, updated_on)   
-                    = ( \$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$9, \$10, \$11, \$12, \$13, \$14 , \$15, \$16, \$17) WHERE listing_id = \$18 AND user_id = \$19 RETURNING listing_id, user_id;";
+        $listings_query = "UPDATE listings SET ( status, price, headline, description, postal_code, images, city, property_options, province, bedrooms, bathrooms, address, area, phone, pets_friendly, updated_on)   
+                    = ( \$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$9, \$10, \$11, \$12, \$13, \$14 , \$15, \$16 ) WHERE listing_id = \$17 AND user_id = \$18 RETURNING listing_id, user_id;";
 
         $listings_prepare =  db_prepare('update_listing', $listings_query);
-        $listings_exe = db_execute('update_listing', array($listing_status, $price, $headline, $description, $postal_code, $images, $images_path, $city, $property_option, $provinces, $bedrooms, $bathrooms, $address, $area, $phone, $pets_friendly, $current_date, (int)$listing_id, (int)$user_id));
+        $listings_exe = db_execute('update_listing', array($listing_status, $price, $headline, $description, $postal_code, $images, $city, $property_option, $provinces, $bedrooms, $bathrooms, $address, $area, $phone, $pets_friendly, $current_date, (int)$listing_id, (int)$user_id));
         
         if(pg_num_rows($listings_exe) > 0) {
             $session_msg[] = "Listing updated successfully";
@@ -243,7 +241,13 @@ if(is_get())
             <p class="text-left font-bold text-gray-700 my-2 text-4xl font-headline">Updating Listing id: <span class="font-sans text-gray-500"><?php echo $listing_id; ?></span></p>
             <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>
         </div>
-    <?php } else { ?>
+    <?php } else { 
+        $tt = explode('_|', $images_path);
+        $imgArray= "[{path:'".$tt[0]."'},{path:'".$tt[1]."'},{path:'".$tt[2]."'},{path:'".$tt[3]."'}]";
+        ?>
+    <div>
+        <ImageUpload :listing_id="<?php echo $listing_id; ?>" :imagearray="<?php echo $imgArray; ?>"/>
+    </div>
     <form class="h-auto w-full lg:w-2/3 xl:w-1/2 px-8 my-4" method="post" action="<?php echo $_SERVER['PHP_SELF'].'?listing_id='.$listing_id; ?>" enctype="multipart/form-data">
         <p class="text-left font-bold text-gray-700 my-2 text-4xl mt-10 font-headline">Updating Listing id: <span class="font-sans text-gray-500"><?php echo $listing_id; ?></span></p>
         <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>

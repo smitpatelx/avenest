@@ -174,7 +174,7 @@ if(is_get())
         $current_date = date("Y-m-d",time());
         $user_id = ($_SESSION['user_s'])['user_id'];
 
-        $images_path = ['./images/listing/default.svg'];
+        $images_path = ['./images/listing/default.svg','./images/listing/default.svg','./images/listing/default.svg','./images/listing/default.svg'];
         $images_path = implode('_|', $images_path);
         
         $property_option = implode('_|', $property_option);

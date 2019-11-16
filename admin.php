@@ -51,13 +51,18 @@ if(isset($_SESSION['user_type_s'])){
     $output = "";
     while($row = pg_fetch_assoc($result))
     {
+        $sdasd = $row['listing_id'];
+        $likes = "SELECT * FROM favourites WHERE user_id = '$user_id' AND listing_id = '$sdasd';";
+        $res2 = pg_query($conn,$likes);
+        $liked =pg_num_rows($res2)>0 ? 'true' : 'false';
+
         $main_img = explode('_|', $row['images_path'])[0];
         $output .= '<div class="w-full md:w-1/2 lg:w-1/4 p-4">
         <div class="rounded-lg shadow-lg bg-white relative">
-            <img src="'.$main_img.'" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
+            <img src="'.$main_img.'" alt="homes" class="cursor-pointer w-full object-cover shadow rounded-t-lg h-64" onclick="location.href=\'./listing-display.php?listing_id='.$row['listing_id'].'\'"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <div class="w-full flex flex-wrap justify-between">'.displayStatus($row['status']).'
-                    <a href="" class="text-red-600 hover:text-red-400"><i class="fas fa-heart fa-lg"></i></a>
+                    <Like liked="'.$liked.'" :user="'.$user_id.'" :post="'.$row['listing_id'].'"/>
                 </div>
                 <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i>'.$row['address'].'</p><br/>
                 <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i>'.displayProperty('city', $row['city']).'</p><br/>
@@ -71,7 +76,7 @@ if(isset($_SESSION['user_type_s'])){
             </div>
             
         </div>
-    </div>';
+        </div>';
     }
 
     echo $output;

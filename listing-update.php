@@ -84,6 +84,11 @@ if(is_get())
 
         } else {
             $error .= "<br/>Post with listing_id: ".$listing_id." not present OR you dont own this post.";
+
+            $session_msg[] = "You dont own that post.";
+            $_SESSION['session_messages'] = $session_msg;
+            user_redirection();
+            exit();
         }
     }
 

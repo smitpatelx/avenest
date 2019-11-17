@@ -143,14 +143,31 @@ function displayStatus($val){
     }
 }
 
-function displayProperty($table, $val){
+function displayProperty($table, $val, $value = 'value', $property= 'property'){
     $conn = db_connect();
     $sql = "SELECT * FROM $table;";
     $query = pg_query($conn, $sql);
 
     while($row = pg_fetch_assoc($query)){
-        if($row['value']=$val){
-            return ucwords($row['property']);
+        if($row[$value]=$val){
+            $val = isset($row[$property])?$row[$property]:$row[$value];
+            return ucwords($val);
         }
     }
+}
+
+function displayPropertyOptions($table, $val){
+    $val = explode('_|', $val);
+    $conn = db_connect();
+    $sql = "SELECT * FROM $table;";
+    $query = pg_query($conn, $sql);
+
+    $output = "";
+    while($row = pg_fetch_assoc($query)){
+        if( in_array($row['value'], $val) ){
+            $val2 = isset($row['property'])?$row['property']:$row['value'];
+            $output.= ucwords($val2).", ";
+        }
+    }
+    return $output;
 }

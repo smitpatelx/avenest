@@ -32,7 +32,7 @@ require("./header.php");
     </div>
     <!-- Listings Results -->
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white bg-white">
             <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">Detached</p>
@@ -46,7 +46,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-600 py-1 px-2">Attached</p>
@@ -60,7 +60,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
@@ -74,7 +74,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
@@ -89,7 +89,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">Detached</p>
@@ -103,7 +103,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-600 py-1 px-2">Attached</p>
@@ -117,7 +117,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
@@ -131,7 +131,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
@@ -146,7 +146,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">Detached</p>
@@ -160,7 +160,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-600 py-1 px-2">Attached</p>
@@ -174,7 +174,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
@@ -188,7 +188,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
@@ -203,7 +203,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">Detached</p>
@@ -217,7 +217,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-600 py-1 px-2">Attached</p>
@@ -231,7 +231,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
@@ -245,7 +245,7 @@ require("./header.php");
         </div>
     </div>
     <div class="w-1/4 p-4">
-        <div class="rounded-lg shadow-lg">
+        <div class="rounded-lg shadow-lg bg-white">
             <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
             <div class="py-4 px-4 flex flex-wrap">
                 <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>

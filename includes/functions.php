@@ -129,4 +129,11 @@ function display_phone_number($phonenumber)
     return $phonenumber;
 }
 
+function is_bit_set($power, $decimal) {
+	if((pow(2,$power)) & ($decimal)) 
+		return 1;
+	else
+		return 0;
+} 
+
 ?>

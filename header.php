@@ -46,7 +46,7 @@ DESCRIPTION     : Header section
             <a href="./index.php" class="px-3 py-1 mr-1 lg:mr-3 text-blue-600 hover:text-gray-500">
                 Home
             </a>
-            <a href="./listing-search.php" class="hidden md:flex px-3 py-1 mr-1 lg:mr-3 text-blue-600 hover:text-gray-500"> 
+            <a href="./listing-city-select.php" class="hidden md:flex px-3 py-1 mr-1 lg:mr-3 text-blue-600 hover:text-gray-500"> 
                 Listings
             </a>
             <div id="trigger" class="flex flex-wrap flex-col">
@@ -66,7 +66,7 @@ DESCRIPTION     : Header section
                     <div tabindex="0" id="target" class="z-50 absolute hidden flex-wrap bg-white p-2 rounded-lg shadow-lg" style="width:13rem; margin-left:-11rem;">
                         <?php
 
-                        echo '<a href="./listing-search.php" class="flex md:hidden w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600"> 
+                        echo '<a href="./listing-city-select.php" class="flex md:hidden w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600"> 
                                 Listings
                             </a>';
                         if(isset($_SESSION['user_type_s'])){

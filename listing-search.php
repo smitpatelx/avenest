@@ -12,40 +12,58 @@ $date   = "SEPT 15, 2019";
 $banner = "Listing search";
 $desc   = "Listing search page use to search listing.";
 require("./header.php");
+
+if(is_get()){
+    $errors=0;
+    $error="";
+    $city = trimG('city');
+
+    if(!isset($city) || empty($city)){
+        $errors++;
+        $error .= "<br/>City required.";
+    } else if(!is_numeric($city)){
+        $errors++;
+        $error .= "<br/>City must be numeric.";
+    }
+
+    if($errors>0){
+        $session_msg[] = "City Required";
+        $_SESSION['session_messages'] = $session_msg;
+        header("LOCATION: ./listing-city-select.php");
+        ob_flush();
+        exit();
+    }
+}
 ?>
     <!-- The form will show all listings in an orginized fashion 
          based on the users preferance  -->
-    <div class="flex flex-wrap flex-col w-full">
+    <div class="flex flex-wrap flex-col w-full h-screen">
         <div class="w-full px-4 md:px-24 py-4">
-            <form method="get" action="./listing-search-results.php" class="rounded-lg py-4 pb-6 px-10 bg-gray-400 flex flex-wrap flex-row mt-4 xl:mt-6">
-                <div class="w-full py-2 rounded-lg flex flex-wrap flex-row">
-                    <p class="w-full text-lg text-gray-700 font-semibold pb-2">Search any word</p>
-                    <input autofocus type="text" name="search" class="w-11/12 shadow rounded-l-lg py-3 px-4 focus:outline-none focus:shadow-outline"/>
-                    <div class="w-1/12 shadow rounded-r-lg bg-white text-yellow-600 p-3 text-center">
-                        <i class="fa fa-search"></i>
-                    </div>
+            <?php if($errors>0) { ?>
+            <div class="w-full mb-6 bg-white rounded-lg shadow-lg py-3 px-4">
+                <p class="text-center font-bold text-gray-700 my-2 text-4xl font-headline">Error - City</p>
+                <p class="text-center text-center pt-4 text-red-500 text-base"><?php echo $error ?></p>
+            </div>
+            <?php } ?>
+            <form method="get" action="./listing-search-results.php" class="w-full shadow rounded-lg py-4 px-4 bg-gray-400 flex flex-wrap flex-row mt-4 xl:mt-6">
+                <p class="w-full text-center font-bold text-gray-700 my-2 text-2xl font-headline">Listing Search</p>
+                <div class="w-1/3 px-2">
+                    <p class="text-lg font-normal py-2 text-black">Search any word</p>
+                    <input autofocus type="text" name="search" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg my-2 bg-white focus:bg-gray-100"/>
                 </div>
-                <div class="w-full flex flex-wrap flex-row">
-                    <div class="w-1/4 pr-2 py-2">
-                        <p class="text-lg text-gray-700 font-semibold pb-2">City</p>
-                        <select name="city" class="cursor-pointer w-full py-3 px-4 shadow rounded-lg focus:outline-none focus:shadow-outline">
-                            <option value="ajax">Ajax</option>
-                            <option value="oshawa">Oshawa</option>
-                            <option value="pickering">Pickering</option>
-                            <option value="whitby">Whitby</option>
-                        </select>
-                    </div>
-                    <div class="w-1/4 pr-2 py-2">
-                        <p class="text-lg text-gray-700 font-semibold pb-2">Minimum Price</p>
-                        <select name="min_price" class="cursor-pointer w-full py-3 px-4 shadow rounded-lg focus:outline-none focus:shadow-outline">
+                <?php build_simple_dropdown('city', 'property', $city);?>
+                <div class="w-1/3 flex flex-wrap">
+                    <div class="w-1/2 px-2">
+                        <p class="text-lg font-normal py-2 text-black">Minimum Price</p>
+                        <select name="min_price" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg my-2 bg-white focus:bg-gray-100">
                             <option value="50000">50 K</option>
                             <option value="100000">100 K</option>
                             <option value="150000">150 K</option>
                         </select>
                     </div>
-                    <div class="w-1/4 pr-2 py-2">
-                        <p class="text-lg text-gray-700 font-semibold pb-2">Maximum Price</p>
-                        <select name="max_price" class="cursor-pointer w-full py-3 px-4 shadow rounded-lg focus:outline-none focus:shadow-outline">
+                    <div class="w-1/2 px-2">
+                        <p class="text-lg font-normal py-2 text-black">Maximum Price</p>
+                        <select name="max_price" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg my-2 bg-white focus:bg-gray-100">
                             <option value="50000">50 K</option>
                             <option value="100000">100 K</option>
                             <option value="150000">150 K</option>
@@ -54,74 +72,16 @@ require("./header.php");
                             <option value="300000">300 K</option>
                         </select>
                     </div>
-                    <div class="w-1/4 pl-2 pb-2 pt-8 flex flex-wrap flex-row justify-end">
-                        <div class="pl-2 pt-2">
-                            <input type="submit" value="Search" class="cursor-pointer w-full py-3 px-6 shadow rounded-lg hover:bg-primary-500 bg-primary-300 text-white font-semibold cursor-pointerfocus:outline-none focus:shadow-outline"/>
-                        </div>
+                </div>
+                <div class="w-full px-2 py-2 flex flex-wrap justify-end items-center">
+                    <div class="pl-2 pt-2">
+                        <input type="submit" value="Search" class="focus:outline-none focus:shadow-outline w-full text-lg py-2 px-3 shadow-lg rounded hover:bg-primary-500 bg-primary-300 text-white font-semibold cursor-pointer"/>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    <div class="flex flex-wrap flex-row w-full py-10 px-6 xl:px-32">
-        <div class="w-1/2 lg:w-1/4 p-4">
-            <div class="rounded-lg shadow-lg">
-                <img src="./images/houses/1-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
-                <div class="py-4 px-4 flex flex-wrap">
-                    <p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">Detached</p>
-                    <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
-                    <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i> Ajax</p><br/>
-                    <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $10,00,000</p>
-                </div>
-                <div class="w-full pb-4 text-center">
-                    <a class="cursor-pointer font-semibold underline text-center text-gray-600 hover:text-gray-800">Read More</a>
-                </div>
-            </div>
-        </div>
-        <div class="w-1/2 lg:w-1/4 p-4">
-            <div class="rounded-lg shadow-lg">
-                <img src="./images/houses/2-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
-                <div class="py-4 px-4 flex flex-wrap">
-                    <p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-600 py-1 px-2">Attached</p>
-                    <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
-                    <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i> Ajax</p><br/>
-                    <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $10,00,000</p>
-                </div>
-                <div class="w-full pb-4 text-center">
-                    <a class="cursor-pointer font-semibold underline text-center text-gray-600 hover:text-gray-800">Read More</a>
-                </div>
-            </div>
-        </div>
-        <div class="w-1/2 lg:w-1/4 p-4">
-            <div class="rounded-lg shadow-lg">
-                <img src="./images/houses/3-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
-                <div class="py-4 px-4 flex flex-wrap">
-                    <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
-                    <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
-                    <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i> Ajax</p><br/>
-                    <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $10,00,000</p>
-                </div>
-                <div class="w-full pb-4 text-center">
-                    <a class="cursor-pointer font-semibold underline text-center text-gray-600 hover:text-gray-800">Read More</a>
-                </div>
-            </div>
-        </div>
-        <div class="w-1/2 lg:w-1/4 p-4">
-            <div class="rounded-lg shadow-lg">
-                <img src="./images/houses/4-min.jpg" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
-                <div class="py-4 px-4 flex flex-wrap">
-                    <p class="w-auto text-white text-xs shadow font-semibold rounded bg-primary-500 py-1 px-2">Condo</p>
-                    <p class="w-auto text-white text-xs shadow font-semibold rounded bg-red-600 py-1 px-2 ml-2">Sold</p>
-                    <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i> 5 bonwill st., L1L 4K3</p><br/>
-                    <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i> Ajax</p><br/>
-                    <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $10,00,000</p>
-                </div>
-                <div class="w-full pb-4 text-center">
-                    <a class="cursor-pointer font-semibold underline text-center text-gray-600 hover:text-gray-800">Read More</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
 <?php
 require("./footer.php");

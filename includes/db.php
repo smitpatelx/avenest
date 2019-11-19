@@ -133,13 +133,13 @@ function build_radio($value, $sticky) {
 
 function displayStatus($val){
     if($val==LISTING_STATUS_OPEN){
-        return '<p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-500 py-1 px-2">Open</p>';
+        return '<p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-500 py-1 px-2 leading-tight flex justify-center items-center">Open</p>';
     } else if($val==LISTING_STATUS_CLOSE){
-        return '<p class="w-auto text-white text-xs shadow font-semibold rounded bg-red-500 py-1 px-2">Closed</p>';
+        return '<p class="w-auto text-white text-xs shadow font-semibold rounded bg-red-500 py-1 px-2 leading-tight flex justify-center items-center">Closed</p>';
     } else if($val==LISTING_STATUS_SOLD){
-        return '<p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2">Sold</p>';
+        return '<p class="w-auto text-black text-xs shadow font-semibold rounded bg-yellow-500 py-1 px-2 leading-tight flex justify-center items-center">Sold</p>';
     } else if($val==LISTING_STATUS_HIDDEN){
-        return '<p class="w-auto text-white text-xs shadow font-semibold rounded bg-gray-500 py-1 px-2">Hidden</p>';
+        return '<p class="w-auto text-white text-xs shadow font-semibold rounded bg-gray-500 py-1 px-2 leading-tight flex justify-center items-center">Hidden</p>';
     }
 }
 
@@ -149,7 +149,7 @@ function displayProperty($table, $val, $value = 'value', $property= 'property'){
     $query = pg_query($conn, $sql);
 
     while($row = pg_fetch_assoc($query)){
-        if($row[$value]=$val){
+        if($row[$value]==$val){
             $val = isset($row[$property])?$row[$property]:$row[$value];
             return ucwords($val);
         }

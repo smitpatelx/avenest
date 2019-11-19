@@ -53,8 +53,8 @@ function user_redirection() {
 function notification_message(){
     if( isset($_SESSION['session_messages']) ) {
         $msgs = $_SESSION['session_messages'];
-        $color = $_SESSION['session_messages_c'] ? $_SESSION['session_messages_c'] : 'bg-green-600 text-white';
-        $icon = $_SESSION['session_messages_i'] ? $_SESSION['session_messages_i'] : 'fas fa-check';
+        $color = isset($_SESSION['session_messages_c']) ? $_SESSION['session_messages_c'] : 'bg-green-600 text-white';
+        $icon = isset($_SESSION['session_messages_i']) ? $_SESSION['session_messages_i'] : 'fas fa-check';
         $output = "";
         $output .= "<div>";
         foreach($msgs as $msg){

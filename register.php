@@ -238,36 +238,35 @@ if(is_get())
             $currentUser = pg_fetch_assoc($id_exe);
 
             $persons_query = "INSERT INTO persons (user_id, first_name, last_name, street_address_1, street_address_2, city, province, postal_code, primary_phone_number, secondry_phone_number, fax_number, salutation, preferred_contact_method)  
-                        VALUES (\$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$9, \$10, \$11, \$12, \$13);";
-            
-
+                        VALUES (\$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$9, \$10, \$11, \$12, \$13) RETURNING *;";
             $persons_prepare =  db_prepare('insert_new_person', $persons_query);
             $persons_exe = db_execute('insert_new_person', array($currentUser['user_id'], $first_name, $last_name, $address_1, $address_2, $city, $provinces,
                     $postal_code, $primary_phone_number, $secondry_phone_number, $fax_number, $salutations, $contact_method));
 
-            $get_person_sql = "SELECT * FROM persons WHERE persons.user_id = \$1";
-            $get_person_prepare = db_prepare('get_person', $get_person_sql);
-            $get_person_exe = db_execute('get_person', array($currentUser['user_id']));
-            $currentPerson = pg_fetch_assoc($get_person_exe);
+            if($persons_exe){
+                $currentPerson = pg_fetch_assoc($persons_exe);
 
-            unset($currentPerson['user_id']);
-            unset($currentPerson['password']);
+                unset($currentPerson['user_id']);
+                unset($currentPerson['password']);
 
-            //Set session variable
-            $_SESSION['user_s'] = array_merge($currentUser, $currentPerson);
-            $_SESSION['user_type_s'] = $currentUser['user_type'];
+                //Set session variable
+                $_SESSION['user_s'] = array_merge($currentUser, $currentPerson);
+                $_SESSION['user_type_s'] = $currentUser['user_type'];
 
-            $cookie_currentUser =  $_SESSION['user_s'];
-            $cookie_currentUser = implode("|",$cookie_currentUser);
+                $cookie_currentUser =  $_SESSION['user_s'];
+                $cookie_currentUser = implode("_|",$cookie_currentUser);
 
-            setcookie("LOGIN_COOKIE", $cookie_currentUser, COOKIE_LIFESPAN);
+                setcookie("LOGIN_COOKIE", $cookie_currentUser, COOKIE_LIFESPAN);
 
-            $session_msg[] = "Successfully registered user";
-            $_SESSION['session_messages'] = $session_msg;
+                $session_msg[] = "Successfully registered user";
+                $_SESSION['session_messages'] = $session_msg;
 
-            //Redirect user to their respective page after login
-            user_redirection();
-            exit();
+                //Redirect user to their respective page after login
+                user_redirection();
+                exit();
+            } else {
+                $error .= "<br/>Error inserting in persons";
+            }
         }
 
         $password = "";

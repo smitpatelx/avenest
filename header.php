@@ -23,6 +23,7 @@ DESCRIPTION     : Header section
     
     <link rel="icon" type="image/png" href="./images/logo2.png"/>
     <!-- Import google fonts -->
+    <link rel="stylesheet" href="./css/webd3201.css"/>
     <link rel="stylesheet" href="./dist/css/app.css"/>
     <style>
         .upperline-nav{

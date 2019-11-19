@@ -18,6 +18,7 @@ BEGIN;
 \i ./property_options.sql
 \i ./provinces.sql
 \i ./salutations.sql
+\i ./favourites.sql
 
 COMMIT;
 OMG

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <notifications group="generic" :classes="notify_color" position="bottom left"/>
         <div class="w-auto flex flex-wrap justify-center items-center px-16">
             <div class="w-1/4 p-3 relative" v-for="(data, i) in image_data" :key="i">
                 <div v-if="default_selected==i" class="absolute top-0 left-0 pt-4 pl-4">
@@ -18,21 +19,16 @@
                 </div>
             </div>
         </div>
-        <div>
-            <Notification v-if="notify" :change="selected" :icon="icon" :msg="msg" :timeout="3000" :color="notify_color"/>
-        </div>
     </div>
 </template>
 
 <script>
 import { SlideXLeftTransition } from 'vue2-transitions';
-import Notification from './Notification';
 import axios from 'axios';
 
 export default {
     components: {
         SlideXLeftTransition,
-        Notification
     },
     data(){
         return{
@@ -40,10 +36,7 @@ export default {
             default_selected: 0,
             files: [],
             image_data: [],
-            notify: false,
-            msg: '',
-            icon: '',
-            notify_color: 'bg-red-600 text-white'
+            notify_color: 'error vue-notification'
         }
     },
     props:{
@@ -70,19 +63,20 @@ export default {
                 data: bodyFormData,
                 headers: {'Content-Type': 'multipart/form-data' }
             }).then((data)=>{
-                this.notify_color = "bg-green-600 text-white";
-                this.icon = "fas fa-check";
-                this.msg = "Default Image Changed";
-                this.notify = true;
-
+                this.notify_color = "success vue-notification";
+                this.$notify({
+                    group: 'generic',
+                    title: 'Success!',
+                    text: 'Default Image Changed',
+                });
                 location.reload(true);
-                // const zero = this.image_data[0];
-                // this.image_data[0] = this.image_data[val];
-                // this.image_data[val] = zero;
-
-                // console.log(this.image_data);
             }).catch((err)=>{
-                console.log("Error Changing Selection: ",err);
+                this.notify_color = "error vue-notification";
+                this.$notify({
+                    group: 'generic',
+                    title: 'Opps!',
+                    text: 'Error changing default image'
+                });
             });
         },
         previewFiles(index, event){
@@ -91,11 +85,12 @@ export default {
             this.files[index] = this.$refs.image_file[index].files;
 
             if ((this.files[index][0].size/1000) > 1000) {
-                this.notify_color = "bg-red-600 text-white";
-                this.icon = "fas fa-exclamation-triangle";
-                this.msg = "Image greater than 1 MB";
-                this.notify = true;
-            
+                this.notify_color = "error vue-notification";
+                this.$notify({
+                    group: 'generic',
+                    title: 'Opps!',
+                    text: 'Image greater than 1 MB'
+                });
                 this.$refs[form][0].reset();
             } else {
                 // console.log(this.$refs[form][0]);
@@ -123,9 +118,20 @@ export default {
                 headers: {'Content-Type': 'multipart/form-data' }
             })
             .then((data)=>{
-                console.log(data);
+                this.notify_color = "success vue-notification";
+                this.$notify({
+                    group: 'generic',
+                    title: 'Success!',
+                    text: 'Image uploaded to server'
+                });
             })
             .catch((err)=>{
+                this.notify_color = "error vue-notification";
+                this.$notify({
+                    group: 'generic',
+                    title: 'Oops!',
+                    text: 'Error uploaded to server'
+                });
                 console.log("Error Post: ",err);
             });
         },
@@ -140,9 +146,9 @@ export default {
             s.focus();
         },0);
         // this.$refs[1].autofocus=true;
-    },
-    watch:{
-        
     }
 }
 </script>
+<style lang="scss">
+
+</style>

@@ -3,7 +3,7 @@
 -- AUTHORS:						Smit Patel
 -- LAST MODIFIED:		        OCT 30, 2019
 
-DROP TABLE IF EXISTS listings;
+DROP TABLE IF EXISTS listings CASCADE;
 
 CREATE TABLE listings(
 	listing_id int not null primary key default nextval('listing_id_seq'),

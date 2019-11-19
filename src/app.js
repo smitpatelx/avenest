@@ -4,6 +4,9 @@ import '@fortawesome/fontawesome-free/js/all.min.js';
 import Like from './components/Like';
 import Notification from './components/Notification';
 import imageupload from './components/ImageUpload';
+import Notifications from 'vue-notification';
+
+Vue.use(Notifications);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -202,7 +202,7 @@ if(is_get())
         }
 
         $cookie_currentUser =  $_SESSION['user_s'];
-        $cookie_currentUser = implode("|",$cookie_currentUser);
+        $cookie_currentUser = implode("_|",$cookie_currentUser);
         setcookie("LOGIN_COOKIE", $cookie_currentUser, COOKIE_LIFESPAN);
 
         $session_msg[] = "Updated Successfully";

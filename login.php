@@ -27,7 +27,7 @@ if(is_get())
 
     if(isset($_COOKIE['LOGIN_COOKIE']))
     {
-        $login_cookie = explode("|",$_COOKIE['LOGIN_COOKIE']);
+        $login_cookie = explode("_|",$_COOKIE['LOGIN_COOKIE']);
         $cookie_email = $login_cookie[2];
         $email = $cookie_email;
         $password= "";  
@@ -81,7 +81,7 @@ if(is_get())
     if($errors<=0) {
         $password = hashmd5($password);
         $last_access = date("Y-m-d",time());
-
+        
         $query1 = "SELECT * 
         FROM users
         WHERE users.email_address = \$1 AND users.password = \$2";
@@ -89,26 +89,27 @@ if(is_get())
         $prepare1 = db_prepare('user_exist', $query1);
         $exe1 = db_execute('user_exist', array($email, $password));
 
-        if(pg_num_rows($exe1) <= 0){
+        if(pg_num_rows($exe1) == 0){
             $error = "User with this email and password doesn't exist";
             $password = "";
         } else {
             $query2 = "UPDATE users SET last_access = '".$last_access."'
-                                                  WHERE users.email_address = \$1 AND users.password = \$2";
-            $prepare2 =  db_prepare('update_last_access', $query2);
+                                                  WHERE users.email_address = \$1 AND users.password = \$2 ;";
+            db_prepare('update_last_access', $query2);
             $exe2 = db_execute('update_last_access', array($email, $password));
-
+            
             $currentUser = pg_fetch_assoc($exe1);
-            $id_sql = "SELECT * FROM users, persons WHERE users.user_id = \$1 AND persons.user_id = \$1 ";
-            $id_prepare = db_prepare('get_users', $id_sql);
+            $id_sql = "SELECT * FROM users, persons WHERE users.user_id = \$1 AND persons.user_id = \$1 ;";
+            db_prepare('get_users', $id_sql);
             $id_exe = db_execute('get_users', array($currentUser['user_id']));
-
+            
+            print_r($currentUser);
             $currentUser = pg_fetch_assoc($id_exe);
             unset($currentUser['password']);
             $_SESSION['user_type_s'] = $currentUser['user_type'];
             $_SESSION['user_s'] = $currentUser;
 
-            $cookie_currentUser = implode("|",$currentUser);
+            $cookie_currentUser = implode("_|",$currentUser);
             setcookie("LOGIN_COOKIE", $cookie_currentUser, COOKIE_LIFESPAN);
 
             $session_msg[] = "Successfully logged in";

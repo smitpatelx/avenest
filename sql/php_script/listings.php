@@ -7,8 +7,12 @@ require './randoms.php';
 $conn = db_connect();
 
 $sql_user_a = "SELECT user_id FROM users WHERE user_type='a';";
-$users_a = pg_query($conn, $sql_user_a);
-$usersss=pg_fetch_array($users_a);
+$res = pg_query($conn, $sql_user_a);
+// $usersss=pg_fetch_array($res);
+$user_id_arr = [];
+while ($usersss=pg_fetch_array($res)) {
+    $user_id_arr[] = $usersss[0];
+}
 
 foreach(range(0, 1100) as $x) {
     $first_name = $first_names[$x];
@@ -27,7 +31,7 @@ foreach(range(0, 1100) as $x) {
     $contact_method = $p_c_m[array_rand($p_c_m)];
     
     $price=mt_rand(100000, 999999);
-    $user_id=$usersss[array_rand($usersss)];
+    $user_id=$user_id_arr[array_rand($user_id_arr)];
     $listing_status = $listing_statuses[array_rand($listing_statuses)];
     $property_option = $property_options_s[array_rand($property_options_s)];
     $headline="Posted by ".$first_name;

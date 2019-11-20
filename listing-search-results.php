@@ -29,7 +29,7 @@ if(is_get()){
 
     $address = "%".$address."%";
 
-    $sql = "SELECT * FROM listings WHERE address LIKE \$1 AND bedrooms = \$2 AND bathrooms = \$3 AND pets_friendly = \$4;";
+    $sql = "SELECT * FROM listings WHERE address LIKE \$1 OR bedrooms = \$2 OR bathrooms = \$3 OR pets_friendly = \$4;";
     $prepare = db_prepare('search', $sql);
     $exe = db_execute('search', [$address, $bedrooms, $bathrooms, $pets_friendly]);
 

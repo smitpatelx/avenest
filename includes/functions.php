@@ -134,6 +134,17 @@ function is_bit_set($power, $decimal) {
 		return 1;
 	else
 		return 0;
-} 
+}
+
+function sum_check_box($array)
+{
+	$num_checks = count($array); 
+	$sum = 0;
+	for ($i = 0; $i < $num_checks; $i++)
+	{
+	  $sum += $array[$i]; 
+	}
+	return $sum;
+}
 
 ?>

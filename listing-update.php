@@ -65,22 +65,21 @@ if(is_get())
 
             // Setting variables
 
-            $headline = $data['headline'] ? $data['headline'] : "";
-            $description = $data['description'] ? $data['description'] : "";
-            $price = $data['price'] ? $data['price'] : "";
-            $address = $data['address'] ? $data['address'] : "";  
-            $images = $data['images'] ? $data['images'] : "";
-            $images_path = $data['images_path'] ? $data['images_path'] : "";
-            $property_option = $data['property_options'] ? explode('_|', $data['property_options']) : [2,4];
-            $provinces = $data['province'] ? $data['province'] : "";
-            $bedrooms = $data['bedrooms'] ? $data['bedrooms'] : "";
-            $bathrooms = $data['bathrooms'] ? $data['bathrooms'] : "";
-            $postal_code = $data['postal_code'] ? $data['postal_code'] : "";
-            $city = $data['city'] ? $data['city'] : "";
-            $area = $data['area'] ? $data['area'] : "";
-            $phone = $data['phone'] ? $data['phone'] : "";
+            $headline = $data['headline'];
+            $description = $data['description'];
+            $price = $data['price'];
+            $address = $data['address'];  
+            $images_path = $data['images_path'];
+            $property_option = $data['property_options'];
+            $provinces = $data['province'];
+            $bedrooms = $data['bedrooms'];
+            $bathrooms = $data['bathrooms'];
+            $postal_code = $data['postal_code'];
+            $city = $data['city'];
+            $area = $data['area'];
+            $phone = $data['phone'];
             $pets_friendly = $data['pets_friendly'];
-            $listing_status = $data['status'] ? $data['status'] : "";
+            $listing_status = $data['status'];
 
         } else {
             $error .= "<br/>Post with listing_id: ".$listing_id." not present OR you dont own this post.";
@@ -103,8 +102,7 @@ if(is_get())
     $description = trimP('description');
     $price = trimP('price');
     $address = trimP('address');  
-    $images = trimP('images');
-    $property_option = $_POST['property_option'];
+    $_POST['property_option'] = $property_option = sum_check_box($_POST['property_option']);
     $provinces = trimP('provinces');
     $bedrooms = trimP('bedrooms');
     $bathrooms = trimP('bathrooms');
@@ -212,13 +210,11 @@ if(is_get())
         $current_date = date("Y-m-d",time());
         $user_id = ($_SESSION['user_s'])['user_id'];
         
-        $property_option = implode('_|', $property_option);
-
-        $listings_query = "UPDATE listings SET ( status, price, headline, description, postal_code, images, city, property_options, province, bedrooms, bathrooms, address, area, phone, pets_friendly, updated_on)   
-                    = ( \$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$9, \$10, \$11, \$12, \$13, \$14 , \$15, \$16 ) WHERE listing_id = \$17 AND user_id = \$18 RETURNING listing_id, user_id;";
+        $listings_query = "UPDATE listings SET ( status, price, headline, description, postal_code, city, property_options, province, bedrooms, bathrooms, address, area, phone, pets_friendly, updated_on)   
+                    = ( \$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$9, \$10, \$11, \$12, \$13, \$14 , \$15 ) WHERE listing_id = \$16 AND user_id = \$17 RETURNING listing_id, user_id;";
 
         $listings_prepare =  db_prepare('update_listing', $listings_query);
-        $listings_exe = db_execute('update_listing', array($listing_status, $price, $headline, $description, $postal_code, $images, $city, $property_option, $provinces, $bedrooms, $bathrooms, $address, $area, $phone, $pets_friendly, $current_date, (int)$listing_id, (int)$user_id));
+        $listings_exe = db_execute('update_listing', array($listing_status, $price, $headline, $description, $postal_code, $city, $property_option, $provinces, $bedrooms, $bathrooms, $address, $area, $phone, $pets_friendly, $current_date, (int)$listing_id, (int)$user_id));
         
         if(pg_num_rows($listings_exe) > 0) {
             $session_msg[] = "Listing updated successfully";
@@ -270,9 +266,8 @@ if(is_get())
             <input type="text" name="address" value="<?php echo $address; ?>" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg my-2 bg-white focus:bg-gray-100"/>
         </div>
         <div class="flex flex-wrap">
-            <?php build_simple_dropdown('images', 'value', $images); ?>
             <?php build_simple_dropdown('city', 'property', $city);?>
-            <?php build_simple_dropdown('property_option', 'property', $property_option, true); ?>
+            <?php build_checkbox('property_option', 'value', $property_option, true, "w-1/3"); ?>
             <?php build_simple_dropdown('provinces', 'province', $provinces); ?>
             <?php build_simple_dropdown('bedrooms', 'value', $bedrooms); ?>
             <?php build_simple_dropdown('bathrooms', 'value', $bathrooms); ?>

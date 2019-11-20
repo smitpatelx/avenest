@@ -85,10 +85,8 @@ if(is_get())
                         <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Area:</b> '.$data['area'].' sq</p>
                         <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Phone:</b> '.display_phone_number($data['phone']).'</p>
                         <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Pets Friendly:</b> '.($data['pets_friendly']?'Yes':'NO').'</p>
-                        <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Bathrooms:</b> '.$data['bathrooms'].'</p>
                     </div>
                     <div class="w-full px-6 m-3 flex justify-center">';
-
                     if( $data['user_id'] === $user_id){
                         echo '<a href="./listing-update.php?listing_id='.$data['listing_id'].'" class="bg-gray-300 shadow py-2 px-3 rounded cursor-pointer font-bold text-center text-gray-700 hover:text-gray-500">
                                 Edit <i class="far fa-edit ml-1"></i>

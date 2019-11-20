@@ -43,8 +43,7 @@ if(is_get())
     $description = "";
     $price = "";
     $address = "";  
-    $images = "1";
-    $property_option = [2,4];
+    $property_option = sum_check_box([2,4]);
     $provinces = 512;
     $bedrooms = 4;
     $bathrooms = 3;
@@ -65,8 +64,7 @@ if(is_get())
     $description = trimP('description');
     $price = trimP('price');
     $address = trimP('address');  
-    $images = trimP('images');
-    $property_option = $_POST['property_option'];
+    $_POST['property_option'] = $property_option = sum_check_box($_POST['property_option']);
     $provinces = trimP('provinces');
     $bedrooms = trimP('bedrooms');
     $bathrooms = trimP('bathrooms');
@@ -176,14 +174,12 @@ if(is_get())
 
         $images_path = ['./images/listing/default.svg','./images/listing/default.svg','./images/listing/default.svg','./images/listing/default.svg'];
         $images_path = implode('_|', $images_path);
-        
-        $property_option = implode('_|', $property_option);
 
-        $listings_query = "INSERT INTO listings( user_id, status, price, headline, description, postal_code, images, images_path, city, property_options, province, bedrooms, bathrooms, address, area, phone, pets_friendly, created_on, updated_on)   
-                    VALUES (\$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$9, \$10, \$11, \$12, \$13, \$14 , \$15, \$16, \$17, \$18, \$19);";
+        $listings_query = "INSERT INTO listings( user_id, status, price, headline, description, postal_code, images_path, city, property_options, province, bedrooms, bathrooms, address, area, phone, pets_friendly, created_on, updated_on)   
+                    VALUES (\$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$9, \$10, \$11, \$12, \$13, \$14 , \$15, \$16, \$17, \$18);";
 
         $listings_prepare =  db_prepare('insert_new_listing', $listings_query);
-        $listings_exe = db_execute('insert_new_listing', array($user_id, $listing_status, $price, $headline, $description, $postal_code, $images, $images_path, $city, $property_option, $provinces, $bedrooms, $bathrooms, $address, $area, $phone, $pets_friendly, $current_date, $current_date));
+        $listings_exe = db_execute('insert_new_listing', array($user_id, $listing_status, $price, $headline, $description, $postal_code, $images_path, $city, $property_option, $provinces, $bedrooms, $bathrooms, $address, $area, $phone, $pets_friendly, $current_date, $current_date));
 
         if($listings_exe) {
             $session_msg[] = "Listing Created Successfully";
@@ -221,9 +217,8 @@ if(is_get())
                 <input type="text" name="address" value="<?php echo $address; ?>" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg my-2 bg-white focus:bg-gray-100"/>
             </div>
             <div class="flex flex-wrap">
-                <?php build_simple_dropdown('images', 'value', $images); ?>
                 <?php build_simple_dropdown('city', 'property', $city);?>
-                <?php build_simple_dropdown('property_option', 'property', $property_option, true); ?>
+                <?php build_checkbox('property_option', 'value', $property_option, true, "w-1/3"); ?>
                 <?php build_simple_dropdown('provinces', 'province', $provinces); ?>
                 <?php build_simple_dropdown('bedrooms', 'value', $bedrooms); ?>
                 <?php build_simple_dropdown('bathrooms', 'value', $bathrooms); ?>

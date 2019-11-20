@@ -27,7 +27,7 @@ function db_execute($name, $array)
     return pg_execute($dbconn, $name, $array);
 }
 
-function build_simple_dropdown($table, $column, $preselect, $multi = false){
+function build_simple_dropdown($table, $column, $preselect, $multi = false, $width = "w-1/3"){
     $conn = db_connect();
     $output = "";
 
@@ -35,7 +35,7 @@ function build_simple_dropdown($table, $column, $preselect, $multi = false){
     $result = pg_query($conn, $sql);
     if (pg_num_rows($result) > 0) {
         // output data of each row
-        $output .= "<div class='w-1/3 pr-2 py-2'> 
+        $output .= "<div class='".$width." pr-2 py-2'> 
         <p class='text-lg font-normal py-2 text-black'>".senetize_sentence($table)."</p>
         <select name='".$table.($multi ? '[]' : '')."' ".($multi ? 'multiple="multiple"' : '')." class='focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100'>";
 
@@ -131,6 +131,33 @@ function build_radio($value, $sticky) {
     echo $output;
 }
 
+function build_checkbox($table, $column, $preselect, $multi = false, $width = "w-1/3"){
+    $conn = db_connect();
+    $output = "";
+
+    $sql = "SELECT * FROM ".$table;
+    $result = pg_query($conn, $sql);
+    if (pg_num_rows($result) > 0) {
+        // output data of each row
+        $output .= "<div class='".$width." pr-2 py-2 flex flex-wrap'>";
+        $output .= "<p class='w-full text-lg font-normal py-2 text-black'>".senetize_sentence($table)."</p>";
+        while($row = pg_fetch_assoc($result)) {
+                $output .= "<label class='w-auto flex items-center mr-4'>";
+                $output .= "<input name='".$table."[]' type='checkbox' value='".$row[$column]."'  ";
+                    if ( (int)$row[$column] & (int)$preselect ){
+                        $output .= " checked='checked' ";
+                    }
+                $output .= "/>";   
+                $output .= "<span class='text-md font-semibold py-2 ml-2 text-gray-700 select-none'>".ucwords($row['property'])."</span>";    
+                $output .= "</label>";           
+        }
+        $output .= "</div>";
+    }
+
+    echo $output;
+}
+
+
 function displayStatus($val){
     if($val==LISTING_STATUS_OPEN){
         return '<p class="w-auto text-white text-xs shadow font-semibold rounded bg-green-500 py-1 px-2 leading-tight flex justify-center items-center">Open</p>';
@@ -157,14 +184,13 @@ function displayProperty($table, $val, $value = 'value', $property= 'property'){
 }
 
 function displayPropertyOptions($table, $val){
-    $val = explode('_|', $val);
     $conn = db_connect();
     $sql = "SELECT * FROM $table;";
     $query = pg_query($conn, $sql);
 
     $output = "";
     while($row = pg_fetch_assoc($query)){
-        if( in_array($row['value'], $val) ){
+        if( (int)($row['value'] & (int)$val) ){
             $val2 = isset($row['property'])?$row['property']:$row['value'];
             $output.= ucwords($val2).", ";
         }

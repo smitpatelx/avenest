@@ -24,14 +24,36 @@ if(is_get()){
     $bedrooms = $_SESSION['search']['bedrooms'];
     $bathrooms = $_SESSION['search']['bathrooms'];
     $pets_friendly = isset($_SESSION['search']['pets_friendly']) ? $_SESSION['search']['pets_friendly'] : 0;
+    $pageno = isset($_GET['page']) ? $_GET['page'] :  1;
 
-    print_r($_SESSION['search']);
+    // print_r($_SESSION['search']);
 
     $address = "%".$address."%";
 
-    $sql = "SELECT * FROM listings WHERE address LIKE \$1 OR bedrooms = \$2 OR bathrooms = \$3 OR pets_friendly = \$4;";
+    $offset = ($pageno-1) * LISTINGS_PER_PAGE;
+    // print_r([
+    //     'Current Page' => $pageno, 
+    //     'Offset' => $offset
+    // ]);
+
+    $sql = "SELECT * FROM listings WHERE address LIKE \$1 AND bedrooms = \$2 AND bathrooms = \$3 AND pets_friendly = \$4 AND (city & \$5) > 0 AND (property_options | \$6) > 0 AND description LIKE \$1 AND status = 'o' 
+            ORDER BY created_on OFFSET \$7 LIMIT \$8;";
     $prepare = db_prepare('search', $sql);
-    $exe = db_execute('search', [$address, $bedrooms, $bathrooms, $pets_friendly]);
+    $exe = db_execute('search', [$address, $bedrooms, $bathrooms, $pets_friendly, $city, $property_option, $offset, LISTINGS_PER_PAGE]);
+
+    // $sql2 = "SELECT count(listing_id) FROM listings;";
+    $sql2 = "SELECT count(listing_id) FROM listings WHERE address LIKE \$1 AND bedrooms = \$2 AND bathrooms = \$3 AND pets_friendly = \$4 AND (city & \$5) > 0 AND (property_options | \$6) > 0 AND description LIKE \$1  AND status = 'o' ;";
+    $prepare = db_prepare('search_count', $sql2);
+    $res = db_execute('search_count', [$address, $bedrooms, $bathrooms, $pets_friendly, $city, $property_option]);
+    
+    $count = pg_fetch_assoc($res);
+    $listing_count = $count['count'];
+    $total_pages = ceil($listing_count / LISTINGS_PER_PAGE);
+
+    // print_r([
+    //     'listing_count' => $listing_count,
+    //     'total_pages' => $total_pages
+    // ]);
 
     $user_id = isset($_SESSION['user_s']['user_id']) ? $_SESSION['user_s']['user_id'] : null;
     if(pg_num_rows($exe) > 0){
@@ -61,11 +83,13 @@ if(is_get()){
                     <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $'.$row['price'].'</p>
                 </div>
                 <div class="w-full px-6 pb-4 flex flex-wrap justify-center items-center text-sm">
-                    <a href="./listing-display.php?listing_id='.$row['listing_id'].'" class="bg-primary-500 hover:bg-blue-500 text-white shadow py-2 px-3 rounded cursor-pointer font-bold text-center">Read More <i class="fab fa-readme ml-1"></i></a>
-                    <a href="./listing-update.php?listing_id='.$row['listing_id'].'" class="bg-gray-300 shadow py-2 px-3 rounded ml-2 cursor-pointer font-bold text-center text-gray-700 hover:text-gray-500">
-                        Edit <i class="far fa-edit ml-1"></i>
-                    </a>
-                </div>
+                    <a href="./listing-display.php?listing_id='.$row['listing_id'].'" class="bg-primary-500 hover:bg-blue-500 text-white shadow py-2 px-3 rounded cursor-pointer font-bold text-center">Read More <i class="fab fa-readme ml-1"></i></a>';
+                    if( $row['user_id'] === $user_id){
+                        $output .= '<a href="./listing-update.php?listing_id='.$row['listing_id'].'" class="bg-gray-300 shadow py-2 px-3 rounded cursor-pointer font-bold text-center text-gray-700 hover:text-gray-500">
+                                Edit <i class="far fa-edit ml-1"></i>
+                            </a>';
+                    }
+            $output .= '</div>
                 
             </div>
         </div>';
@@ -83,29 +107,24 @@ if(is_get()){
 <!-- Shows results based on what the user asks for in the listing search page -->
 <div class="flex flex-wrap flex-row w-full pt-4 pb-10 px-6 xl:px-32">
     <div class="w-full py-6 flex flex-wrap">
-        <p class="w-1/2 text-left font-semibold text-gray-600 text-lg">Results for: "4 rooms"</p>
-        <p class="w-1/2 text-right font-semibold text-gray-600 text-lg">Page 1</p>
+        <p class="w-1/2 text-left font-semibold text-gray-600 text-lg">Results for: "<?php echo $search; ?>"</p>
+        <p class="w-1/2 text-right font-semibold text-gray-600 text-lg">Page <?php echo $pageno; ?></p>
     </div>
-    <div class="w-full content-center text-center justify-center py-4">
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-gray-800 bg-gray-400 hover:bg-gray-500"><i class="fas fa-chevron-left"></i></a>
+    <div class="w-full flex flex-wrap content-center text-center justify-center py-4">
+        <?php create_pagination($pageno,$total_pages) ?>
+        <!-- <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-gray-800 bg-gray-400 hover:bg-gray-500"><i class="fas fa-chevron-left"></i></a>
         <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">1</a>
         <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">2</a>
         <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">3</a>
         <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">4</a>
         <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">5</a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-gray-800 bg-gray-400 hover:bg-gray-500"><i class="fas fa-chevron-right"></i></a>
+        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-gray-800 bg-gray-400 hover:bg-gray-500"><i class="fas fa-chevron-right"></i></a> -->
     </div>
     <!-- Listings Results Starts-->
     <?php echo (isset($output) ? $output : ''); ?>
     <!-- Listings Results Ends-->
-    <div class="w-full content-center text-center justify-center py-4">
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-gray-800 bg-gray-400 hover:bg-gray-500"><i class="fas fa-chevron-left"></i></a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">1</a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">2</a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">3</a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">4</a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">5</a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-gray-800 bg-gray-400 hover:bg-gray-500"><i class="fas fa-chevron-right"></i></a>
+    <div class="w-full flex flex-wrap content-center text-center justify-center py-4">
+        <?php create_pagination($pageno,$total_pages) ?>
     </div>
 </div>
 

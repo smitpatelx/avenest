@@ -10,7 +10,6 @@ CREATE TABLE provinces (
     province_long VARCHAR(30)
 );
 
-INSERT INTO provinces (value, province, province_long) VALUES (0, 'SK', 'Saskatchewan');
 INSERT INTO provinces (value, province, province_long) VALUES (1, 'YT', 'Yukon');
 INSERT INTO provinces (value, province, province_long) VALUES (2, 'AB', 'Alberta');
 INSERT INTO provinces (value, province, province_long) VALUES (4, 'BC', 'British Columbia');
@@ -23,3 +22,4 @@ INSERT INTO provinces (value, province, province_long) VALUES (256, 'NU', 'Nunav
 INSERT INTO provinces (value, province, province_long) VALUES (512, 'ON', 'Ontario');
 INSERT INTO provinces (value, province, province_long) VALUES (1024, 'PE', 'Prince Edward Island');
 INSERT INTO provinces (value, province, province_long) VALUES (2048, 'QC', 'Quebec');
+INSERT INTO provinces (value, province, province_long) VALUES (4096, 'SK', 'Saskatchewan');

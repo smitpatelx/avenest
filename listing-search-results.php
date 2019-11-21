@@ -111,20 +111,13 @@ if(is_get()){
         <p class="w-1/2 text-right font-semibold text-gray-600 text-lg">Page <?php echo $pageno; ?></p>
     </div>
     <div class="w-full flex flex-wrap content-center text-center justify-center py-4">
-        <?php create_pagination($pageno,$total_pages) ?>
-        <!-- <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-gray-800 bg-gray-400 hover:bg-gray-500"><i class="fas fa-chevron-left"></i></a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">1</a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">2</a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">3</a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">4</a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">5</a>
-        <a href="" class="py-3 px-4 m-1 shadow-lg rounded text-gray-800 bg-gray-400 hover:bg-gray-500"><i class="fas fa-chevron-right"></i></a> -->
+        <?php create_pagination($pageno,$total_pages); ?>
     </div>
     <!-- Listings Results Starts-->
     <?php echo (isset($output) ? $output : ''); ?>
     <!-- Listings Results Ends-->
     <div class="w-full flex flex-wrap content-center text-center justify-center py-4">
-        <?php create_pagination($pageno,$total_pages) ?>
+        <?php create_pagination($pageno,$total_pages); ?>
     </div>
 </div>
 

@@ -10,7 +10,6 @@ CREATE TABLE city(
     property VARCHAR(30) NOT NULL
 );
 
-INSERT INTO city (value, property) VALUES (0, 'courtice');
 INSERT INTO city (value, property) VALUES (1, 'ajax');
 INSERT INTO city (value, property) VALUES (2, 'brooklin');
 INSERT INTO city (value, property) VALUES (4, 'bowmanville');
@@ -23,3 +22,4 @@ INSERT INTO city (value, property) VALUES (256, 'scugog');
 INSERT INTO city (value, property) VALUES (512, 'brampton');
 INSERT INTO city (value, property) VALUES (1024, 'toronto');
 INSERT INTO city (value, property) VALUES (2048, 'bowmanville');
+INSERT INTO city (value, property) VALUES (4096, 'courtice');

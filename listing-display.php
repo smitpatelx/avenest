@@ -13,7 +13,7 @@ $banner = "Listing Display Result";
 $desc   = "Listing Display Result page use to Display Result listing.";
 require("./header.php");
 
-$user_id = $_SESSION['user_s']['user_id'];
+$user_id = isset($_SESSION['user_s']['user_id']) ? $_SESSION['user_s']['user_id'] : null;
 if(is_get())
 {
     // Setting variables
@@ -69,9 +69,11 @@ if(is_get())
                     <img src="'.$main_img.'" alt="homes" class="w-full object-cover shadow rounded-t-lg h-64"/>
                     <div class="py-4 px-4 flex flex-wrap">
                     <p class="w-full text-center text-xl text-gray-600 my-2 capitalize">'.$data['headline'].'</p>
-                    <div class="w-full flex flex-wrap justify-between">'.displayStatus($data['status']).'
-                        <Like liked="'.$liked.'" :user="'.$user_id.'" :post="'.$data['listing_id'].'"/>
-                    </div>
+                    <div class="w-full flex flex-wrap justify-between">'.displayStatus($data['status']);
+                    if(isset($_SESSION['user_s']['user_id'])){
+                        echo '<Like liked="'.$liked.'" :user="'.$user_id.'" :post="'.$data['listing_id'].'"/>';
+                    }
+                    echo '</div>
                     <div class="w-full flex flex-wrap justify-between">  
                         <p class="w-full text-gray-600 text-lg my-2">'.$data['description'].'</p><br/>
                         <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Price:</b> $'.$data['price'].'</p>

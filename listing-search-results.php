@@ -36,13 +36,13 @@ if(is_get()){
     //     'Offset' => $offset
     // ]);
 
-    $sql = "SELECT * FROM listings WHERE address LIKE \$1 AND bedrooms = \$2 AND bathrooms = \$3 AND pets_friendly = \$4 AND (city & \$5) > 0 AND (property_options | \$6) > 0 AND description LIKE \$1 AND status = 'o' 
+    $sql = "SELECT * FROM listings WHERE address LIKE \$1 AND bedrooms = \$2 AND bathrooms = \$3 AND pets_friendly = \$4 AND (city & \$5) > 0 AND (property_options & \$6) > 0 AND description LIKE \$1 AND status = 'o' 
             ORDER BY created_on OFFSET \$7 LIMIT \$8;";
     $prepare = db_prepare('search', $sql);
     $exe = db_execute('search', [$address, $bedrooms, $bathrooms, $pets_friendly, $city, $property_option, $offset, LISTINGS_PER_PAGE]);
 
     // $sql2 = "SELECT count(listing_id) FROM listings;";
-    $sql2 = "SELECT count(listing_id) FROM listings WHERE address LIKE \$1 AND bedrooms = \$2 AND bathrooms = \$3 AND pets_friendly = \$4 AND (city & \$5) > 0 AND (property_options | \$6) > 0 AND description LIKE \$1  AND status = 'o' ;";
+    $sql2 = "SELECT count(listing_id) FROM listings WHERE address LIKE \$1 AND bedrooms = \$2 AND bathrooms = \$3 AND pets_friendly = \$4 AND (city & \$5) > 0 AND (property_options & \$6) > 0 AND description LIKE \$1  AND status = 'o' ;";
     $prepare = db_prepare('search_count', $sql2);
     $res = db_execute('search_count', [$address, $bedrooms, $bathrooms, $pets_friendly, $city, $property_option]);
     

@@ -29,6 +29,7 @@ if(is_get()){
     // print_r($_SESSION['search']);
 
     $address = "%".$address."%";
+    $search = "%".$search."%";
 
     $offset = ($pageno-1) * LISTINGS_PER_PAGE;
     // print_r([
@@ -36,15 +37,15 @@ if(is_get()){
     //     'Offset' => $offset
     // ]);
 
-    $sql = "SELECT * FROM listings WHERE address LIKE \$1 AND bedrooms = \$2 AND bathrooms = \$3 AND pets_friendly = \$4 AND (city & \$5) > 0 AND (property_options & \$6) > 0 AND description LIKE \$1 AND status = 'o' 
-            ORDER BY created_on OFFSET \$7 LIMIT \$8;";
+    $sql = "SELECT * FROM listings WHERE address LIKE \$1 AND (bedrooms & \$2) > 0 AND (bathrooms & \$3) > 0 AND (pets_friendly & \$4) > 0 AND (city & \$5) > 0 AND (property_options & \$6) > 0 AND (headline LIKE \$7 OR description LIKE \$7) AND status = 'o' 
+            ORDER BY created_on OFFSET \$8 LIMIT \$9;";
     $prepare = db_prepare('search', $sql);
-    $exe = db_execute('search', [$address, $bedrooms, $bathrooms, $pets_friendly, $city, $property_option, $offset, LISTINGS_PER_PAGE]);
+    $exe = db_execute('search', [$address, $bedrooms, $bathrooms, $pets_friendly, $city, $property_option, $search, $offset, LISTINGS_PER_PAGE]);
 
     // $sql2 = "SELECT count(listing_id) FROM listings;";
-    $sql2 = "SELECT count(listing_id) FROM listings WHERE address LIKE \$1 AND bedrooms = \$2 AND bathrooms = \$3 AND pets_friendly = \$4 AND (city & \$5) > 0 AND (property_options & \$6) > 0 AND description LIKE \$1  AND status = 'o' ;";
+    $sql2 = "SELECT count(*) FROM listings WHERE address LIKE \$1 AND (bedrooms & \$2) > 0 AND (bathrooms & \$3) > 0 AND (pets_friendly & \$4) > 0 AND (city & \$5) > 0 AND (property_options & \$6) > 0 AND (headline LIKE \$7 OR description LIKE \$7) AND status = 'o' ;";
     $prepare = db_prepare('search_count', $sql2);
-    $res = db_execute('search_count', [$address, $bedrooms, $bathrooms, $pets_friendly, $city, $property_option]);
+    $res = db_execute('search_count', [$address, $bedrooms, $bathrooms, $pets_friendly, $city, $property_option, $search]);
     
     $count = pg_fetch_assoc($res);
     $listing_count = $count['count'];
@@ -107,16 +108,16 @@ if(is_get()){
 <!-- Shows results based on what the user asks for in the listing search page -->
 <div class="flex flex-wrap flex-row w-full pt-4 pb-10 px-6 xl:px-32">
     <div class="w-full py-6 flex flex-wrap">
-        <p class="w-1/2 text-left font-semibold text-gray-600 text-lg">Results for: "<?php echo $search; ?>"</p>
-        <p class="w-1/2 text-right font-semibold text-gray-600 text-lg">Page <?php echo $pageno; ?></p>
+        <p class="w-1/2 text-left font-semibold text-gray-600 text-lg">Total Results: <?php echo $listing_count; ?></p>
+        <p class="w-1/2 text-right font-semibold text-gray-600 text-lg">Page: <?php echo $pageno; ?></p>
     </div>
-    <div class="w-full flex flex-wrap content-center text-center justify-center py-4">
+    <div class="w-full flex flex-wrap items-center text-center justify-center py-4">
         <?php create_pagination($pageno,$total_pages); ?>
     </div>
     <!-- Listings Results Starts-->
     <?php echo (isset($output) ? $output : ''); ?>
     <!-- Listings Results Ends-->
-    <div class="w-full flex flex-wrap content-center text-center justify-center py-4">
+    <div class="w-full flex flex-wrap items-center text-center justify-center py-4">
         <?php create_pagination($pageno,$total_pages); ?>
     </div>
 </div>

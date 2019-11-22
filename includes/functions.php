@@ -150,17 +150,17 @@ function sum_check_box($array)
 function create_pagination($current_page,$total_pages){
     $output = "";
     if($current_page>1){
-        $output .= '<a href="./listing-search-results.php?page='.($current_page-1).'" class="py-3 px-4 m-1 shadow-lg rounded text-gray-800 bg-gray-400 hover:bg-gray-500"><i class="fas fa-chevron-left"></i></a>';
+        $output .= '<a href="./listing-search-results.php?page='.($current_page-1).'" class="py-2 px-3 m-1 shadow-lg rounded text-gray-800 bg-gray-400 hover:bg-gray-500"><i class="fas fa-chevron-left"></i></a>';
     }
     for($i = 1; $i <= $total_pages; $i++){
         if($i == $current_page){
-            $output .= '<a href="./listing-search-results.php?page='.$i.'" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-gray-500">'.$i.'</a>';
+            $output .= '<a href="./listing-search-results.php?page='.$i.'" class="leading-tight py-2 px-3 m-1 shadow-lg rounded text-white bg-gray-500">'.$i.'</a>';
         } else {
-            $output .= '<a href="./listing-search-results.php?page='.$i.'" class="py-3 px-4 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">'.$i.'</a>';
+            $output .= '<a href="./listing-search-results.php?page='.$i.'" class="leading-tight py-2 px-3 m-1 shadow-lg rounded text-white bg-primary-400 hover:bg-gray-500">'.$i.'</a>';
         }
     }
     if($current_page<$total_pages){
-        $output .= '<a href="./listing-search-results.php?page='.($current_page+1).'" class="py-3 px-4 m-1 shadow-lg rounded text-gray-800 bg-gray-400 hover:bg-gray-500"><i class="fas fa-chevron-right"></i></a>';
+        $output .= '<a href="./listing-search-results.php?page='.($current_page+1).'" class="py-2 px-3 m-1 shadow-lg rounded text-gray-800 bg-gray-400 hover:bg-gray-500"><i class="fas fa-chevron-right"></i></a>';
     }
     echo $output;
 }

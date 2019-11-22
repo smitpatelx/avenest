@@ -37,9 +37,9 @@ foreach(range(0, 1100) as $x) {
     $headline="Posted by ".$first_name;
     $description="dsa das d asd dsad";
     $area = mt_rand(10000, 99999);
-    $bedrooms = array_rand([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
-    $bathrooms = array_rand([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
-    $pets_friendly= array_rand([1, 0]);
+    $bedrooms = $bedrooms_[array_rand($bedrooms_)];
+    $bathrooms = $bathrooms_[array_rand($bathrooms_)];
+    $pets_friendly = $pets_friendly_[array_rand($pets_friendly_)];
 
     $current_date = date("Y-m-d",time());
 

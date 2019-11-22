@@ -26,3 +26,5 @@ CREATE TABLE listings(
 	created_on DATE NOT NULL,
 	updated_on DATE NOT NULL
 );
+
+SELECT pg_catalog.setval('listing_id_seq', 10000, true);

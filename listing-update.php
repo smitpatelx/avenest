@@ -267,10 +267,10 @@ if(is_get())
         </div>
         <div class="flex flex-wrap">
             <?php build_simple_dropdown('city', 'property', $city);?>
-            <?php build_checkbox('property_option', 'value', $property_option, true, "w-1/3"); ?>
+            <?php build_checkbox('property_option', 'value', $property_option, "w-1/3"); ?>
             <?php build_simple_dropdown('provinces', 'province', $provinces); ?>
-            <?php build_simple_dropdown('bedrooms', 'value', $bedrooms); ?>
-            <?php build_simple_dropdown('bathrooms', 'value', $bathrooms); ?>
+            <?php build_simple_dropdown('bedrooms', 'property', $bedrooms); ?>
+            <?php build_simple_dropdown('bathrooms', 'property', $bathrooms); ?>
             <div class="w-1/3 pr-2 py-2">
                 <p class="text-lg font-normal py-2 text-black">Postal Code</p>
                 <input type="text" name="postal_code" value="<?php echo $postal_code; ?>" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100"/>
@@ -289,14 +289,9 @@ if(is_get())
                 <p class="text-lg font-normal py-2 text-black">Phone</p>
                 <input type="text" name="phone" value="<?php echo $phone; ?>" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100"/>
             </div>
-            <div class="w-full py-2">
-                <p class="text-lg font-normal py-2 text-gray-600">Pets Friendly</p>
-                <?php build_radio("pets_friendly", $pets_friendly) ?>
-            </div>
-            <div class="w-full py-2">
-                <p class="text-lg font-normal py-2 text-gray-600">Listing Status</p>
-                <?php build_radio("listing_status", $listing_status) ?>
-            </div>
+            
+            <?php build_radio("pets_friendly", "property", $pets_friendly, "w-full") ?>
+            <?php build_radio("listing_status", "property", $listing_status, "w-full") ?>
         </div>
         <div class="flex flex-wrap flex-row justify-center">
             <div class="pr-3 py-2">

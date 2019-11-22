@@ -34,7 +34,22 @@ $(document).ready(()=>{
     // Add active class to target link
     target.removeClass('text-gray-500').addClass('text-blue-600');
 
+    //Select all
+    // var button_sa = $('.select-all-chk');
+    // $('.select-all-chk').on('click',()=>{
+    //     // var checkBoxes = $(this).parents().eq(1).find('input[type=checkbox]');
+    //     var checkBoxes = $(this).parents();
+    //     console.log($(checkBoxes));
+    //     // checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+    // });
+
+    
 });
+
+const checkbox_all = (that)=>{
+    var checkBoxes = $(that).parents(".parent-ch").eq(0).find('input[type=checkbox]');
+    checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+}
 
 window.onbeforeunload = function () {
     window.scrollTo(0,0);

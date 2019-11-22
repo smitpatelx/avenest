@@ -277,10 +277,7 @@ if(is_get())
                     </p>
                     <input type="text" name="fax_number" value="<?php echo $fax_number; ?>" class="border border-solid border-blue-600 focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100"/>
                 </div>
-                <div class="w-full py-2">
-                    <p class="text-lg font-normal py-2 text-gray-600">Preffered Contact Method</p>
-                    <?php build_radio("preferred_contact_method", $contact_method) ?>
-                </div>
+                <?php build_radio("preferred_contact_method", "method_name", $contact_method, "w-full", "method") ?>
             </div>
             <div class="border-t border-gray-500 my-4"></div>
             <div class="flex flex-wrap flex-row">

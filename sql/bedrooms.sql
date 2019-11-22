@@ -6,18 +6,14 @@
 DROP TABLE IF EXISTS bedrooms;
 
 CREATE TABLE bedrooms(
-value SMALLINT PRIMARY KEY
+value SMALLINT PRIMARY KEY,
+property TEXT NOT NULL
 );
 
-INSERT INTO bedrooms (value) VALUES (1);
-INSERT INTO bedrooms (value) VALUES (2);
-INSERT INTO bedrooms (value) VALUES (3);
-INSERT INTO bedrooms (value) VALUES (4);
-INSERT INTO bedrooms (value) VALUES (5);
-INSERT INTO bedrooms (value) VALUES (6);
-INSERT INTO bedrooms (value) VALUES (7);
-INSERT INTO bedrooms (value) VALUES (8);
-INSERT INTO bedrooms (value) VALUES (9);
-INSERT INTO bedrooms (value) VALUES (10);
-INSERT INTO bedrooms (value) VALUES (11);
-INSERT INTO bedrooms (value) VALUES (12);
+INSERT INTO bedrooms (value, property) VALUES (1, '1 Bedrooms');
+INSERT INTO bedrooms (value, property) VALUES (2, '2 Bedrooms');
+INSERT INTO bedrooms (value, property) VALUES (4, '3 Bedrooms');
+INSERT INTO bedrooms (value, property) VALUES (8, '4 Bedrooms');
+INSERT INTO bedrooms (value, property) VALUES (16, '5 Bedrooms');
+INSERT INTO bedrooms (value, property) VALUES (32, '6 Bedrooms');
+INSERT INTO bedrooms (value, property) VALUES (64, 'More than 6');

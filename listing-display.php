@@ -82,11 +82,11 @@ if(is_get())
                         <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Postal Code:</b> <span class="uppercase">'.$data['postal_code'].'</span></p>
                         <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Property Options:</b> '.displayPropertyOptions('property_option', $data['property_options']).'</p>
                         <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Province:</b> '.displayProperty('provinces',$data['province'], 'value', 'province').'</p>
-                        <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Bedrooms:</b> '.$data['bedrooms'].'</p>
-                        <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Bathrooms:</b> '.$data['bathrooms'].'</p>
+                        <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Bedrooms:</b> '.displayProperty('bedrooms',$data['bedrooms'], 'value', 'property').'</p>
+                        <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Bathrooms:</b> '.displayProperty('bathrooms',$data['bathrooms'], 'value', 'property').'</p>
                         <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Area:</b> '.$data['area'].' sq</p>
                         <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Phone:</b> '.display_phone_number($data['phone']).'</p>
-                        <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Pets Friendly:</b> '.($data['pets_friendly']?'Yes':'NO').'</p>
+                        <p class="w-1/2 text-gray-700 text-lg mt-2"><b>Pets Friendly:</b> '.displayProperty('pets_friendly',$data['pets_friendly'], 'value', 'property').'</p>
                     </div>
                     <div class="w-full px-6 m-3 flex justify-center">';
                     if( $data['user_id'] === $user_id){

@@ -10,5 +10,5 @@ value SMALLINT PRIMARY KEY,
 property VARCHAR(3) NOT NULL
 );
 
-INSERT INTO pets_friendly (value, property) VALUES (0, 'yes');
-INSERT INTO pets_friendly (value, property) VALUES (1, 'no');
+INSERT INTO pets_friendly (value, property) VALUES (1, 'yes');
+INSERT INTO pets_friendly (value, property) VALUES (2, 'no');

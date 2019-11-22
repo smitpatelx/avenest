@@ -61,77 +61,7 @@ function build_simple_dropdown($table, $column, $preselect, $multi = false, $wid
     echo $output;
 }
 
-function build_radio($value, $sticky) {
-    $conn = db_connect();
-    $output = "";
-
-    if ($value == "preferred_contact_method") {
-
-        $sql = "SELECT * FROM preferred_contact_method ";
-        $result = pg_query($conn, $sql);
-        if (pg_num_rows($result) > 0) {
-            // output data of each row
- 
-            $output .= "<div class='flex flex-wrap'>";      
-            while($row = pg_fetch_assoc($result)) {
-                $output .= "<label class='flex items-center mr-4'>";
-                $output .= "<input class='focus:outline-none bg-white' name='contact_method' type='radio' value='".$row['method']."'";
-                
-                    if ( $row['method'] == (string)$sticky ){
-                        $output .= " checked='checked' ";
-                    }
-
-                $output .= "/>";   
-                $output .= "<span class='text-md font-semibold py-2 ml-2 text-gray-700 select-none'>".ucwords($row['method_name'])."</span>";    
-                $output .= "</label>";     
-            }     
-                $output .= "</div>";      
-        }
-    } else if ($value == "listing_status") {
-
-        $sql = "SELECT * FROM listing_status ";
-        $result = pg_query($conn, $sql);
-        if (pg_num_rows($result) > 0) {
-            // output data of each row       
-            $output .= "<div class='flex flex-wrap'>";   
-            while($row = pg_fetch_assoc($result)) {
-                $output .= "<label class='flex items-center mr-4'>";
-                $output .= "<input name='listing_status' type='radio' value='".$row['value']."' ";
-
-                    if ( $row['value'] == $sticky ){
-                        $output .= " checked='checked' ";
-                    }
-                $output .= "/>";   
-                $output .= "<span class='text-md font-semibold py-2 ml-2 text-gray-700 select-none'>".ucwords($row['property'])."</span>";    
-                $output .= "</label>";     
-            }          
-            $output .= "</div>";    
-        }
-    } else if ($value == "pets_friendly") {
-
-        $sql = "SELECT * FROM pets_friendly ";
-        $result = pg_query($conn, $sql);
-        if (pg_num_rows($result) > 0) {
-            // output data of each row          
-            $output .= "<div class='flex flex-wrap'>"; 
-            while($row = pg_fetch_assoc($result)) {
-                $output .= "<label class='flex items-center mr-4'>";
-                $output .= "<input name='pets_friendly' type='radio' value='".$row['value']."'  ";
-                    if ( (string)$row['value'] == (string)$sticky ){
-                        $output .= " checked='checked' ";
-                    }
-                $output .= "/>";   
-                $output .= "<span class='text-md font-semibold py-2 ml-2 text-gray-700 select-none'>".ucwords($row['property'])."</span>";    
-                $output .= "</label>";     
-            }          
-            $output .= "</div>";
-        }
-    }
-
-    echo $output;
-}
-
-function build_checkbox($table, $column, $preselect, $multi = false, $width = "w-1/3"){
+function build_radio($table, $column, $preselect, $width = "w-1/3", $value = "value") {
     $conn = db_connect();
     $output = "";
 
@@ -139,8 +69,39 @@ function build_checkbox($table, $column, $preselect, $multi = false, $width = "w
     $result = pg_query($conn, $sql);
     if (pg_num_rows($result) > 0) {
         // output data of each row
-        $output .= "<div class='".$width." pr-2 py-2 flex flex-wrap'>";
-        $output .= "<p class='w-full text-lg font-normal py-2 text-black'>".senetize_sentence($table)."</p>";
+
+        $output .= "<div class='".$width." flex flex-wrap pr-2 py-2'>
+                    <p class='w-full text-lg font-normal py-2 text-black'>".senetize_sentence($table)."</p>";      
+        while($row = pg_fetch_assoc($result)) {
+            $output .= "<label class='w-auto flex items-center mr-4'>";
+            $output .= "<input class='focus:outline-none bg-white' name='".$table."' type='radio' value='".$row[$value]."'";
+            
+                if ( $row[$value] == (string)$preselect ){
+                    $output .= " checked='checked' ";
+                }
+
+            $output .= "/>";   
+            $output .= "<span class='text-md font-semibold py-2 ml-2 text-gray-700 select-none'>".ucwords($row[$column])."</span>";    
+            $output .= "</label>";     
+        }     
+            $output .= "</div>";      
+    }
+
+    echo $output;
+}
+
+function build_checkbox($table, $column, $preselect, $width = "w-1/3"){
+    $conn = db_connect();
+    $output = "";
+
+    $sql = "SELECT * FROM ".$table;
+    $result = pg_query($conn, $sql);
+    if (pg_num_rows($result) > 0) {
+        // output data of each row
+        $output .= "<div class='".$width." pr-2 py-2 flex flex-wrap parent-ch'>";
+        $output .= "<div class='w-full flex flex-wrap items-center'>";
+        $output .= "<p class='w-auto text-lg font-normal py-2 text-black'>".senetize_sentence($table)."</p>";
+        $output .= "<a onClick='checkbox_all(this)' class='ml-4 w-auto leading-tight bg-transparent text-gray-700 hover:text-gray-500 font-normal cursor-pointer'><i class='fas fa-tasks'></i></a></div>";
         while($row = pg_fetch_assoc($result)) {
                 $output .= "<label class='w-auto flex items-center mr-4'>";
                 $output .= "<input name='".$table."[]' type='checkbox' value='".$row[$column]."'  ";
@@ -148,7 +109,7 @@ function build_checkbox($table, $column, $preselect, $multi = false, $width = "w
                         $output .= " checked='checked' ";
                     }
                 $output .= "/>";   
-                $output .= "<span class='text-md font-semibold py-2 ml-2 text-gray-700 select-none'>".ucwords($row['property'])."</span>";    
+                $output .= "<span class='text-md font-semibold py-2 ml-2 text-gray-600 select-none'>".ucwords($row['property'])."</span>";    
                 $output .= "</label>";           
         }
         $output .= "</div>";

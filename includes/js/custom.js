@@ -1,9 +1,15 @@
 $(document).ready(()=>{
-    // Notiflix.Notify.Init({ distance:"50px", info: {background:"#0c82d8",}, }); 
-    // Notiflix.Notify.Success('Sol lucet omnibus');
-    // Notiflix.Loading.Init({ svgColor:"#0365f3", }); 
-    // Notiflix.Loading.Pulse();
-    // Notiflix.Loading.Remove(500);
+
+    //Handles Checkbox logic
+    const checkbox_all = (that)=>{
+        var checkBoxes = $(that).parents(".parent-ch").eq(0).find('input[type=checkbox]');
+        checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+    }
+
+    //On load always scroll to top
+    window.onbeforeunload = function () {
+        window.scrollTo(0,0);
+    };
 
     var htrigger = $('#trigger');
     var htarget = $('#target');
@@ -45,12 +51,3 @@ $(document).ready(()=>{
 
     
 });
-
-const checkbox_all = (that)=>{
-    var checkBoxes = $(that).parents(".parent-ch").eq(0).find('input[type=checkbox]');
-    checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-}
-
-window.onbeforeunload = function () {
-    window.scrollTo(0,0);
-};

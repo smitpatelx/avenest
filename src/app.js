@@ -4,6 +4,7 @@ import '@fortawesome/fontawesome-free/js/all.min.js';
 import Like from './components/Like';
 import Notification from './components/Notification';
 import imageupload from './components/ImageUpload';
+import ListingsManage from './components/ListingsManage';
 import Notifications from 'vue-notification';
 
 Vue.use(Notifications);
@@ -18,6 +19,7 @@ const app = new Vue({
     components:{
         Like,
         Notification,
-        imageupload
+        imageupload,
+        ListingsManage
     }
 });

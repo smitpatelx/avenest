@@ -112,13 +112,21 @@ if(is_get()){
         <p class="w-1/2 text-right font-semibold text-gray-600 text-lg">Page: <?php echo $pageno; ?></p>
     </div>
     <div class="w-full flex flex-wrap items-center text-center justify-center py-4">
-        <?php create_pagination($pageno,$total_pages); ?>
+        <?php 
+            if($listing_count > 10) {
+                create_pagination($pageno,$total_pages);
+            }
+        ?>
     </div>
     <!-- Listings Results Starts-->
     <?php echo (isset($output) ? $output : ''); ?>
     <!-- Listings Results Ends-->
     <div class="w-full flex flex-wrap items-center text-center justify-center py-4">
-        <?php create_pagination($pageno,$total_pages); ?>
+    <?php 
+            if($listing_count > 10) {
+                create_pagination($pageno,$total_pages);
+            }
+        ?>
     </div>
 </div>
 

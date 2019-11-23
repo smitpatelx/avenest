@@ -40,49 +40,8 @@ if(isset($_SESSION['user_type_s'])){
     </p>
 </div>
 
-<div class="w-full mx-auto container flex flex-wrap justify-center content-center">
-    <?php
-        
-        $user_id = ($_SESSION['user_s'])['user_id'];
-
-        $conn = db_connect();
-        $sql = "SELECT * FROM listings WHERE listings.user_id = '$user_id' ORDER BY updated_on ASC;";
-        $result = pg_query($conn, $sql);
-
-        $output = "";
-        while($row = pg_fetch_assoc($result))
-        {
-            $sdasd = $row['listing_id'];
-            $likes = "SELECT * FROM favourites WHERE user_id = '$user_id' AND listing_id = '$sdasd';";
-            $res2 = pg_query($conn,$likes);
-            $liked =pg_num_rows($res2)>0 ? 'true' : 'false';
-
-            $main_img = explode('_|', $row['images_path'])[0];
-            $output .= '<div class="w-full md:w-1/2 lg:w-1/4 p-4">
-            <div class="rounded-lg shadow-lg bg-white relative">
-                <img src="'.$main_img.'" alt="homes" class="cursor-pointer w-full object-cover shadow rounded-t-lg h-64" onclick="location.href=\'./listing-display.php?listing_id='.$row['listing_id'].'\'"/>
-                <div class="py-4 px-4 flex flex-wrap">
-                    <div class="w-full flex flex-wrap justify-between">'.displayStatus($row['status']).'
-                        <Like liked="'.$liked.'" :user="'.$user_id.'" :post="'.$row['listing_id'].'"/>
-                    </div>
-                    <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i>'.$row['address'].'</p><br/>
-                    <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i>'.displayProperty('city', $row['city']).'</p><br/>
-                    <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-dollar-sign mr-2 xl:mr-4"></i> $'.$row['price'].'</p>
-                </div>
-                <div class="w-full px-6 pb-4 flex flex-wrap justify-center items-center text-sm">
-                    <a href="./listing-display.php?listing_id='.$row['listing_id'].'" class="bg-primary-500 hover:bg-blue-500 text-white shadow py-2 px-3 rounded cursor-pointer font-bold text-center">Read More <i class="fab fa-readme ml-1"></i></a>
-                    <a href="./listing-update.php?listing_id='.$row['listing_id'].'" class="bg-gray-300 shadow py-2 px-3 rounded ml-2 cursor-pointer font-bold text-center text-gray-700 hover:text-gray-500">
-                        Edit <i class="far fa-edit ml-1"></i>
-                    </a>
-                </div>
-                
-            </div>
-        </div>';
-        }
-
-        echo $output;
-    ?>
-      
+<div class="w-full flex flex-wrap justify-center content-center px-2 lg:px-10 py-4 lg:px-6">
+    <listings-manage></listings-manage>
 </div>
 
 <?php

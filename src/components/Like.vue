@@ -60,7 +60,7 @@ export default {
                     });
                 } else {
                     this.notify_color = "success vue-notification";
-                    var tt = "Success Liking PostId:"+this.post;
+                    var tt = "Success Disliking PostId:"+this.post;
                     this.$notify({
                         group: this.post,
                         title: 'Success!',
@@ -81,7 +81,7 @@ export default {
                     this.$notify({
                         group: this.post,
                         title: 'Success!',
-                        text: "Error DisLiking PostId:"+err
+                        text: "Error Disliking PostId:"+err
                     });
                 }
             });

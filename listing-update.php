@@ -288,8 +288,7 @@ if(is_get())
             <div class="w-1/2 py-2">
                 <p class="text-lg font-normal py-2 text-black">Phone</p>
                 <input type="text" name="phone" value="<?php echo $phone; ?>" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100"/>
-            </div>
-            
+            </div>          
             <?php build_radio("pets_friendly", "property", $pets_friendly, "w-full") ?>
             <?php build_radio("listing_status", "property", $listing_status, "w-full") ?>
         </div>

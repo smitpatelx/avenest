@@ -23,7 +23,7 @@ $(document).ready(()=>{
     });
 
     $(document).mouseup(function(e) {
-    // if the target of the click isn't the container nor a descendant of the container
+        // if the target of the click isn't the container nor a descendant of the container
         if (!htrigger.is(e.target) && htrigger.has(e.target).length === 0) 
         {
             htarget.addClass('hidden').removeClass('flex');
@@ -31,7 +31,7 @@ $(document).ready(()=>{
     });
 
     var path = window.location.pathname.split("/").pop();
-    // Account for home page with empty path
+    // Accounts for home page with empty path
     if (path == '') {
         path = 'index.php';
     }

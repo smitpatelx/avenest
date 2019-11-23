@@ -1,10 +1,3 @@
-<!--
-FILE: 			: <?php echo basename(__FILE__, $_SERVER['PHP_SELF'])."\n"; ?>
-TITLE           : AveNest Listings
-AUTHORS         : Smit Patel
-LAST MODIFIED   : OCT 30, 2019
-DESCRIPTION     : Database configuration, connection
--->
 <?php
 
 //Establishing connection to database

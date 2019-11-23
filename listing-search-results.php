@@ -109,7 +109,7 @@ if(is_get()){
 <div class="flex flex-wrap flex-row w-full pt-4 pb-10 px-6 xl:px-32">
     <div class="w-full py-6 flex flex-wrap">
         <p class="w-1/2 text-left font-semibold text-gray-600 text-lg">Total Results: <?php echo $listing_count; ?></p>
-        <p class="w-1/2 text-right font-semibold text-gray-600 text-lg">Page: <?php echo $pageno; ?></p>
+        <p class="w-1/2 text-right font-semibold text-gray-600 text-lg"><?php echo "Page: ".$pageno." of ".$total_pages; ?></p>
     </div>
     <div class="w-full flex flex-wrap items-center text-center justify-center py-4">
         <?php 

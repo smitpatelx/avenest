@@ -237,7 +237,7 @@ if(is_get())
             </div>
             <div>
                 <p class="text-lg font-normal py-2 text-black">Email-<span class="ml-2 text-red-500 font-semibold text-sm">Can't change your email</span></p>
-                <input disabled='disabled' type="text" name="email" value="<?php echo $email; ?>" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg my-2 bg-gray-100 focus:bg-gray-100"/>
+                <input disabled='disabled' type="text" name="email" value="<?php echo $email; ?>" class="select-all focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg my-2 bg-gray-100 focus:bg-gray-100"/>
             </div>
             <div class="border-t border-gray-500 my-4"></div>
             <div>

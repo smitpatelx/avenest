@@ -50,9 +50,9 @@ DESCRIPTION     : Footer section
     <div class="w-full upperline-nav py-4"></div>
     <noscript><strong>We're sorry but avenest doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript>
     <!-- Import jquery -->
-    <script type="text/javascript" src="./includes/js/jquery.min.js"></script>
-    <script type="text/javascript" src="./includes/js/custom.js"></script>
+    <script src="./includes/js/jquery.min.js"></script>
     <script src="./dist/js/app.js"></script>
+    <script src="./includes/js/custom.js" defer></script>
     
 </body>
 </html>

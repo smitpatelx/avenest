@@ -5,6 +5,7 @@ import Like from './components/Like';
 import Notification from './components/Notification';
 import imageupload from './components/ImageUpload';
 import ListingsManage from './components/ListingsManage';
+import MainHeader from './components/MainHeader';
 import Notifications from 'vue-notification';
 
 Vue.use(Notifications);
@@ -20,6 +21,7 @@ const app = new Vue({
         Like,
         Notification,
         imageupload,
-        ListingsManage
+        ListingsManage,
+        MainHeader
     }
 });

@@ -157,8 +157,8 @@ if(is_get())
                     <input type="reset" value="Reset" class="focus:outline-none focus:shadow-outline w-full py-2 px-3 shadow-lg rounded bg-gray-500 hover:bg-gray-600 text-white font-semibold cursor-pointer"/>
                 </div>
             </div>
-            <div class="flex flex-wrap flex-col text-center text-sm">
-                <a href="./register.php" class="w-full font-semibold text-blue-600 hover:text-blue-700 underline">Do not have an account? Register Here</a>
+            <div class="flex flex-wrap flex-col text-center text-base">
+                <a href="./register.php" class="w-full font-semibold text-blue-600 hover:text-blue-700 underline">Do not have an account?<br/> Register Here</a>
             </div>
         </form>
     </div>

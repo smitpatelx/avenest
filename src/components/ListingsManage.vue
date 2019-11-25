@@ -2,7 +2,7 @@
     <div class="w-full">
         <div class="w-full flex flex-wrap mb-6 justify-between">
             <div class="flex flex-wrap">
-                <input v-model="searchText" @keyup.esc="clearAll()" @keyup.enter="getAllListings()" autofocus type="text" placeholder="Start Typing ..." class="w-64 focus:outline-none focus:shadow-outline py-2 px-4 shadow rounded-lg bg-white focus:bg-gray-100"/>
+                <input v-model="searchText" @keyup.esc="clearAll()" @keyup.enter="getAllListings()" autofocus type="text" placeholder="(Esc- Clear Screen | Enter- Search)" style="width:20rem;" class="focus:outline-none focus:shadow-outline py-2 px-4 shadow rounded-lg bg-white focus:bg-gray-100"/>
                 <button @click="getAllListings()" class="focus:outline-none focus:shadow-outline ml-3 bg-primary-600 hover:bg-blue-500 text-white shadow py-2 px-3 flex flex-wrap justify-center items-center w-auto rounded cursor-pointer font-bold text-center"><i class="fas fa-search fa-lg"></i></button>
             </div>
             <div>
@@ -49,13 +49,9 @@
 </template>
 
 <script>
-import { SlideXLeftTransition } from 'vue2-transitions';
 import axios from 'axios';
 
 export default {
-    components: {
-        SlideXLeftTransition,
-    },
     data(){
         return{
             sortByDate: false,
@@ -84,11 +80,10 @@ export default {
                     search: this.searchText
                 }
             }).then((res)=>{
-                console.log(res.data);
                 this.listings = res.data;
                 this.sort_listings();
             }).catch((err)=>{
-                console.log(err);
+                console.log("Error fetching listings : ",err);
             });
         },
         sort_listings(){

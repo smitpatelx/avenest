@@ -18,7 +18,7 @@ if(is_get()){
     $error= "";
 
     $city = isset($_SESSION['search']['city']) ? $_SESSION['search']['city'] : sum_check_box([trimG('city')]);
-    $property_option = isset($_SESSION['search']['property_option']) ? $_SESSION['search']['property_option'] : sum_check_box([2,4]);
+    $property_option = isset($_SESSION['search']['property_option']) ? $_SESSION['search']['property_option'] : 31;
     $search = isset($_SESSION['search']['search']) ? $_SESSION['search']['search'] : "";
     $address = isset($_SESSION['search']['address']) ? $_SESSION['search']['address'] : "";
     $bedrooms = isset($_SESSION['search']['bedrooms']) ? $_SESSION['search']['bedrooms'] : 127;

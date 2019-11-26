@@ -1,12 +1,12 @@
 <template>
-    <div class="w-auto md:w-1/2 justify-end flex flex-wrap flex-row font-semibold text-lg uppercase">
+    <div class="w-auto md:w-1/2 justify-end flex flex-wrap flex-row font-semibold text-lg uppercase z-50">
         <a href="./index.php" class="px-3 py-1 mr-1 lg:mr-3 text-blue-600 hover:text-gray-500">
             Home
         </a>
         <a href="./listing-city-select.php" class="hidden md:flex px-3 py-1 mr-1 lg:mr-3 text-blue-600 hover:text-gray-500"> 
             Listings
         </a>
-        <div class="flex flex-wrap flex-col" @blur="show=false" @mouseleave="show=false">
+        <div class="flex flex-wrap flex-col z-50" @blur="show=false" @mouseleave="show=false">
             <div @mouseenter="show=true" @click="show=!show"
             class="w-full cursor-pointer flex flex-wrap my-auto items-center justify-center mr-1 lg:mr-3 text-blue-600 hover:text-gray-500">
                 <svg v-if="userloggedin" viewBox="0 0 24 24" class="mt-1 w-6 h-6 fill-current text-primary">
@@ -16,10 +16,10 @@
                     <path fill-rule="evenodd" d="M4 2V0h14v2H4zM2 6h14V4H2v2zm-2 4h14V8H0v2z" clip-rule="evenodd"/>
                 </svg>
             </div>
-            <slide-y-down-transition :duration="500">
-            <div v-if="show" @mouseenter="show=true" @mouseleave="show=false" class="relative">
+            <slide-y-down-transition :duration="500" class="z-50">
+            <div v-if="show" @mouseenter="show=true" @mouseleave="show=false" class="relative z-50">
                 <div tabindex="0" :class="show ? 'flex' : 'hidden'" class="z-50 absolute flex-wrap bg-white p-2 rounded-lg shadow-lg" style="width:13rem; margin-left:-11rem;">
-                    <span class="w-full flex flex-wrap" v-if="userloggedin">
+                    <span class="w-full flex flex-wrap z-50" v-if="userloggedin">
                         <a href="#" class="cursor-default mb-4 flex w-full px-3 py-1 text-base font-semibold normal-case text-primary-500 border-b border-gray-300" v-html="userTypeFull"></a>
                         <a href="./listing-city-select.php" class="flex md:hidden w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600 flex-wrap justify-between items-center"> 
                             <span>Listings</span>
@@ -46,7 +46,7 @@
                             <svg class="w-4 h-4 inline-block fill-current text-gray-600" viewBox="0 0 14 14"><path d="M14 8H8v6H6V8H0V6h6V0h2v6h6v2z"/></svg>
                         </a>
                     </span>
-                    <span class="w-full flex flex-wrap" v-else>
+                    <span class="w-full flex flex-wrap z-50" v-else>
                         <a href="./listing-city-select.php" class="flex md:hidden w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600 flex-wrap justify-between items-center"> 
                             <span>Listings</span>
                             <svg class="w-4 h-4 inline-block fill-current text-gray-600" viewBox="0 0 18 18"><path fill-rule="evenodd" d="M8 10H0V0h8v10zm0 8H0v-6h8v6zm2 0h8V8h-8v10zm0-12V0h8v6h-8z" clip-rule="evenodd"/></svg>

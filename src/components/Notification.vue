@@ -1,6 +1,6 @@
 <template>
     <div class="w-full flex flex-wrap relative justify-start">
-        <slide-y-up-transition :duration="700" :delay="300">
+        <slide-y-up-transition :duration="700">
             <div v-if="show" @click="click" class="cursor-pointer top-0 rounded fixed py-2 px-4 ml-6 mt-20" :class="color">
                 <p class="text-sm font-semibold">{{msg}} <i :class="icon+' ml-2 text-white'"></i></p>
             </div>
@@ -50,7 +50,6 @@ export default {
             }
         },
         refresh(){
-            console.log("refresh");
             this.show = true;
             setTimeout(()=>{
                 this.show = false;
@@ -58,10 +57,13 @@ export default {
         }
     },
     created() {
-        this.show = true;
+        this.show = false;
         setTimeout(()=>{
-            this.show = false;
-        },this.timeout);
+            this.show = true;
+            setTimeout(()=>{
+                this.show = false;
+            },this.timeout);
+        },500);
     },
     watch:{
         change(){

@@ -6,7 +6,7 @@
         <a href="./listing-city-select.php" class="hidden md:flex px-3 py-1 mr-1 lg:mr-3 text-blue-600 hover:text-gray-500"> 
             Listings
         </a>
-        <div class="flex flex-wrap flex-col" @blur="show=false">
+        <div class="flex flex-wrap flex-col" @blur="show=false" @mouseleave="show=false">
             <div @mouseenter="show=true" @click="show=!show"
             class="w-full cursor-pointer flex flex-wrap my-auto items-center justify-center mr-1 lg:mr-3 text-blue-600 hover:text-gray-500">
                 <svg v-if="userloggedin" viewBox="0 0 24 24" class="mt-1 w-6 h-6 fill-current text-primary">
@@ -17,7 +17,7 @@
                 </svg>
             </div>
             <slide-y-down-transition :duration="500">
-            <div v-if="show" @mouseleave="show=false" class="relative">
+            <div v-if="show" @mouseenter="show=true" @mouseleave="show=false" class="relative">
                 <div tabindex="0" :class="show ? 'flex' : 'hidden'" class="z-50 absolute flex-wrap bg-white p-2 rounded-lg shadow-lg" style="width:13rem; margin-left:-11rem;">
                     <span class="w-full flex flex-wrap" v-if="userloggedin">
                         <a href="#" class="cursor-default mb-4 flex w-full px-3 py-1 text-base font-semibold normal-case text-primary-500 border-b border-gray-300" v-html="userTypeFull"></a>

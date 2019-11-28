@@ -89,7 +89,7 @@ if(is_get()){
                 </div>
                 <div class="w-1/4 pr-2 py-2">
                     <p class="text-lg font-normal py-2 text-black">Search any word</p>
-                    <input autofocus type="text" name="search" value="<?php echo $search; ?>" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100"/>
+                    <input type="text" name="search" value="<?php echo $search; ?>" class="focus:outline-none focus:shadow-outline w-full py-3 px-4 shadow-lg rounded-lg bg-white focus:bg-gray-100"/>
                 </div>
                 <div class="w-1/4 pr-2 py-2">
                     <p class="text-lg font-normal py-2 text-black">Minimum Price</p>
@@ -125,7 +125,7 @@ if(is_get()){
 
                 <div class="w-1/6 px-2 py-2 flex flex-wrap justify-end items-center">
                     <div class="pl-2 pt-2">
-                        <input type="submit" value="Search" class="focus:outline-none focus:shadow-outline w-full text-lg py-2 px-3 shadow-lg rounded hover:bg-primary-500 bg-primary-300 text-white font-semibold cursor-pointer"/>
+                        <input autofocus type="submit" value="Search" class="focus:outline-none focus:shadow-outline w-full text-lg py-2 px-3 shadow-lg rounded hover:bg-primary-500 bg-primary-300 text-white font-semibold cursor-pointer"/>
                     </div>
                 </div>
             </form>

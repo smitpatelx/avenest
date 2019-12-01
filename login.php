@@ -129,9 +129,9 @@ if(is_get())
 ?>
 
     <!-- The login form for the page -->
-    <div class="w-full flex flex-wrap justify-center">
+    <div class="w-full flex lg:flex-wrap flex-wrap-reverse justify-center">
         <div class="w-full lg:w-2/3 h-auto object-cover p-4 lg:p-32">
-            <img src="./images/login-page-bg.svg" alt="login-page-bg.svg" class="object-fit w-full"/>
+            <img src="./images/undraw_mobile_login_ikmv.svg" alt="undraw_mobile_login_ikmv.svg" class="object-fit w-full"/>
         </div>
         <form class="h-auto w-full lg:w-1/3 px-8 pb-4 md:pb-0" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <p class="text-left font-bold text-gray-700 my-2 text-4xl mt-16 font-headline">Login</p>

@@ -28,7 +28,7 @@ require("./header.php");
         <a href="./register.php" class="w-full md:w-48 border hover:border-blue-600 bg-primary-500 hover:bg-transparent rounded text-white hover:text-primary-500 py-3 px-6 font-semibold mt-10 text-center">Register</a>
     </div>
     <div class="w-full md:w-1/2 mt-6 md:mt-0">
-        <img src="./images/bg-home.svg" alt="Home"/>
+        <img src="./images/undraw_best_place_r685.svg" alt="Home"/>
     </div>
 </div>
 

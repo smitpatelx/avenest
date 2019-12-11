@@ -13,7 +13,7 @@ if(is_get())
     $user_id = ($_SESSION['user_s'])['user_id'];
 
     $conn = db_connect();
-    $sql = "SELECT * FROM listings WHERE listings.user_id = '$user_id' AND (address LIKE '$search_r' OR headline LIKE '$search_r' OR description LIKE '$search_r') ORDER BY updated_on ASC;";
+    $sql = "SELECT * FROM listings WHERE listings.user_id = '$user_id' AND status != 'h' AND (address LIKE '$search_r' OR headline LIKE '$search_r' OR description LIKE '$search_r') ORDER BY updated_on ASC;";
     $result = pg_query($conn, $sql);
     
     $output = [];

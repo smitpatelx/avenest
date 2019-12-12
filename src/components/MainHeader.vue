@@ -16,7 +16,7 @@
                     <path fill-rule="evenodd" d="M4 2V0h14v2H4zM2 6h14V4H2v2zm-2 4h14V8H0v2z" clip-rule="evenodd"/>
                 </svg>
             </div>
-            <slide-y-down-transition :duration="500" class="z-50">
+            <slide-y-down-transition :duration="{enter: 500, leave: 0}" class="z-50" >
             <div v-if="show" @mouseenter="show=true" @mouseleave="show=false" class="relative z-50">
                 <div tabindex="0" :class="show ? 'flex' : 'hidden'" class="z-50 absolute flex-wrap bg-white p-2 rounded-lg shadow-lg" style="width:13rem; margin-left:-11rem;">
                     <span class="w-full flex flex-wrap z-50" v-if="userloggedin">
@@ -41,9 +41,13 @@
                             <span>Dashboard</span>
                             <svg class="w-4 h-4 inline-block fill-current text-gray-600" viewBox="0 0 20 15"><path fill-rule="evenodd" d="M5 15h10V0H5v15zm-5-2h4V2H0v11zm16 0V2h4v11h-4z" clip-rule="evenodd"/></svg>
                         </a>
-                        <a v-if="usertype == 'a' || usertype == 's'" href="./listing-create.php" class="w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600  flex flex-wrap justify-between items-center">
+                        <a v-if="usertype == 'a'" href="./listing-create.php" class="w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600  flex flex-wrap justify-between items-center">
                             <span>Listing Create</span>
                             <svg class="w-4 h-4 inline-block fill-current text-gray-600" viewBox="0 0 14 14"><path d="M14 8H8v6H6V8H0V6h6V0h2v6h6v2z"/></svg>
+                        </a>
+                        <a v-if="usertype == 's'" href="./disabled-users.php" class="w-full bg-white hover:bg-gray-200 rounded px-3 py-1 text-base font-semibold normal-case text-gray-500 hover:text-gray-600  flex flex-wrap justify-between items-center">
+                            <span>Disabled Users</span>
+                            <svg class="w-4 h-4 inline-block fill-current text-gray-600" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 0C4.48001 0 0 4.48 0 10s4.48001 10 10 10c5.52 0 10-4.48 10-10S15.52 0 10 0zM2 10c0-4.42 3.57999-8 8-8 1.85 0 3.55.63 4.9 1.69L3.69 14.9C2.63 13.55 2 11.85 2 10zm3.10001 6.31C6.45001 17.37 8.14999 18 10 18c4.42 0 8-3.58 8-8 0-1.84999-.63-3.54999-1.69-4.89999L5.10001 16.31z" clip-rule="evenodd"/></svg>
                         </a>
                     </span>
                     <span class="w-full flex flex-wrap z-50" v-else>

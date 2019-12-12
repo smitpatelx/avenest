@@ -19,6 +19,7 @@ BEGIN;
 \i ./provinces.sql
 \i ./salutations.sql
 \i ./favourites.sql
+\i ./offensives.sql
 
 COMMIT;
 OMG

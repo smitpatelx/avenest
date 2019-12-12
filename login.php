@@ -130,11 +130,11 @@ if(is_get())
 
     <!-- The login form for the page -->
     <div class="w-full flex lg:flex-wrap flex-wrap-reverse justify-center">
-        <div class="w-full lg:w-2/3 h-auto object-cover p-4 lg:p-32">
-            <img src="./images/undraw_mobile_login_ikmv.svg" alt="undraw_mobile_login_ikmv.svg" class="object-fit w-full"/>
+        <div class="w-full lg:w-2/3 h-auto object-cover p-4 justify-center items-center flex flex-wrap">
+            <img src="./images/undraw_mobile_login_ikmv.svg" alt="undraw_mobile_login_ikmv.svg" class="object-fit" style="height: 35rem;"/>
         </div>
         <form class="h-auto w-full lg:w-1/3 px-8 pb-4 md:pb-0" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <p class="text-left font-bold text-gray-700 my-2 text-4xl mt-16 font-headline">Login</p>
+            <p class="text-left font-bold text-gray-700 my-2 text-4xl mt-4 font-headline">Login</p>
             <p class="text-left font-semibold text-gray-500 my-2">Email and Password needed</p>
 
             <p class="pt-2 text-red-500 text-sm"><?php echo $error ?></p>
@@ -158,7 +158,8 @@ if(is_get())
                 </div>
             </div>
             <div class="flex flex-wrap flex-col text-center text-base">
-                <a href="./register.php" class="w-full font-semibold text-blue-600 hover:text-blue-700 underline">Do not have an account?<br/> Register Here</a>
+                <a href="./password-request.php" class="w-full font-semibold text-blue-600 hover:text-blue-700 underline">Forgot Password</a>
+                <a href="./register.php" class="w-full font-semibold text-blue-600 hover:text-blue-700 underline">Register Here</a>
             </div>
         </form>
     </div>

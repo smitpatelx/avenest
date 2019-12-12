@@ -61,12 +61,15 @@ if(is_get()){
         $output = "";
         while($row = pg_fetch_assoc($exe))
         {
-            $sdasd = $row['listing_id'];
-            
+            $curre_listing_id=$row['listing_id'];
             if(!empty($user_id)){
-                $likes = "SELECT * FROM favourites WHERE user_id = '$user_id' AND listing_id = '$sdasd';";
-                $res2 = pg_query(db_connect(),$likes);
+                $likes = "SELECT * FROM favourites WHERE user_id = '$user_id' AND listing_id = '$curre_listing_id';";
+                $res2 = pg_query(db_connect(), $likes);
                 $liked =pg_num_rows($res2)>0 ? 'true' : 'false';
+
+                $offensive = "SELECT * FROM offensives WHERE user_id = '$user_id' AND listing_id = '$curre_listing_id';";
+                $res3 = pg_query(db_connect(), $offensive);
+                $offensive =pg_num_rows($res3)>0 ? 'true' : 'false';
             }
 
             $main_img = explode('_|', $row['images_path'])[0];
@@ -75,9 +78,9 @@ if(is_get()){
                 <img src="'.$main_img.'" alt="homes" class="cursor-pointer w-full object-cover shadow rounded-t-lg h-64" onclick="location.href=\'./listing-display.php?listing_id='.$row['listing_id'].'\'"/>
                 <div class="py-4 px-4 flex flex-wrap">
                     <div class="w-full flex flex-wrap justify-between">'.displayStatus($row['status']);
-                    if(isset($liked)){
-                        $output .= '<Like liked="'.$liked.'" :user="'.$user_id.'" :post="'.$row['listing_id'].'"/>';
-                    }
+                        if(isset($liked)){
+                            $output .= '<like liked="'.$liked.'" :user="'.$user_id.'" :post="'.$row['listing_id'].'" offensive="'.$offensive.'" status="'.$row['status'].'"></like>';
+                        }
                     $output .= '</div>
                     <p class="w-full text-gray-500 text-md pt-4"><i class="fas fa-map-marker-alt mr-2 xl:mr-4"></i>'.$row['address'].'</p><br/>
                     <p class="w-full text-gray-500 text-md pt-1"><i class="fas fa-map-marker mr-2 xl:mr-4"></i>'.displayProperty('city', $row['city']).'</p><br/>
@@ -91,7 +94,6 @@ if(is_get()){
                             </a>';
                     }
             $output .= '</div>
-                
             </div>
         </div>';
         }

@@ -58,10 +58,14 @@ if(is_get())
             <p class="text-center pt-4 text-red-500 text-base">'.$error.'</p>
         </div>';
         if(!empty($data)){
-            $sdasd=$data['listing_id'];
-            $likes = "SELECT * FROM favourites WHERE user_id = '$user_id' AND listing_id = '$sdasd';";
+            $curre_listing_id=$data['listing_id'];
+            $likes = "SELECT * FROM favourites WHERE user_id = '$user_id' AND listing_id = '$curre_listing_id';";
             $res2 = pg_query(db_connect(), $likes);
             $liked =pg_num_rows($res2)>0 ? 'true' : 'false';
+
+            $offensive = "SELECT * FROM offensives WHERE user_id = '$user_id' AND listing_id = '$curre_listing_id';";
+            $res3 = pg_query(db_connect(), $offensive);
+            $offensive =pg_num_rows($res3)>0 ? 'true' : 'false';
 
             $main_img = explode('_|', $data['images_path'])[0];
             echo '<div class="w-full lg:w-2/3 p-4">
@@ -70,9 +74,9 @@ if(is_get())
                     <div class="py-4 px-4 flex flex-wrap">
                     <p class="w-full text-center text-xl text-gray-600 my-2 capitalize">'.$data['headline'].'</p>
                     <div class="w-full flex flex-wrap justify-between">'.displayStatus($data['status']);
-                    if(isset($_SESSION['user_s']['user_id'])){
-                        echo '<Like liked="'.$liked.'" :user="'.$user_id.'" :post="'.$data['listing_id'].'"/>';
-                    }
+                        if(isset($_SESSION['user_s']['user_id'])){
+                            echo '<like liked="'.$liked.'" :user="'.$user_id.'" :post="'.$data['listing_id'].'" offensive="'.$offensive.'" status="'.$data['status'].'"></like>';
+                        }
                     echo '</div>
                     <div class="w-full flex flex-wrap justify-between">  
                         <p class="w-full text-gray-600 text-lg my-2">'.$data['description'].'</p><br/>
@@ -95,7 +99,7 @@ if(is_get())
                             </a>';
                     }
                 echo '</div>
-                    
+                </div>
                 </div>
             </div>';
         }

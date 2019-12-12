@@ -13,7 +13,7 @@ if(is_get())
     $user_id = ($_SESSION['user_s'])['user_id'];
 
     $conn = db_connect();
-    $sql = "SELECT * FROM listings WHERE listings.user_id = '$user_id' AND status != 'h' AND (LOWER(address) LIKE LOWER('$search_r') OR LOWER(headline) LIKE LOWER('$search_r') OR LOWER(description) LIKE LOWER('$search_r')) ORDER BY updated_on ASC;";
+    $sql = "SELECT * FROM listings INNER JOIN favourites ON (listings.listing_id = favourites.listing_id) WHERE favourites.user_id='$user_id' AND status != 'h' AND (LOWER(address) LIKE LOWER('$search_r') OR LOWER(headline) LIKE LOWER('$search_r') OR LOWER(description) LIKE LOWER('$search_r')) AND (status='o' OR status='s') ORDER BY updated_on ASC LIMIT 200;";
     $result = pg_query($conn, $sql);
     
     $output = [];

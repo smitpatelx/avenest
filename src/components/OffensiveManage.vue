@@ -24,7 +24,7 @@
                     <th class="w-2/12 px-2 py-3 rounded-tr-lg text-center">Actions</th>
                 </tr>
             </thead>
-            <tbody v-if="showListings" class="bg-gray-100 text-base text-black flex flex-wrap justify-center items-start w-full overflow-y-scroll custom-scroll" style="height: 50vh;">
+            <tbody v-if="showListings" class="bg-gray-100 text-base text-black flex flex-wrap justify-center items-start w-full overflow-y-scroll custom-scroll" style="height: 70vh;">
                 <tr v-for="(data,i) in listings" :key="i" class="border-b border-t border-solid border-gray-400 flex flex-wrap justify-center items-center w-full">
                     <td class="w-1/12 px-2 py-3 font-normal">{{data.listing_id}}</td>
                     <td class="w-3/12 px-2 py-3 font-normal">{{data.headline}}</td>
@@ -32,10 +32,12 @@
                     <td class="w-3/12 px-2 py-3 font-normal">{{data.address}}</td>
                     <td class="w-1/12 px-2 py-3 font-normal flex flex-wrap justify-start items-center" v-html="displayStatus(data.status)"></td>
                     <td class="w-1/12 px-2 py-3 font-normal">{{data.created_on}}</td>
-                    <td class="w-2/12 px-2 py-3 font-normal flex justify-center items-center">
+                    <td class="w-2/12 px-2 py-3 font-normal flex flex-wrap justify-center items-center">
                         <a :href="`./listing-display.php?listing_id=${data.listing_id}`" class="focus:outline-none m-1 bg-transparent hover:text-black text-gray-600 p-2 flex flex-wrap justify-center items-center w-auto cursor-pointer font-bold text-center"><i class="fab fa-readme"></i></a>
-                        <a :href="`./listing-update.php?listing_id=${data.listing_id}`" class="focus:outline-none m-1 bg-transparent hover:text-black text-gray-600 p-2 flex flex-wrap justify-center items-center w-auto cursor-pointer font-bold text-center"><i class="far fa-edit"></i></a>
                         <button @click="delete_listing(data.listing_id)" class="focus:outline-none m-1 bg-transparent hover:text-black text-gray-600 p-2 flex flex-wrap justify-center items-center w-auto cursor-pointer font-bold text-center"><i class="far fa-trash-alt"></i></button>
+                        <button @click="hide_listing(data.listing_id)" class="focus:outline-none m-1 bg-transparent hover:text-black text-gray-600 p-2 flex flex-wrap justify-center items-center w-auto cursor-pointer font-semibold underline text-center">Hide</button>
+                        <button @click="disable_reporting_user(data.off_user)" class="focus:outline-none m-1 bg-transparent hover:text-black text-gray-600 p-2 flex flex-wrap justify-center items-center w-auto cursor-pointer font-semibold underline text-center">Disable Reporter</button>
+                        <button @click="disable_owner(data.user_id)" class="focus:outline-none m-1 bg-transparent hover:text-black text-gray-600 p-2 flex flex-wrap justify-center items-center w-auto cursor-pointer font-semibold underline text-center">Disable Owner</button>
                     </td>
                 </tr>
             </tbody>
@@ -45,6 +47,7 @@
                 </tr>
             </tbody>
         </table>
+        <notifications group="fav_manager" :classes="notify_color" position="bottom left"/>
     </div>
 </template>
 
@@ -56,7 +59,8 @@ export default {
         return{
             sortByDate: false,
             searchText: '',
-            listings: []
+            listings: [],
+            notify_color:''
         }
     },
     props:{
@@ -75,7 +79,7 @@ export default {
             }
         },
         getAllListings(){
-            axios.get('./api/get-listings.php',{
+            axios.get('./api/get-offensive.php',{
                 params: {
                     search: this.searchText
                 }
@@ -99,7 +103,100 @@ export default {
             this.sortByDate = !this.sortByDate;
         },
         delete_listing(id){
-            console.log(id);
+            var bodyFormData = new FormData();
+            bodyFormData.append('listing_id', id); 
+            bodyFormData.append('case', 'delete_listing');
+
+            axios({
+                method: 'post',
+                url: './api/offensive-manager.php',
+                data: bodyFormData,
+                headers: {'Content-Type': 'multipart/form-data' }
+            }).then((data)=>{
+                this.notify_color = "success vue-notification";
+                var tt = "Success Deleting Listing:"+id;
+                this.$notify({
+                    group: 'fav_manager',
+                    title: 'Success!',
+                    text: tt
+                });
+
+                this.listings = this.listings.filter((value, index, arr)=>{
+                    return value.listing_id != id;
+                });
+            });
+        },
+        hide_listing(id){
+            var bodyFormData = new FormData();
+            bodyFormData.append('listing_id', id); 
+            bodyFormData.append('case', 'hide_listing');
+
+            axios({
+                method: 'post',
+                url: './api/offensive-manager.php',
+                data: bodyFormData,
+                headers: {'Content-Type': 'multipart/form-data' }
+            }).then((data)=>{
+                this.notify_color = "success vue-notification";
+                var tt = "Success Listing Hidden:"+id;
+                this.$notify({
+                    group: 'fav_manager',
+                    title: 'Success!',
+                    text: tt
+                });
+
+                this.listings = this.listings.filter((value, index, arr)=>{
+                    return value.listing_id != id;
+                });
+            });
+        },
+        disable_reporting_user(id){
+            var bodyFormData = new FormData();
+            bodyFormData.append('user_id', id); 
+            bodyFormData.append('case', 'disable_reporting_user');
+
+            axios({
+                method: 'post',
+                url: './api/offensive-manager.php',
+                data: bodyFormData,
+                headers: {'Content-Type': 'multipart/form-data' }
+            }).then((data)=>{
+                this.notify_color = "success vue-notification";
+                var tt = "Success Disabling Reporter:"+id;
+                this.$notify({
+                    group: 'fav_manager',
+                    title: 'Success!',
+                    text: tt
+                });
+
+                this.listings = this.listings.filter((value, index, arr)=>{
+                    return value.listing_id != id;
+                });
+            });
+        },
+        disable_owner(id){
+            var bodyFormData = new FormData();
+            bodyFormData.append('user_id', id); 
+            bodyFormData.append('case', 'disable_owner');
+
+            axios({
+                method: 'post',
+                url: './api/offensive-manager.php',
+                data: bodyFormData,
+                headers: {'Content-Type': 'multipart/form-data' }
+            }).then((data)=>{
+                this.notify_color = "success vue-notification";
+                var tt = "Success Disabling Owner:"+id;
+                this.$notify({
+                    group: 'fav_manager',
+                    title: 'Success!',
+                    text: tt
+                });
+
+                this.listings = this.listings.filter((value, index, arr)=>{
+                    return value.listing_id != id;
+                });
+            });
         },
         clearAll(){
             this.searchText = "";

@@ -5,8 +5,10 @@
 
 DROP TABLE IF EXISTS offensives CASCADE;
 CREATE TABLE offensives (
-	mix_id VARCHAR(30) NOT NULL PRIMARY KEY,
+	PRIMARY KEY(listing_id, user_id),
     listing_id INT NOT NULL REFERENCES listings(listing_id) ON DELETE CASCADE,
-	user_id VARCHAR(20) NOT NULL REFERENCES users(user_id) ON DELETE CASCADE
+	user_id VARCHAR(20) NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+	reported_on DATE NOT NULL,
+	status VARCHAR(1) NOT NULL
 );
 

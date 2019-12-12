@@ -6,6 +6,8 @@ import Notification from './components/Notification';
 import imageupload from './components/ImageUpload';
 import ListingsManage from './components/ListingsManage';
 import MainHeader from './components/MainHeader';
+import FavouritesManage from './components/FavouritesManage';
+import OffensiveManage from './components/OffensiveManage';
 import Notifications from 'vue-notification';
 
 Vue.use(Notifications);
@@ -22,6 +24,8 @@ const app = new Vue({
         Notification,
         imageupload,
         ListingsManage,
-        MainHeader
+        MainHeader,
+        FavouritesManage,
+        OffensiveManage
     }
 });

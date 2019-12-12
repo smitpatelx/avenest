@@ -13,7 +13,7 @@ if(is_get())
     $user_id = ($_SESSION['user_s'])['user_id'];
 
     $conn = db_connect();
-    $sql = "SELECT * FROM listings WHERE listings.user_id = '$user_id' AND status != 'h' AND (LOWER(address) LIKE LOWER('$search_r') OR LOWER(headline) LIKE LOWER('$search_r') OR LOWER(description) LIKE LOWER('$search_r')) ORDER BY updated_on ASC;";
+    $sql = "SELECT listings.*, offensives.user_id AS off_user FROM listings INNER JOIN offensives ON (listings.listing_id = offensives.listing_id) WHERE (LOWER(address) LIKE LOWER('$search_r') OR LOWER(headline) LIKE LOWER('$search_r') OR LOWER(description) LIKE LOWER('$search_r')) ORDER BY offensives.reported_on DESC LIMIT 200;";
     $result = pg_query($conn, $sql);
     
     $output = [];

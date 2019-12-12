@@ -113,7 +113,7 @@ export default {
             } else if(x=='a'){
                 return "./dashboard.php";
             } else if(x=='c'){
-                return "./client.php";
+                return "./welcome.php";
             }
         }
     },

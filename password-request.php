@@ -76,12 +76,12 @@ if(is_get()) {
 ?>
 
     <div class="w-full flex flex-wrap justify-center items-center px-4 py-10">
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="w-full md:w-1/2 lg:w-1/3 bg-white border-2 border-solid border-gray-400 py-4 px-3 flex flex-wrap rounded-lg shadow-lg">
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="w-full md:w-1/2 lg:w-1/3 bg-white border-2 border-solid border-gray-400 p-4 flex flex-wrap rounded-lg shadow-lg">
             <h1 class="w-full text-2xl font-semibold text-center text-primary-500">Password Request</h1>
             <p class="w-full text-center pt-2 text-red-500 text-sm"><?php echo $error ?></p>
             <div class="w-full mt-4">
                 <p class="text-lg font-normal py-1 text-black">Email</p>
-                <input autofocus type="text" name="email" value="<?php echo $email ?>" class="border border-solid border-gray-400 w-full py-3 px-4 shadow-lg rounded-lg my-1 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100"/>
+                <input autofocus type="text" name="email" placeholder="xyz@gmail.com" value="<?php echo $email ?>" class="border border-solid border-gray-400 w-full py-3 px-4 rounded-lg my-1 focus:outline-none focus:shadow-outline bg-white focus:bg-gray-100"/>
             </div>
             <div class="w-full flex flex-wrap flex-row mt-4 justify-center">
                 <div class="pr-2 py-2">

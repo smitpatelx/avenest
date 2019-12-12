@@ -34,13 +34,13 @@ if(isset($_SESSION['user_type_s'])){
 
 ?>
 
-<div class="text-center flex flex-wrap flex-col py-4 content-center container mx-auto justify-center">
-    <p class="text-xl text-primary-500 shadow-lg rounded w-auto lg:w-1/3 bg-white py-2 px-3 font-headline font-semibold">
-        Dashboard | Welcome <?php echo ($_SESSION['user_s'])['first_name']." ".($_SESSION['user_s'])['last_name']; ?>
-    </p>
-</div>
-
 <div class="w-full flex flex-wrap justify-center content-center px-2 lg:px-10 py-4 lg:px-6">
+    <p class="text-2xl text-primary-500 shadow-lg rounded w-1/3 bg-white py-2 font-headline font-semibold text-center">
+        Welcome  <?php echo ($_SESSION['user_s'])['first_name']." ".($_SESSION['user_s'])['last_name'] ?>
+    </p>
+    <p class="text-lg text-primary-500 w-full py-2 font-headline font-semibold text-center underline">
+        My Listings
+    </p>
     <listings-manage></listings-manage>
 </div>
 

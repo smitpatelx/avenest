@@ -4,10 +4,12 @@ const tailwindcss = require('tailwindcss');
 mix.js('src/app.js', 'dist/js')
    .sass('src/app.scss', 'dist/css', [
       require('tailwindcss'),
-    ]).options({
+    ])
+    .options({
       processCssUrls: false,
       postCss: [ tailwindcss('./tailwind.config.js') ],
     })
+    .extract(['vue']);
 // Full API
 // mix.js(src, output);
 // mix.react(src, output); <-- Identical to mix.js(), but registers React Babel compilation.

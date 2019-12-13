@@ -42,7 +42,15 @@ if(is_post())
         $result = pg_query($conn, $query);
 
         if ($result) {
-            echo json_response(200, 'Success disabling user');
+            //Delete All Favourites Related to Disabled Users
+            $del_all_favs = "DELETE FROM favourites WHERE user_id='$user_id';";
+            $result_fav = pg_query($conn, $del_all_favs);
+
+            if ($result) {
+                echo json_response(200, 'Success disabling user');
+            } else {
+                echo json_response(400, pg_last_error($conn));
+            }
         } else {
             echo json_response(400, pg_last_error($conn));
         }

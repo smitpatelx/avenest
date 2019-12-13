@@ -37,10 +37,7 @@ if(isset($_SESSION['user_type_s'])){
     <p class="text-2xl text-primary-500 shadow-lg rounded w-1/3 bg-white py-2 font-headline font-semibold text-center">
         Admin | Welcome  <?php echo ($_SESSION['user_s'])['first_name']." ".($_SESSION['user_s'])['last_name'] ?>
     </p>
-    <p class="text-lg text-primary-500 w-full py-2 font-headline font-semibold text-center underline">
-        Potentially Offensive
-    </p>
-    <offensive-manage></offensive-manage>
+    <admin-component></admin-component>
 </div>
 
 <?php

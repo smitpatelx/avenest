@@ -32,10 +32,11 @@ if(isset($_SESSION['user_type_s'])){
     ob_flush();  //Flushing output buffer after redirection
 }
 ?>
-    <div class="w-full flex flex-wrap justify-center items-center py-4 px-3">
-        <h1 class="text-2xl text-primary-500 font-semibold">Disabled Users</h1>
-        <!-- User Component Vue.js-->
-
+    <div class="w-full flex flex-wrap justify-center content-center px-2 lg:px-10 py-4 lg:px-6">
+        <p class="text-lg text-primary-500 w-full py-2 font-headline font-semibold text-center underline">
+            Disabled Users
+        </p>
+        <disabled-manage></disabled-manage>
     </div>
 <?php
 require("./footer.php");

@@ -20,6 +20,20 @@ if(!isset($_SESSION['user_type_s'])){
     ob_flush();  //Flushing output buffer after redirection
 }
 
+if ($_SESSION['user_type_s'] == DISABLED){
+    $session_msg[] = "Access Denied";
+    $_SESSION['session_messages'] = $session_msg;
+    header("LOCATION: ./aup.php");
+    ob_flush();  //Flushing output buffer after redirection
+    exit();
+}else if ($_SESSION['user_type_s'] == INCOMPLETE){
+    $session_msg[] = "Access Denied";
+    $_SESSION['session_messages'] = $session_msg;
+    header("LOCATION: ./aup.php");
+    ob_flush();  //Flushing output buffer after redirection
+    exit();
+}
+
 if(is_get())
 {
 

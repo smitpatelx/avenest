@@ -7,12 +7,18 @@ DESCRIPTION     : Footer section
 -->
     </div>
     <div class="w-full flex flex-wrap flex-col">
-        <div class="w-full flex flex-wrap flex-row justify-center text-lg font-semibold uppercase mt-6">
+        <div class="w-full flex flex-wrap flex-row justify-center text-lg font-semibold capitalize mt-6">
             <a href="./index.php" class="px-3 py-1 mr-1 md:mr-3 text-blue-600 hover:text-gray-500">
                 Home
             </a>
             <a href="./listing-search.php" class="px-3 py-1 mr-1 md:mr-3 text-blue-600 hover:text-gray-500"> 
                     Listings
+            </a>
+            <a href="./aup.php" class="px-3 py-1 mr-1 md:mr-3 text-blue-600 hover:text-gray-500"> 
+                    Accepted User Policy
+            </a>
+            <a href="./privacy-policy.php" class="px-3 py-1 mr-1 md:mr-3 text-blue-600 hover:text-gray-500"> 
+                    Privacy Policy
             </a>
             <?php
 

@@ -54,4 +54,5 @@ DESCRIPTION     : Header section
         </div>
         <main-header :userLoggedIn="<?php echo $loggedIn; ?>" userType="<?php echo $userType; ?>"></main-header>
     </div>
-    
+    <!-- Body Start -->
+    <div class="min-h-screen">

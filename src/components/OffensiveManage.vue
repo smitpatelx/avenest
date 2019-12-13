@@ -16,9 +16,10 @@
             <thead class="rounded-t-lg text-lg font-semibold text-gray-600 w-full">
                 <tr class="flex flex-wrap text-left items-center w-full rounded-t-lg bg-white">
                     <th class="w-1/12 px-2 py-3 rounded-tl-lg">#ID</th>
-                    <th class="w-3/12 px-2 py-3">Headline</th>
+                    <th class="w-2/12 px-2 py-3">Info</th>
+                    <th class="w-2/12 px-2 py-3">Headline</th>
                     <th class="w-1/12 px-2 py-3">Price</th>
-                    <th class="w-3/12 px-2 py-3">Address</th>
+                    <th class="w-2/12 px-2 py-3">Address</th>
                     <th class="w-1/12 px-2 py-3">Status</th>
                     <th class="w-1/12 px-2 py-3">Date</th>
                     <th class="w-2/12 px-2 py-3 rounded-tr-lg text-center">Actions</th>
@@ -27,16 +28,20 @@
             <tbody v-if="showListings" class="bg-gray-100 text-base text-black flex flex-wrap justify-center items-start w-full overflow-y-scroll custom-scroll" style="height: 70vh;">
                 <tr v-for="(data,i) in listings" :key="i" class="border-b border-t border-solid border-gray-400 flex flex-wrap justify-center items-center w-full">
                     <td class="w-1/12 px-2 py-3 font-normal">{{data.listing_id}}</td>
-                    <td class="w-3/12 px-2 py-3 font-normal">{{data.headline}}</td>
+                    <td class="w-2/12 px-2 py-3 font-normal">
+                        Reported By <span class="text-primary-500 font-semibold select-all">{{data.reporter_fn}} {{data.reporter_ln}}</span> <br/>
+                        Posted By <span class="text-primary-500 font-semibold select-all">{{data.owner_fn}} {{data.owner_ln}}</span>
+                    </td>
+                    <td class="w-2/12 px-2 py-3 font-normal">{{data.headline}}</td>
                     <td class="w-1/12 px-2 py-3 font-normal">$ {{data.price}}</td>
-                    <td class="w-3/12 px-2 py-3 font-normal">{{data.address}}</td>
+                    <td class="w-2/12 px-2 py-3 font-normal">{{data.address}}</td>
                     <td class="w-1/12 px-2 py-3 font-normal flex flex-wrap justify-start items-center" v-html="displayStatus(data.status)"></td>
                     <td class="w-1/12 px-2 py-3 font-normal">{{data.created_on}}</td>
                     <td class="w-2/12 px-2 py-3 font-normal flex flex-wrap justify-center items-center">
                         <a :href="`./listing-display.php?listing_id=${data.listing_id}`" class="focus:outline-none m-1 bg-transparent hover:text-black text-gray-600 p-2 flex flex-wrap justify-center items-center w-auto cursor-pointer font-bold text-center"><i class="fab fa-readme"></i></a>
                         <button @click="delete_listing(data.listing_id)" class="focus:outline-none m-1 bg-transparent hover:text-black text-gray-600 p-2 flex flex-wrap justify-center items-center w-auto cursor-pointer font-bold text-center"><i class="far fa-trash-alt"></i></button>
                         <button @click="hide_listing(data.listing_id)" class="focus:outline-none m-1 bg-transparent hover:text-black text-gray-600 p-2 flex flex-wrap justify-center items-center w-auto cursor-pointer font-semibold underline text-center">Hide</button>
-                        <button @click="disable_reporting_user(data.off_user)" class="focus:outline-none m-1 bg-transparent hover:text-black text-gray-600 p-2 flex flex-wrap justify-center items-center w-auto cursor-pointer font-semibold underline text-center">Disable Reporter</button>
+                        <button @click="disable_reporting_user(data.reporter_id)" class="focus:outline-none m-1 bg-transparent hover:text-black text-gray-600 p-2 flex flex-wrap justify-center items-center w-auto cursor-pointer font-semibold underline text-center">Disable Reporter</button>
                         <button @click="disable_owner(data.user_id)" class="focus:outline-none m-1 bg-transparent hover:text-black text-gray-600 p-2 flex flex-wrap justify-center items-center w-auto cursor-pointer font-semibold underline text-center">Disable Owner</button>
                     </td>
                 </tr>

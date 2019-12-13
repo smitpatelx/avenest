@@ -32,13 +32,13 @@ function user_redirection() {
         header("LOCATION: ./dashboard.php");
         ob_flush();  //Flushing output buffer after redirection
     }else if ($_SESSION['user_type_s'] == DISABLED){
-        header("LOCATION: ./406.php");
+        header("LOCATION: ./aup.php");
         ob_flush();  //Flushing output buffer after redirection
     }else if ($_SESSION['user_type_s'] == CLIENT){
         header("LOCATION: ./welcome.php");
         ob_flush();  //Flushing output buffer after redirection
     }else if ($_SESSION['user_type_s'] == INCOMPLETE){
-        header("LOCATION: ./406.php");
+        header("LOCATION: ./aup.php");
         ob_flush();  //Flushing output buffer after redirection
     }
 }

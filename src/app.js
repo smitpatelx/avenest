@@ -7,7 +7,8 @@ import imageupload from './components/ImageUpload';
 import ListingsManage from './components/ListingsManage';
 import MainHeader from './components/MainHeader';
 import FavouritesManage from './components/FavouritesManage';
-import OffensiveManage from './components/OffensiveManage';
+import AdminComponent from './components/AdminComponent';
+import DisabledManage from './components/DisabledManage';
 import Notifications from 'vue-notification';
 
 Vue.use(Notifications);
@@ -26,6 +27,7 @@ const app = new Vue({
         ListingsManage,
         MainHeader,
         FavouritesManage,
-        OffensiveManage
+        AdminComponent,
+        DisabledManage
     }
 });

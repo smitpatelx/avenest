@@ -41,8 +41,8 @@ require("./header.php");
     </p>
     <br/><br/>
     <ul class="list-disc text-left my-4 font-normal subpixel-antialiased text-lg text-gray-600">
-        <li>to protect the integrity and stability of .realtor™;</li>
-        <li>to enforce the .realtor™ end user licensing agreement as may be amended from time to time;</li>
+        <li>to protect the integrity and stability of realtor™;</li>
+        <li>to enforce the realtor™ end user licensing agreement as may be amended from time to time;</li>
         <li>to comply with any applicable laws, government rules or requirements, requests of law enforcement, or any dispute resolution process;</li>
         <li>to avoid any liability, civil or criminal, on the part of NAR, Avenest, its affiliates, subsidiaries, officers, directors, contracted parties, agents, or employees;</li>
         <li>to comply with the terms of the applicable registration agreement and/or .realtor™ policies;</li>

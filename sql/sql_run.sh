@@ -1,5 +1,5 @@
 #!/bin/sh
-psql -d group04_db -U group04_admin <<OMG
+psql -d avenest -U smit <<OMG
 BEGIN;
 
 \i ./sequences/user_id_seq.sql

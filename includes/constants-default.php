@@ -1,11 +1,11 @@
 <?php
 
 //Database constants
-define('DB_NAME', 'avenest');
-define('DB_HOST', '127.0.0.1');
-define('DB_PORT', '5432');
-define('DB_USER', 'smit');
-define('DB_PASSWORD', 'smitpatelx');
+define('DB_NAME', '');
+define('DB_HOST', '');
+define('DB_PORT', '');
+define('DB_USER', '');
+define('DB_PASSWORD', '');
 
 //User Types Constants
 define('ADMIN', 's');
